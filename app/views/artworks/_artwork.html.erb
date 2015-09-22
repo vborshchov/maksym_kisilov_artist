@@ -1,5 +1,6 @@
 <% @artworks.each do |artwork| %>
-  <%= cl_image_tag(artwork.picture, sign_url: true, alt: artwork.name) %><br>
+  <%= content_tag(:div, "",alt: artwork.name, style: "background-image:url('#{URI.encode(artwork.picture, ASCII))}');width:736px;height:524px") %>
+  <!-- <#%= cl_image_tag(artwork.picture, sign_url: true, alt: artwork.name) %><br> -->
   "<%= artwork.name %>"<br>
   <%= artwork.dimension %><br>
   <%= artwork.material %><br>
