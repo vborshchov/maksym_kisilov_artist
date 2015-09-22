@@ -1,13 +1,10 @@
 # == Schema Information
 #
-# Table name: artworks
+# Table name: categories
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  dimension  :string
-#  material   :string
-#  picture    :string
-#  paint      :string
+#  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -16,14 +13,8 @@
 
 one:
   name: MyString
-  dimension: MyString
-  material: MyString
-  picture: MyString
-  paint: MyString
+  position: 1
 
 two:
   name: MyString
-  dimension: MyString
-  material: MyString
-  picture: MyString
-  paint: MyString
+  position: 1

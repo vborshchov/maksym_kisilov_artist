@@ -52,5 +52,6 @@ gem 'rmagick'
 gem 'cloudinary'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
+gem 'annotate'
 
 ruby "2.2.1"
