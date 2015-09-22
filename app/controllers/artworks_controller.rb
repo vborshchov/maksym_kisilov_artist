@@ -1,5 +1,5 @@
 class ArtworksController < ApplicationController
   def index
-    @artworks = Artworks.all
+    @artworks = Artwork.all
   end
 end
