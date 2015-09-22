@@ -43,3 +43,10 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'activeadmin', '~> 1.0.0.pre1'
+gem 'rails_12factor', group: :production
+gem 'quiet_assets', group: :development
+gem 'foundation-rails'
+gem 'foundation-icons-sass-rails'
+
+ruby "2.2.1"
