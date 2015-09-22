@@ -44,6 +44,7 @@ group :development, :test do
 end
 
 gem 'activeadmin', '~> 1.0.0.pre1'
+gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'quiet_assets', group: :development
 gem 'foundation-rails'
