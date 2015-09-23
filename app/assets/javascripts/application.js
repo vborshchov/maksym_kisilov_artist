@@ -16,4 +16,15 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+  $(document).foundation({
+    topbar: {
+              sticky_class : 'sticky',
+              custom_back_text: false, // Set this to false and it will pull the top level link name as the back text
+              is_hover: true,
+              mobile_show_parent_link: false, // will copy parent links into dropdowns for mobile navigation
+              scrolltop : true // jump to top when sticky nav menu toggle is clicked
+            }
+  }
+  );
+});
