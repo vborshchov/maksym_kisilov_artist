@@ -5,12 +5,6 @@
 ready = undefined
 
 ready = ->
-  # $('img').mousedown (e) ->
-  #   if e.button == 2
-  #     # right click
-  #     return false
-  #     # do nothing!
-  #   return
   $('img').bind 'contextmenu', (e) ->
     false
 
