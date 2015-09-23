@@ -1,0 +1,47 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+ready = undefined
+
+ready = ->
+  # $('img').bind 'contextmenu', (e) ->
+  #   false
+  $ ->
+    pixelSource = "<%= asset_path('Transparent.gif') %>"
+    useOnAllImages = false
+    # Preload the pixel
+    preload = new Image
+    preload.src = pixelSource
+    $('img').on 'mouseenter touchstart', (e) ->
+      # Only execute if this is not an overlay or skipped
+      img = $(this)
+      if img.hasClass('protectionOverlay')
+        return
+      if !useOnAllImages and !img.hasClass('protectMe')
+        return
+      # Get the real image's position, add an overlay
+      pos = img.offset()
+      overlay = $('<img class="protectionOverlay" src="' + pixelSource + '" width="' + img.width() + '" height="' + img.height() + '" />').css(
+        position: 'absolute'
+        zIndex: 9999999
+        left: pos.left
+        top: pos.top).appendTo('body').bind('mouseleave', ->
+        setTimeout (->
+          overlay.remove()
+          return
+        ), 0, $(this)
+        return
+      )
+      if 'ontouchstart' of window
+        $(document).one 'touchend', ->
+          setTimeout (->
+            overlay.remove()
+            return
+          ), 0, overlay
+          return
+      return
+    return
+
+$(document).ready ready
+$(document).on 'page:load', ready
