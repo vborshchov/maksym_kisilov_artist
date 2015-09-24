@@ -1,1 +1,24 @@
 <%= render 'artwork' %>
+<div class="your-class">
+  <% (1..4).to_a.each do |i| %>
+    <div><%= image_tag("#{i}.png") %>
+    Море холст Олія
+    </div>
+  <% end %>
+</div>
+<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
+  <% (5..8).to_a.each do |i| %>
+    <li><%= image_tag("#{i}.png") %></li>
+  <% end %>
+</ul>
+
+<div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+  <% (9..12).to_a.each do |i| %>
+    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <a href=<%= asset_path("#{i}.png") %> itemprop="contentUrl" data-size="600x400">
+          <%= image_tag("#{i}.png") %>
+        </a>
+        <figcaption itemprop="caption description">Image caption</figcaption>
+    </figure>
+  <% end %>
+</div>

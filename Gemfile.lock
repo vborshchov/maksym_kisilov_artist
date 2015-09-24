@@ -135,6 +135,7 @@ GEM
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     pg (0.18.3)
+    photoswipe-rails (4.1.0)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     quiet_assets (1.1.0)
@@ -239,6 +240,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
+  photoswipe-rails
   quiet_assets
   rails (= 4.2.3)
   rails_12factor
