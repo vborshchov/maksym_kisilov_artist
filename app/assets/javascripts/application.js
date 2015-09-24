@@ -14,6 +14,23 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require slick
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+  $('.your-class').slick({
+    nextArrow: false,
+    prevArrow: false,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: false
+  });
+  $(document).foundation(
+    
+  );
+});

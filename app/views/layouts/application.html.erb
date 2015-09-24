@@ -15,6 +15,16 @@
   <body>
 
     <%= yield %>
-
+<!--     <div class="row">
+      <div class="column large-10"> -->
+        <div class="your-class">
+          <% (1..4).to_a.each do |i| %>
+            <div><%= image_tag("#{i}.png") %>
+            Море холст Олія
+            </div>
+          <% end %>
+        </div>
+<!--       </div>
+    </div> -->
   </body>
 </html>

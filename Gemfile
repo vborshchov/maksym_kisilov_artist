@@ -53,5 +53,6 @@ gem 'cloudinary'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 gem 'annotate'
+gem 'slick_rails'
 
 ruby "2.2.1"
