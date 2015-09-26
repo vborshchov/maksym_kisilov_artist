@@ -1,7 +1,7 @@
 <% @artworks.each do |artwork| %>
-  <%= cl_image_tag(artwork.picture, sign_url: true, alt: artwork.name) %><br>
-  "<%= artwork.name %>"<br>
-  <%= artwork.dimension %><br>
-  <%= artwork.material %><br>
-  <%= artwork.category.name %><br>
+  <li>
+    <a href="<%= artwork.picture.url %>" data-size="960x640" data-title="<%= artwork.name %>">
+      <%= cl_image_tag(artwork.picture, sign_url: true, alt: artwork.name) %><br>
+    </a>
+  </li>
 <% end %>

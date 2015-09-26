@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
- *= require slick
- *= require slick-theme  
+ *= require owl.carousel
+ *= require owl.theme
  *= require photoswipe
  */

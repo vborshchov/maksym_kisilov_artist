@@ -14,233 +14,146 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require slick
+//= require owl.carousel
 //= require photoswipe
 //= require_tree .
+var ready = function(){
 
-$(function(){
-  $('.your-class').sdlick({
-    mobileFirst: true,
-    nextArrow: false,
-    prevArrow: false,
-    dots: false,
-    infinite: true,
-    speed: 500,
-    fade: true,
-    cssEase: 'linear',
-    autoplay: true,
-    autoplaySpeed: 3500,
-    pauseOnHover: false
-  });
-  $(document).foundation(
-    
-  );
-
-  var initPhotoSwipeFromDOM = function(gallerySelector) {
-
-      // parse slide data (url, title, size ...) from DOM elements 
-      // (children of gallerySelector)
-      var parseThumbnailElements = function(el) {
-          var thumbElements = el.childNodes,
-              numNodes = thumbElements.length,
-              items = [],
-              figureEl,
-              linkEl,
-              size,
-              item;
-
-          for(var i = 0; i < numNodes; i++) {
-
-              figureEl = thumbElements[i]; // <figure> element
-
-              // include only element nodes 
-              if(figureEl.nodeType !== 1) {
-                  continue;
-              }
-
-              linkEl = figureEl.children[0]; // <a> element
-
-              size = linkEl.getAttribute('data-size').split('x');
-
-              // create slide object
-              item = {
-                  src: linkEl.getAttribute('href'),
-                  w: parseInt(size[0], 10),
-                  h: parseInt(size[1], 10)
-              };
-
-
-
-              if(figureEl.children.length > 1) {
-                  // <figcaption> content
-                  item.title = figureEl.children[1].innerHTML; 
-              }
-
-              if(linkEl.children.length > 0) {
-                  // <img> thumbnail element, retrieving thumbnail url
-                  item.msrc = linkEl.children[0].getAttribute('src');
-              } 
-
-              item.el = figureEl; // save link to element for getThumbBoundsFn
-              items.push(item);
-          }
-
-          return items;
-      };
-
-      // find nearest parent element
-      var closest = function closest(el, fn) {
-          return el && ( fn(el) ? el : closest(el.parentNode, fn) );
-      };
-
-      // triggers when user clicks on thumbnail
-      var onThumbnailsClick = function(e) {
-          e = e || window.event;
-          e.preventDefault ? e.preventDefault() : e.returnValue = false;
-
-          var eTarget = e.target || e.srcElement;
-
-          // find root element of slide
-          var clickedListItem = closest(eTarget, function(el) {
-              return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
-          });
-
-          if(!clickedListItem) {
-              return;
-          }
-
-          // find index of clicked item by looping through all child nodes
-          // alternatively, you may define index via data- attribute
-          var clickedGallery = clickedListItem.parentNode,
-              childNodes = clickedListItem.parentNode.childNodes,
-              numChildNodes = childNodes.length,
-              nodeIndex = 0,
-              index;
-
-          for (var i = 0; i < numChildNodes; i++) {
-              if(childNodes[i].nodeType !== 1) { 
-                  continue; 
-              }
-
-              if(childNodes[i] === clickedListItem) {
-                  index = nodeIndex;
-                  break;
-              }
-              nodeIndex++;
-          }
-
-
-
-          if(index >= 0) {
-              // open PhotoSwipe if valid index found
-              openPhotoSwipe( index, clickedGallery );
-          }
-          return false;
-      };
-
-      // parse picture index and gallery index from URL (#&pid=1&gid=2)
-      var photoswipeParseHash = function() {
-          var hash = window.location.hash.substring(1),
-          params = {};
-
-          if(hash.length < 5) {
-              return params;
-          }
-
-          var vars = hash.split('&');
-          for (var i = 0; i < vars.length; i++) {
-              if(!vars[i]) {
-                  continue;
-              }
-              var pair = vars[i].split('=');  
-              if(pair.length < 2) {
-                  continue;
-              }           
-              params[pair[0]] = pair[1];
-          }
-
-          if(params.gid) {
-              params.gid = parseInt(params.gid, 10);
-          }
-
-          return params;
-      };
-
-      var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
-          var pswpElement = document.querySelectorAll('.pswp')[0],
-              gallery,
-              options,
-              items;
-
-          items = parseThumbnailElements(galleryElement);
-
-          // define options (if needed)
-          options = {
-
-              // define gallery index (for URL)
-              galleryUID: galleryElement.getAttribute('data-pswp-uid'),
-
-              getThumbBoundsFn: function(index) {
-                  // See Options -> getThumbBoundsFn section of documentation for more info
-                  var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
-                      pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                      rect = thumbnail.getBoundingClientRect(); 
-
-                  return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
-              }
-
+  $(document).foundation();
+  // PhotoSwipe用のHTMLを描画
+    function buildPswdHtml(){
+      $("body").append([
+'        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">',
+'            <div class="pswp__bg"></div>',
+'            <div class="pswp__scroll-wrap">',
+'                <div class="pswp__container">',
+'                    <div class="pswp__item"></div>',
+'                    <div class="pswp__item"></div>',
+'                    <div class="pswp__item"></div>',
+'                </div>',
+'                <div class="pswp__ui pswp__ui--hidden">',
+'                    <div class="pswp__top-bar">',
+'                        <div class="pswp__counter"></div>',
+'                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>',
+'                        <button class="pswp__button pswp__button--share" title="Share"></button>',
+'                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>',
+'                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>',
+'                        <div class="pswp__preloader">',
+'                            <div class="pswp__preloader__icn">',
+'                              <div class="pswp__preloader__cut">',
+'                                <div class="pswp__preloader__donut"></div>',
+'                              </div>',
+'                            </div>',
+'                        </div>',
+'                    </div>',
+'                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">',
+'                        <div class="pswp__share-tooltip"></div>',
+'                    </div>',
+'                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">',
+'                    </button>',
+'                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">',
+'                    </button>',
+'                    <div class="pswp__caption">',
+'                        <div class="pswp__caption__center"></div>',
+'                    </div>',
+'                </div>',
+'            </div>',
+'        </div>'
+      ].join(""));
+    }
+  // ギャラリーから、PhotoSwipe用のitemsを取得
+  function getGalleryItems($gallery){
+    var items = [];
+    $gallery.find("a").each(function(){
+      var $anchor = $(this),
+          size = $anchor.attr("data-size").split("x"),
+          title = $anchor.attr("data-title"),
+          item = {
+            el: $anchor.get(0),
+            src: $anchor.attr("href"),
+            w: parseInt(size[0]),
+            h: parseInt(size[1])
           };
-
-          // PhotoSwipe opened from URL
-          if(fromURL) {
-              if(options.galleryPIDs) {
-                  // parse real index when custom PIDs are used 
-                  // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
-                  for(var j = 0; j < items.length; j++) {
-                      if(items[j].pid == index) {
-                          options.index = j;
-                          break;
-                      }
-                  }
-              } else {
-                  // in URL indexes start from 1
-                  options.index = parseInt(index, 10) - 1;
-              }
-          } else {
-              options.index = parseInt(index, 10);
-          }
-
-          // exit if index not found
-          if( isNaN(options.index) ) {
-              return;
-          }
-
-          if(disableAnimation) {
-              options.showAnimationDuration = 0;
-          }
-
-          // Pass data to PhotoSwipe and initialize it
-          gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-          gallery.init();
+      // キャプション
+      if( title ) item.title = title;
+      items.push(item);
+    });
+    return items;
+  }
+  // PhotoSwipeを開く
+  function openGallery($gallery, index, items, pswpOptions){
+    var $pswp = $(".pswp"),
+        owl = $gallery.data("owlCarousel"),
+        gallery;
+    // オプション値を設定
+    var options = $.extend(true, {
+      // 開く画像番号
+      index: index,
+      // 画像クリック時のズーム設定
+      getThumbBoundsFn: function(index){
+        var $thumbnail = $(items[index].el).find("img"),
+            offset = $thumbnail.offset();
+        return {
+          x: offset.left,
+          y: offset.top,
+          w: $thumbnail.outerWidth()
+        };
+      }
+    }, pswpOptions);
+    // PhotoSwipeを表示
+    gallery = new PhotoSwipe($pswp.get(0), PhotoSwipeUI_Default, items, options);
+    gallery.init();
+    // PhotoSwipe側の切り替えに応じて、OwlCarouselも位置を調整する
+    gallery.listen("beforeChange", function(x){
+      owl.goTo(this.getCurrentIndex());
+    });
+    gallery.listen("close", function(){
+      this.currItem.initialLayout = options.getThumbBoundsFn(this.getCurrentIndex());
+    });
+  }
+  // 初期化
+  function initializeGallery($elem, owlOptions, pswpOptions){
+    // PhotoSwipe用のDOMが存在しない場合、新しく描画
+    if( $(".pswp").size() === 0 ){
+      buildPswdHtml();
+    }
+    // 複数のギャラリーに対応するために走査
+    $elem.each(function(i){
+      var $gallery = $(this),
+          uid = i + 1,
+          items = getGalleryItems($gallery),
+          options = $.extend(true, {}, pswpOptions);
+      // OwlCarouselの初期化
+      $gallery.owlCarousel(owlOptions);
+      // 各ギャラリーに対してユニークなIDを割り当てる
+      options.galleryUID = uid;
+      $gallery.attr("data-pswp-uid", uid);
+      // 各アイテムのクリックで、PhotoSwipeを起動
+      $gallery.find(".owl-item").on("click", function(e){
+        if( !$(e.target).is("img") ) return;
+        // itemsはPhotoSwipe.init()に書き換えられるのでコピーを渡す
+        openGallery($gallery, $(this).index(), items.concat(), options);
+        return false;
+      });
+    });
+  }
+  // サンプルでは`.owl-carousel`に対して処理を実行する
+  var owlOptions = {
+        autoHeight : true,
+        transitionStyle:"fade",
+        autoplay : true,
+        navigation : false, // Show next and prev buttons
+        slideSpeed : 300,
+        paginationSpeed : 400,
+        singleItem:true,
+        loop:true
+      },
+      pswpOptions = {
+        bgOpacity: 0.9,
+        history: false,
+        shareEl: false
       };
-
-      // loop through all gallery elements and bind events
-      var galleryElements = document.querySelectorAll( gallerySelector );
-
-      for(var i = 0, l = galleryElements.length; i < l; i++) {
-          galleryElements[i].setAttribute('data-pswp-uid', i+1);
-          galleryElements[i].onclick = onThumbnailsClick;
-      }
-
-      // Parse URL and open gallery if it contains #&pid=3&gid=1
-      var hashData = photoswipeParseHash();
-      if(hashData.pid && hashData.gid) {
-          openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
-      }
-  };
-
-  // execute above function
-  initPhotoSwipeFromDOM('.my-gallery');
-
-
-});
+  initializeGallery($(".owl-carousel"), owlOptions, pswpOptions);
+};
+$(document).ready(ready)
+$(document).on('page:change', ready)
