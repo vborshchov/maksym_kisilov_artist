@@ -53,5 +53,6 @@ gem 'cloudinary'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 gem 'annotate'
+gem 'closure_tree'
 
 ruby "2.2.1"

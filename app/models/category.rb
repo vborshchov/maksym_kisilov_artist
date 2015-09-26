@@ -11,4 +11,5 @@
 
 class Category < ActiveRecord::Base
   has_many :artworks
+  has_closure_tree order: 'position'
 end
