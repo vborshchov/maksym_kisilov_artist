@@ -53,15 +53,14 @@
           <!-- Right Nav Section -->
           <ul class="middle">
             <li><a href="#">Про себе</a></li>
-            <li class="has-dropdown">
-              <a href="#">Галерея</a>
+            <li class="has-dropdown"><a href="#">Галерея</a>
               <ul class="dropdown">
-                <li><a href="#">Живопис</a></li>
-                <li><a href="#">Графіка</a></li>
+              <%= menu_tree_for @categories %>
+              <!--   <li><a href="#">Живопис</a></li>
+                <li><a href="#">Графіка</a></li> -->
               </ul>
             </li>
-            <li class="has-dropdown">
-              <a href="#">Новини</a>
+            <li class="has-dropdown"><a href="#">Новини</a>
               <ul class="dropdown">
                 <li><a href="#">Поточні</a></li>
                 <li><a href="#">Архів</a></li>

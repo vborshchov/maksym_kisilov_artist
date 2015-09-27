@@ -1,0 +1,3 @@
+<!-- <li class=<3%= "has-dropdown" unless @category.leaf? %> > -->
+  <%= link_to @category.name, category_path(@category) unless @category.leaf? %>
+<!-- </li> -->

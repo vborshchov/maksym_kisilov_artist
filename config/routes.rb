@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # resources :categories
+  get 'category/:id' => 'categories#show', as: :category
+
   root 'artworks#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
