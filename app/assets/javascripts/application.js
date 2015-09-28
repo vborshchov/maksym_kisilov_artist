@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){
+var ready = function(){
   $(document).foundation({
     topbar: {
               sticky_class : 'sticky',
@@ -27,4 +27,7 @@ $(function(){
             }
   }
   );
-});
+};
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
