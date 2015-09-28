@@ -15,13 +15,16 @@ ActiveAdmin.register Artwork do
   # end
   form do |f|
     f.inputs "Artwork", :multipart => true do
-      f.input :name
-      f.input :dimension
-      f.input :material
-      f.input :picture, :as => :file, :hint => cl_image_tag(f.object.picture.url, width: 150, height: 150, crop: :fit)
+      f.input :name, label: "Назва"
+      f.input :dimension, label: "Розмір"
+      f.input :material, as: :select, :collection => %w(папір холст), label: "Матеріал"
+      # if f.object.picture.blank?
+      #   f.input :picture, :as => :file, label: "Фото"
+      # else
+        f.input :picture, :as => :file, :hint => image_tag(f.object.picture.url, width: 150, height: 150, crop: :fit), label: "Фото"
+      # end
       f.input :picture_cache, :as => :hidden
-      f.input :paint
-      f.input :category, as: :select, :collection => Category.all
+      f.input :category, as: :select, :collection => Category.all, label: "Категорія"
     end
     f.actions
   end
