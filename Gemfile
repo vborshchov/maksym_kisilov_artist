@@ -43,7 +43,9 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'activeadmin', '~> 1.0.0.pre1'
+gem 'activeadmin', '~> 1.0.0.pre2'
+# gem 'activeadmin', github: 'lazaronixon/activeadmin', branch: 'master'
+# gem 'activeadmin', github: 'activeadmin', branch: '0-6-stable'
 gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'quiet_assets', group: :development
