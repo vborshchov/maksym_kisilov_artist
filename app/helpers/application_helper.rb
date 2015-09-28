@@ -22,4 +22,7 @@ module ApplicationHelper
     capture.reject(&:blank?).join(", ")
   end
 
+  def make_title(title=nil)
+    [title, "Максим Кісільов"].reject(&:blank?).join(" | ")
+  end
 end

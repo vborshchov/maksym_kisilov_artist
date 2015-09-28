@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title> <%= make_title yield(:title) %> </title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -13,37 +13,13 @@
   </head>
 
   <body>
-<!--     <div class="contain-to-grid sticky">
-      <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
-        <a class="item" aria-labelledby="#itemlabel1">
-          <i class="fi-home"></i>
-          <label id='itemlabel1'>Home</label>
-        </a>
-        <a class="item" aria-labelledby="#itemlabel2">
-          <i class="fi-bookmark"></i>
-          <label id='itemlabel2'>Bookmark</label>
-        </a>
-        <a class="item" aria-labelledby="#itemlabel3">
-          <i class="fi-info"></i>
-          <label id='itemlabel3'>Info</label>
-        </a>
-        <a class="item" aria-labelledby="#itemlabel4">
-          <i class="fi-mail"></i>
-          <label id='itemlabel4'>Mail</label>
-        </a>
-        <a class="item" aria-labelledby="#itemlabel5">
-          <i class="fi-like"></i>
-          <label id='itemlabel5'>Like</label>
-        </a>
-      </nav>
-    </div> -->
-<!--     <div class="icon-bar five-up" role="navigation">
-    </div> -->
     <div class="contain-to-grid sticky">
       <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area">
           <li class="name">
-            <h1><a href="#"><i class="fi-home"></i> Головна</a></h1>
+            <h1>
+              <%= link_to raw("<i class='fi-home'></i> Головна"), root_path %>
+            </h1>
           </li>
            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
           <li class="toggle-topbar"><a href="#"><span>Меню</span></a></li>
@@ -55,9 +31,7 @@
             <li><a href="#">Про себе</a></li>
             <li class="has-dropdown"><a href="#">Галерея</a>
               <ul class="dropdown">
-              <%= menu_tree_for @categories %>
-              <!--   <li><a href="#">Живопис</a></li>
-                <li><a href="#">Графіка</a></li> -->
+                <%= menu_tree_for @categories %>
               </ul>
             </li>
             <li class="has-dropdown"><a href="#">Новини</a>
@@ -74,26 +48,5 @@
 
     <%= yield %>
 
-    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, necessitatibus dignissimos repellat reprehenderit explicabo rerum sequi quos ratione deserunt veritatis aperiam atque animi ut accusamus dolorum eveniet ipsum id doloremque.</div>
-    <div>Nostrum itaque blanditiis, ullam mollitia nihil porro odio voluptas provident eveniet animi ipsum possimus, delectus dicta iusto maxime officia reiciendis. Ipsam a eum error rerum recusandae iure doloremque odit eligendi.</div>
-    <div>Expedita nobis eaque, eligendi sunt veritatis voluptates alias officiis incidunt quasi neque quibusdam, explicabo doloremque, est nihil, quas maxime consequuntur rem cum. Iure nam nemo ipsa sed voluptate ad omnis!</div>
-    <div>Repellat ut officiis culpa voluptate tempore deleniti quidem porro optio. Quibusdam, ab. Officiis non autem, quas possimus optio amet blanditiis repudiandae eveniet voluptatum, ut, commodi explicabo. Eaque facilis cumque commodi?</div>
-    <div>Animi eligendi esse, ex consequuntur magnam ipsa officiis dolorum minus facere unde quis totam nihil. Delectus ratione beatae, ipsa perferendis officia soluta doloribus quos quas consectetur architecto, nihil corporis asperiores?</div>
-    <div>Cumque aut officiis temporibus similique dolorum ut deserunt sit? Cumque voluptatem aliquam perferendis, ex pariatur ipsum est esse maxime alias placeat dolore minus asperiores adipisci illo quisquam quo, ipsa reiciendis!</div>
-    <div>Quisquam eveniet, quaerat labore corrupti officiis laborum. Quasi fuga doloremque sit repellendus sapiente facilis, quod nihil officiis. Reiciendis sunt distinctio ea, est nisi alias, aspernatur itaque, nostrum, omnis maxime at.</div>
-    <div>Consequatur praesentium qui aspernatur, non repudiandae culpa aliquam ratione, accusamus eum maxime laudantium et exercitationem! Ex tempore voluptatum, cumque quaerat nisi minima deserunt culpa eos, dolorem sint dignissimos, ea unde.</div>
-    <div>Voluptate non eum numquam, molestiae quaerat enim corporis id aperiam modi pariatur, iste omnis? Amet fugit nostrum id ratione magni culpa praesentium quod rem, nam dolores vero accusantium deleniti cumque?</div>
-    <div>Nemo, vel quos. Rem incidunt pariatur, optio culpa cupiditate. Natus blanditiis iste veritatis eveniet a sint, necessitatibus quasi laborum sunt. Debitis temporibus fugit adipisci ut cumque architecto reiciendis ab labore?</div>
-    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id unde laudantium soluta laborum tenetur dicta obcaecati iure mollitia temporibus esse, fuga reiciendis in dolores possimus accusantium maxime! Dicta, sit, eligendi.</div>
-    <div>Quisquam sed a similique sint reprehenderit nemo eum voluptates rem odio, pariatur voluptatibus voluptatum asperiores, quae enim? Fugiat quibusdam, saepe atque soluta quos cum. Error, fugit cumque id molestiae inventore.</div>
-    <div>Assumenda, porro. Odit nulla sapiente quae laborum deserunt debitis voluptatibus a minima optio nesciunt. Aperiam eveniet doloremque nisi labore, nam quae distinctio voluptatibus asperiores beatae nihil iusto! Tenetur quae, at!</div>
-    <div>Magnam totam non alias, quas quam obcaecati nemo quia praesentium atque iste? Atque suscipit nobis facilis inventore quas minima animi iusto, recusandae veniam totam aspernatur sit, molestiae voluptatibus similique soluta?</div>
-    <div>Ducimus nisi distinctio repellat at eligendi, aperiam nam necessitatibus maiores architecto error ea, illum cumque minima doloribus, illo, blanditiis nostrum delectus excepturi ut eaque hic repellendus doloremque ex non possimus!</div>
-    <div>Vero sed labore tenetur illo temporibus iusto error consequuntur porro possimus aperiam deserunt sint, facere officia nostrum sunt molestias architecto impedit odio alias et cumque! Ex nemo, fuga enim recusandae.</div>
-    <div>Recusandae incidunt, consequatur? Minus corporis consequatur, eveniet magnam dolorum quae, voluptatibus corrupti similique, soluta, quidem perferendis minima deserunt et quod itaque. Eius atque, facilis pariatur fugit facere dicta commodi alias.</div>
-    <div>Quisquam quia voluptas libero illum doloremque hic similique tempore molestias voluptatum sunt? Maiores ex labore at voluptatibus, consequatur rerum, possimus, ab sed odio repellat fugiat tenetur eveniet fuga. Iure, nihil?</div>
-    <div>Quae fuga asperiores velit dignissimos. Nesciunt quam fugiat eum voluptatum ratione accusamus fugit quasi perspiciatis soluta doloribus, dignissimos, nisi adipisci doloremque quisquam tenetur voluptatibus velit, cumque odit. Amet excepturi, alias?</div>
-    <div>Vel nesciunt at aliquid ab, repellendus praesentium natus mollitia neque id eos illo repudiandae quam, fugit, adipisci impedit rem necessitatibus minus, officiis et. In ipsum nam enim dolorum, ex veritatis!</div>
-    <a href="#top">Top</a>
   </body>
 </html>
