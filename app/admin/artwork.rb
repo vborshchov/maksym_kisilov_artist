@@ -24,7 +24,10 @@ ActiveAdmin.register Artwork do
         f.input :picture, :as => :file, :hint => image_tag(f.object.picture.url, width: 150, height: 150, crop: :fit), label: "Фото"
       # end
       f.input :picture_cache, :as => :hidden
-      f.input :category, as: :select, :collection => Category.all, label: "Категорія"
+      panel 'Категорія' do
+        f.input :category, as: :select, :collection => Category.leaves, label: "Категорія"
+      end
+      # f.input :category, as: :select, :collection => option_groups_from_collection_for_select(Category.roots, :children, :name, :id, :name), label: "Категорія"
     end
     f.actions
   end
