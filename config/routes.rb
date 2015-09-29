@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'posts/current'
+  get 'news/current' => 'posts#current'
 
-  get 'posts/archive'
+  get 'news/archive' => 'posts#archive'
 
   mount Ckeditor::Engine => '/ckeditor'
   get 'about' => 'static_pages#about'

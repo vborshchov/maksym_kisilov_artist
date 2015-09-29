@@ -1,2 +1,5 @@
-<h1>Posts#current</h1>
-<p>Find me in app/views/posts/current.html.erb</p>
+<%= provide :title, "Поточні новини"%>
+<div class="row">
+  <h1 class="text-center">Поточні новини</h1>
+  <%= render @posts %>
+</div>

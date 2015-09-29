@@ -36,8 +36,8 @@
             </li>
             <li class="has-dropdown"><a href="#"><i class='fi-rss'></i> Новини</a>
               <ul class="dropdown">
-                <li><a href="#">Поточні</a></li>
-                <li><a href="#">Архів</a></li>
+                <li><%= link_to "Поточні", news_current_path %></li>
+                <li><%= link_to "Архів", news_archive_path %></li>
               </ul>
             </li>
             <li><%= link_to raw("<i class='fi-mail'></i> Контакти"), contacts_path %></li>

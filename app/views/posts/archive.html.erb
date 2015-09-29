@@ -1,2 +1,5 @@
-<h1>Posts#archive</h1>
-<p>Find me in app/views/posts/archive.html.erb</p>
+<%= provide :title, "Архів новин"%>
+<div class="row">
+  <h1 class="text-center">Архів новин</h1>
+  <%= render @posts %>
+</div>
