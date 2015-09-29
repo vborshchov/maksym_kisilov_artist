@@ -50,12 +50,13 @@ gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'quiet_assets', group: :development
 gem 'carrierwave'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'cloudinary'
+gem 'unicode'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 gem 'annotate'
 gem 'closure_tree'
-gem 'redactor-rails'
+gem 'ckeditor'
 
 ruby "2.2.1"

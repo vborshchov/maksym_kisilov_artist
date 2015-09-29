@@ -16,7 +16,8 @@ ActiveAdmin.register Post do
   form do |f|
     f.inputs "Новина" do
       f.input :title, label: "Заголовок"
-      f.input :body, label: "Текст"
+      # f.input :body, label: "Текст"
+      f.input :body, :as => :ckeditor
     end
     f.actions
   end

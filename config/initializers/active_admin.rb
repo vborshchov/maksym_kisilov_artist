@@ -230,4 +230,7 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
+
+  # To load a javascript file:
+  config.register_javascript 'ckeditor/init.js'
 end

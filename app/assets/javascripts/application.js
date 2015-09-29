@@ -14,8 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require redactor-rails
-//= require redactor-rails/plugins
+//= require ckeditor/init
 //= require_tree .
 
 var ready = function(){
@@ -27,8 +26,11 @@ var ready = function(){
               mobile_show_parent_link: false, // will copy parent links into dropdowns for mobile navigation
               scrolltop : true // jump to top when sticky nav menu toggle is clicked
             }
-  }
-  );
+  });
+  if ( $('#ckeditor').length )
+    CKEDITOR.replace( 'ckeditor' );
+  if ( $('#ckeditor').prev('label').length ) 
+    $('#ckeditor').prev('label').css('float','none');
 };
 
 $(document).ready(ready)

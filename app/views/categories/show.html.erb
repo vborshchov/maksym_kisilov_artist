@@ -1,4 +1,4 @@
-<%= provide :title, @category.name.capitalize %>
+<%= provide :title, Unicode::capitalize(@category.name) %>
 <p><%= @category.name %></p>
 <% @artworks.map do |a|%>
   <p><%= puts a.name %></p>

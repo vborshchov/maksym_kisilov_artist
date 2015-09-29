@@ -1,10 +1,11 @@
 # encoding: utf-8
-class RedactorRailsPictureUploader < CarrierWave::Uploader::Base
-  include RedactorRails::Backend::CarrierWave
+class CkeditorPictureUploader < CarrierWave::Uploader::Base
+  include Ckeditor::Backend::CarrierWave
 
   # Include RMagick or ImageScience support:
-  include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  # include CarrierWave::RMagick
+  include Cloudinary::CarrierWave
+  include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
@@ -13,7 +14,7 @@ class RedactorRailsPictureUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   # def store_dir
-  #   "system/redactor_assets/pictures/#{model.id}"
+  #   "uploads/ckeditor/pictures/#{model.id}"
   # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -42,12 +43,6 @@ class RedactorRailsPictureUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-    RedactorRails.image_file_types
+    Ckeditor.image_file_types
   end
-
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  mount RedactorRails::Engine => '/redactor_rails'
+
+  mount Ckeditor::Engine => '/ckeditor'
   get 'about' => 'static_pages#about'
   get 'contacts' => 'static_pages#contacts'
 

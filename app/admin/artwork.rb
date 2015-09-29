@@ -18,20 +18,13 @@ ActiveAdmin.register Artwork do
       f.input :name, label: "Назва"
       f.input :dimension, label: "Розмір"
       f.input :material, as: :select, :collection => %w(папір холст), label: "Матеріал"
-      # if f.object.picture.blank?
-      #   f.input :picture, :as => :file, label: "Фото"
-      # else
-        f.input :picture, :as => :file, :hint => image_tag(f.object.picture.url, width: 150, height: 150, crop: :fit), label: "Фото"
-      # end
+      f.input :picture, :as => :file, :hint => image_tag(f.object.picture.url, width: 150, height: 150, crop: :fit), label: "Фото"
       f.input :picture_cache, :as => :hidden
-      panel 'Категорія' do
-        f.input :category, as: :select, :collection => Category.leaves, label: "Категорія"
-      end
-      # f.input :category, as: :select, :collection => option_groups_from_collection_for_select(Category.roots, :children, :name, :id, :name), label: "Категорія"
+      f.input :category, as: :select, :collection => Category.leaves, label: "Категорія"
     end
     f.actions
   end
 
-  permit_params :name, :dimension, :material, :picture, :paint, :category_id
+  permit_params :name, :dimension, :material, :picture, :category_id
 
 end
