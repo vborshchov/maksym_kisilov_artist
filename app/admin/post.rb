@@ -1,28 +1,26 @@
 ActiveAdmin.register Post do
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
-  batch_action :in_archive do |ids|
+  index do
+    selectable_column
+    column :title
+    column :archive
+    column :created_at
+    column :updated_at
+    actions
+  end
+
+  batch_action "В архів" do |ids|
     Post.find(ids).each do |post|
-      puts "---------------------------"
-      puts post
-      puts post.archive.nil?
-      puts post.title
-      puts post.body.size
-      puts post.archive = true
-      puts "---------------------------"
+      post.update_attributes(archive: true)
     end
-    redirect_to collection_path, alert: "The posts have been moved to archive."
+    redirect_to collection_path, alert: "Новина переміщена в архів"
+  end
+
+  batch_action "З архіву" do |ids|
+    Post.find(ids).each do |post|
+      post.update_attributes(archive: false)
+    end
+    redirect_to collection_path, alert: "Новина переміщена з архіву"
   end
 
   form do |f|

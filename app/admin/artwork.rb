@@ -1,18 +1,42 @@
 ActiveAdmin.register Artwork do
   menu priority: 1
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+  index do
+    selectable_column
+    column :name
+    column :dimension
+    column :material
+    actions
+  end
+
+  index as: :grid, default: true do |artwork|
+    link_to cl_image_tag(artwork.picture_url, :width => 1200, :height => 200, :crop => :fit), admin_artwork_path(artwork)
+  end
+
+  show do
+    panel "" do
+      table_for artwork do |f|
+        column "Фото" do |image|
+          cl_image_tag(image.picture_url, width: -1, height: 300)
+        end
+      end
+    end
+  end
+
+  sidebar "Деталі", only: :show do
+    attributes_table_for artwork do
+      row "Назва" do |art|
+        art.name
+      end
+      row "Розмір" do |art|
+        [art.dimension, "см"].reject(&:blank?).join(" ")
+      end
+      row "Матеріал" do |art|
+        art.material
+      end
+    end
+  end
+
   form do |f|
     f.inputs "Artwork", :multipart => true do
       f.input :name, label: "Назва"
