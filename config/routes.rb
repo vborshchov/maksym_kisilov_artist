@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'about' => 'static_pages#about'
+  get 'contacts' => 'static_pages#contacts'
+
   # resources :categories
   get 'category/:id' => 'categories#show', as: :category
 

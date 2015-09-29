@@ -28,7 +28,7 @@
         <section class="top-bar-section">
           <!-- Right Nav Section -->
           <ul class="middle">
-            <li><a href="#"><i class='fi-info'></i> Про себе</a></li>
+            <li><%= link_to raw("<i class='fi-info'></i> Про себе"), about_path %></li>
             <li class="has-dropdown"><a href="#"><i class='fi-photo'></i> Галерея</a>
               <ul class="dropdown">
                 <%= menu_tree_for @categories %>
@@ -40,7 +40,7 @@
                 <li><a href="#">Архів</a></li>
               </ul>
             </li>
-            <li><a href="#"><i class='fi-mail'></i> Контакти</a></li>
+            <li><%= link_to raw("<i class='fi-mail'></i> Контакти"), contacts_path %></li>
           </ul>
         </section>
       </nav>
