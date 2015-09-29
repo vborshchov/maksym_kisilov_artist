@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
   get 'news/current' => 'posts#current'
-
   get 'news/archive' => 'posts#archive'
 
   mount Ckeditor::Engine => '/ckeditor'

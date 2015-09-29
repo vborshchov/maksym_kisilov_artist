@@ -13,13 +13,21 @@ module ApplicationHelper
   end
 
   def about(artwork)
-    capture = [
+    [
       artwork.name,
       artwork.dimension,
       artwork.material,
       artwork.category.name
-    ]
-    capture.reject(&:blank?).join(", ")
+    ].each_with_index.map do |field, index|
+      case index
+      when 0
+        field = "\"#{field}\""
+      when 1
+        field +=" см"
+      else
+        field
+      end
+    end.reject(&:blank?).join(", ")
   end
 
   def make_title(title=nil)

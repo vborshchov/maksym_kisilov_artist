@@ -1,5 +1,22 @@
 ActiveAdmin.register Artwork do
-  menu priority: 1
+  menu priority: 1, label: "Роботи"
+
+  filter :category, label: "Категорії", as: :select, collection: proc { Category.leaves }
+  filter :name, label: "Назва"
+  filter :material, label: "Матеріал"
+
+  config.clear_action_items!
+  action_item "Edit", only:[:show] do
+    link_to "Редагувати", edit_admin_artwork_path
+  end
+
+  action_item "Delete", only:[:show] do
+    link_to "Видалити", admin_artwork_path, method: "delete", data: {confirm: "Ви впевнені що хочете видалити цю роботу?"}
+  end
+
+  action_item "New", only:[:index] do
+    link_to "Додати роботу", new_admin_artwork_path
+  end
 
   index do
     selectable_column
@@ -9,15 +26,17 @@ ActiveAdmin.register Artwork do
     actions
   end
 
-  index as: :grid, default: true do |artwork|
-    link_to cl_image_tag(artwork.picture_url, :width => 1200, :height => 200, :crop => :fit), admin_artwork_path(artwork)
+  index as: :grid, columns: 4, default: true do |artwork|
+    resource_selection_cell artwork
+    render partial: "artwork", locals: {artwork: artwork}
+    #link_to cl_image_tag(artwork.picture_url, height: 200, alt: artwork.name), admin_artwork_path(artwork)
   end
 
   show do
     panel "" do
       table_for artwork do |f|
         column "Фото" do |image|
-          cl_image_tag(image.picture_url, width: -1, height: 300)
+          cl_image_tag(image.picture_url, height: 524, alt: image.name)
         end
       end
     end
@@ -34,11 +53,14 @@ ActiveAdmin.register Artwork do
       row "Матеріал" do |art|
         art.material
       end
+      row "Категорія" do |art|
+        art.category.name if art.category
+      end
     end
   end
 
   form do |f|
-    f.inputs "Artwork", :multipart => true do
+    f.inputs "Робота", :multipart => true do
       f.input :name, label: "Назва"
       f.input :dimension, label: "Розмір"
       f.input :material, as: :select, :collection => %w(папір холст), label: "Матеріал"

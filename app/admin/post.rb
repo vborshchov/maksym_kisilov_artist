@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-
+  menu priority: 3, label: "Новини"
   index do
     selectable_column
     column :title
@@ -7,6 +7,20 @@ ActiveAdmin.register Post do
     column :created_at
     column :updated_at
     actions
+  end
+
+  filter :title, label: "Категорії"
+  filter :archive, label: "Архівні новини"
+
+  config.clear_action_items!
+  action_item "Edit", only:[:show] do
+    link_to "Редагувати", edit_admin_post_path
+  end
+  action_item "Delete", only:[:show] do
+    link_to "Видалити", admin_post_path, method: "delete", data: {confirm: "Ви впевнені що хочете видалити цю роботу?"}
+  end
+  action_item "New", only:[:index] do
+    link_to "Додати новину", new_admin_post_path
   end
 
   batch_action "В архів" do |ids|
