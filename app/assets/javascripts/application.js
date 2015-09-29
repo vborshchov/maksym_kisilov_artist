@@ -27,10 +27,6 @@ var ready = function(){
               scrolltop : true // jump to top when sticky nav menu toggle is clicked
             }
   });
-  if ( $('#ckeditor').length )
-    CKEDITOR.replace( 'ckeditor' );
-  if ( $('#ckeditor').prev('label').length ) 
-    $('#ckeditor').prev('label').css('float','none');
 };
 
 $(document).ready(ready)
