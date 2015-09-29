@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RedactorRails::Engine => '/redactor_rails'
   get 'about' => 'static_pages#about'
   get 'contacts' => 'static_pages#contacts'
 

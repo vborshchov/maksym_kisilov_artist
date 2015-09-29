@@ -56,5 +56,6 @@ gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 gem 'annotate'
 gem 'closure_tree'
+gem 'redactor-rails'
 
 ruby "2.2.1"
