@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :set_categories
-
+  
   private
     def set_categories
       @categories = Category.hash_tree
