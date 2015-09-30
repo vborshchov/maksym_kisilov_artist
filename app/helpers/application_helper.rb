@@ -18,16 +18,18 @@ module ApplicationHelper
       artwork.dimension,
       artwork.material,
       artwork.category.name
-    ].each_with_index.map do |field, index|
-      case index
-      when 0
-        field = "\"#{field}\""
-      when 1
-        field +=" см"
-      else
-        field
-      end
-    end.reject(&:blank?).join(", ")
+    ].map(&:to_s).each_with_index.map do |field, index|
+        unless field == ""
+          case index
+          when 0
+            field = "\"#{field}\""
+          when 1
+            field +=" см"
+          else
+            field
+          end
+        end
+      end.reject(&:blank?).join(", ")
   end
 
   def make_title(title=nil)
