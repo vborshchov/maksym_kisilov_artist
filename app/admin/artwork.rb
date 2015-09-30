@@ -67,10 +67,11 @@ ActiveAdmin.register Artwork do
       f.input :picture, :as => :file, :hint => image_tag(f.object.picture.url, width: 150, height: 150, crop: :fit), label: "Фото"
       f.input :picture_cache, :as => :hidden
       f.input :category, as: :select, :collection => Category.leaves, label: "Категорія"
+      f.input :for_main_page, as: :radio, label: "Для головної сторінки?"
     end
     f.actions
   end
 
-  permit_params :name, :dimension, :material, :picture, :category_id
+  permit_params :name, :dimension, :material, :picture, :category_id, :for_main_page
 
 end
