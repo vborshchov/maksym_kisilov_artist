@@ -1,6 +1,7 @@
 class ArtworksController < ApplicationController
+
   def index
-    @artworks = Artwork.all
+    @artworks = Artwork.for_main_page
   end
 
 end
