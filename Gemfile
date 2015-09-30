@@ -58,5 +58,7 @@ gem 'foundation-icons-sass-rails'
 gem 'annotate'
 gem 'closure_tree'
 gem 'ckeditor'
+gem 'friendly_id'
+gem 'babosa'
 
 ruby "2.2.1"

@@ -11,6 +11,13 @@
 #
 
 class Category < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   has_many :artworks
   has_closure_tree order: 'position'
+
+  def normalize_friendly_id(text)
+    text.to_slug.normalize(transliterations: :ukrainian).to_s
+  end
+
 end
