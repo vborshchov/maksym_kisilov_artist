@@ -15,7 +15,7 @@
   <body>
   <div class="row">
     <div class="column small-12 middle-10 middle-offset-1">
-  
+
     <h1 class="panel">Максим Кісільов</h1>
 
     <div class="contain-to-grid sticky">
@@ -45,9 +45,7 @@
               </ul>
             </li>
             <li><%= link_to raw("<i class='fi-mail'></i> Контакти"), contacts_path %></li>
-            <% if current_admin_user %>
-              <li><%= link_to raw("<i class='fi-wrench'></i> Управління"), admin_root_path %></li>
-            <% else %> 
+            <% if current_admin_user || true %>
               <li><%= link_to raw("<i class='fi-wrench'></i>"), admin_root_path %></li>
             <% end %>
           </ul>
