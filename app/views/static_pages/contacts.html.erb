@@ -22,4 +22,26 @@
     <a role="button" aria-label="submit form" href="#" class="button">Відправити</a>
   </fieldset>
 </form> -->
+<!-- <a href="#" data-reveal-id="myModal"><i class="fi-mail"></i> izhachok89@gmail.com</a> -->
 
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <%= simple_form_for @message, url: email_form_path, html: {novalidate: "novalidate", data: {abide: ''}} do |f| %>
+    <%= f.input :name, required: true %>
+    <%= f.input :email, required: true, as: :email %>
+    <%= f.input :title, required: true %>
+    <%= f.input :body, as: :text, required: true %>
+    <%= f.button :button do %>
+      <i class="fi-upload" style="font-size: 20px;"></i> Відправити
+    <% end %>
+  <% end %>
+</div>
+
+  <%= simple_form_for @message, url: email_form_path, html: {novalidate: "novalidate", data: {abide: ''}} do |f| %>
+    <%= f.input :name, required: true %>
+    <%= f.input :email, required: true, as: :email %>
+    <%= f.input :title, required: true %>
+    <%= f.input :body, as: :text, required: true %>
+    <%= f.button :button do %>
+      <i class="fi-upload" style="font-size: 20px;"></i> Відправити
+    <% end %>
+  <% end %>

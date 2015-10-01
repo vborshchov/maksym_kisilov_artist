@@ -27,6 +27,7 @@ var ready = function(){
               scrolltop : true // jump to top when sticky nav menu toggle is clicked
             }
   });
+  $(document).foundation('abide', 'reflow');
 };
 
 $(document).ready(ready)
