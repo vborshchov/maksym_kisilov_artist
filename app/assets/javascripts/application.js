@@ -25,9 +25,14 @@ var ready = function(){
               is_hover: true,
               mobile_show_parent_link: false, // will copy parent links into dropdowns for mobile navigation
               scrolltop : true // jump to top when sticky nav menu toggle is clicked
-            }
+            },
+    abide : {
+      patterns: {
+        advanced_email: /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i,
+        length500: /^.{1,500}$/
+      }
+    }
   });
-  $(document).foundation('abide', 'reflow');
 };
 
 $(document).ready(ready)

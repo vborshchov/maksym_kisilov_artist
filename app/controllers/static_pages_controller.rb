@@ -15,7 +15,8 @@ class StaticPagesController < ApplicationController
 
         # TODO: Send email
 
-        redirect_to back, notice: "Email successfully sent."
+        # redirect_to :back, notice: "Email successfully sent."
+        redirect_to :back, notice: "Повідомлення відправлено успішно"
       else
         # flash.alert = "Email could not be sent. Please check your entries."
         flash.alert = "Пошту не можливо відправити, перевірте свое повідомлення."

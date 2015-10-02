@@ -60,6 +60,5 @@ gem 'closure_tree'
 gem 'ckeditor'
 gem 'friendly_id'
 gem 'babosa'
-gem 'simple_form'
 
 ruby "2.2.1"
