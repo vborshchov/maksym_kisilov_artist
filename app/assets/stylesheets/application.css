@@ -15,3 +15,7 @@
  *= require foundation_and_overrides
  *= require foundation-icons
  */
+
+img {
+  border: 0.5rem;
+}

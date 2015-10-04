@@ -1,7 +1,7 @@
 <%= provide :title, Unicode::capitalize(@category.name) %>
 <p><%= @category.name %></p>
-<% @artworks.map do |a|%>
-  <p><%= cl_image_tag(a.picture)%></p>
-  <p><%= puts a.name %></p>
-  <p><%= about a %></p>
-<% end %>
+  <% @artworks.map do |a|%>
+      <p><%= cl_image_tag(a.picture, class: "protectMe")%></p>
+      <p><%= puts a.name %></p>
+      <p><%= about a %></p>
+  <% end %>

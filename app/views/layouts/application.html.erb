@@ -9,54 +9,57 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.7/slick.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
   <div class="row">
     <div class="column small-12 middle-10 middle-offset-1">
-  
-    <h1 class="panel">Максим Кісільов</h1>
 
-    <div class="contain-to-grid sticky">
-      <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-          <li class="name">
-            <h1>
-              <%= link_to raw("<i class='fi-home'></i> Головна"), root_path %>
-            </h1>
-          </li>
-           <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-          <li class="toggle-topbar"><a href="#"><span>Меню</span></a></li>
-        </ul>
+      <h1 class="panel">Максим Кісільов</h1>
 
-        <section class="top-bar-section">
-          <ul class="middle">
-            <li><%= link_to raw("<i class='fi-info'></i> Про мене"), about_path %></li>
-            <li class="has-dropdown"><a href="#"><i class='fi-photo'></i> Галерея</a>
-              <ul class="dropdown">
-                <%= menu_tree_for @categories %>
-              </ul>
+      <div class="contain-to-grid sticky">
+        <nav class="top-bar" data-topbar role="navigation">
+          <ul class="title-area">
+            <li class="name">
+              <h1>
+                <%= link_to raw("<i class='fi-home'></i> Головна"), root_path %>
+              </h1>
             </li>
-            <li class="has-dropdown"><a href="#"><i class='fi-rss'></i> Новини</a>
-              <ul class="dropdown">
-                <li><%= link_to "Поточні", news_current_path %></li>
-                <li><%= link_to "Архів", news_archive_path %></li>
-              </ul>
-            </li>
-            <li><%= link_to raw("<i class='fi-mail'></i> Контакти"), contacts_path %></li>
-            <% if current_admin_user %>
-              <li><%= link_to raw("<i class='fi-wrench'></i> Управління"), admin_root_path %></li>
-            <% else %> 
-              <li><%= link_to raw("<i class='fi-wrench'></i>"), admin_root_path %></li>
-            <% end %>
+             <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <li class="toggle-topbar"><a href="#"><span>Меню</span></a></li>
           </ul>
-        </section>
-      </nav>
-    </div>
 
-        <%= yield %>
+          <section class="top-bar-section">
+            <ul class="middle">
+              <li><%= link_to raw("<i class='fi-info'></i> Про мене"), about_path %></li>
+              <li class="has-dropdown"><a href="#"><i class='fi-photo'></i> Галерея</a>
+                <ul class="dropdown">
+                  <%= menu_tree_for @categories %>
+                </ul>
+              </li>
+              <li class="has-dropdown"><a href="#"><i class='fi-rss'></i> Новини</a>
+                <ul class="dropdown">
+                  <li><%= link_to "Поточні", news_current_path %></li>
+                  <li><%= link_to "Архів", news_archive_path %></li>
+                </ul>
+              </li>
+              <li><%= link_to raw("<i class='fi-mail'></i> Контакти"), contacts_path %></li>
+              <% if current_admin_user %>
+                <li><%= link_to raw("<i class='fi-wrench'></i> Управління"), admin_root_path %></li>
+              <% else %>
+                <li><%= link_to raw("<i class='fi-wrench'></i>"), admin_root_path %></li>
+              <% end %>
+            </ul>
+          </section>
+        </nav>
       </div>
+
+      <%= yield %>
+
     </div>
+  </div>
   </body>
 </html>

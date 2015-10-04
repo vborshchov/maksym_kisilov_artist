@@ -18,9 +18,25 @@ ActiveAdmin.register Artwork do
     link_to "Додати роботу", new_admin_artwork_path
   end
 
+  batch_action "На головну" do |ids|
+    Artwork.find(ids).each do |artwork|
+      artwork.update_attributes(for_main_page: true)
+    end
+    redirect_to collection_path, notice: "Успішно додано на головну сторінку"
+  end
+
+  batch_action "Прибрати з головної" do |ids|
+    Artwork.find(ids).each do |artwork|
+      artwork.update_attributes(for_main_page: false)
+    end
+    redirect_to collection_path, notice: "Успішно прибрано з головної сторінки"
+  end
+
   index do
     selectable_column
     column :name
+    column :position
+    column :for_main_page
     column :dimension
     column :material
     actions

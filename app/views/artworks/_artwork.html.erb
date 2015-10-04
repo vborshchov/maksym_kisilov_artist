@@ -1,4 +1,6 @@
-<%= cl_image_tag(artwork.picture, sign_url: true, alt: artwork.name) unless artwork.picture.blank?%><br>
-<p>
-  <%= about artwork %>
-</p>
+<div>
+  <%= cl_image_tag(artwork.picture, sign_url: true, alt: artwork.name) unless artwork.picture.blank?%><br>
+  <p>
+    <%= about artwork %>
+  </p>
+</div>
