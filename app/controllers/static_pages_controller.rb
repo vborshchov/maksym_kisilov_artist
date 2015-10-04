@@ -12,9 +12,8 @@ class StaticPagesController < ApplicationController
     @message = Message.new(message_params)
 
       if @message.valid?
-
         # TODO: Send email
-
+        ContactMailer.contact_email(@message).deliver
         # redirect_to :back, notice: "Email successfully sent."
         redirect_to :back, notice: "Повідомлення відправлено успішно"
       else
