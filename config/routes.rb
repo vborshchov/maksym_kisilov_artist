@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   get 'news/archive' => 'posts#archive'
 
   mount Ckeditor::Engine => '/ckeditor'
-  get 'about' => 'static_pages#about'
-  get 'contacts' => 'static_pages#contacts'
 
   # resources :categories
   get 'category/:id' => 'categories#show', as: :category
@@ -13,6 +11,11 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  get 'about' => 'static_pages#about'
+  get 'contacts' => 'static_pages#contacts'
+  post 'email' => 'static_pages#send_email_form', as: :email_form
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
