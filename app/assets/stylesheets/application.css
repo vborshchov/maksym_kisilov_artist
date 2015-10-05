@@ -16,6 +16,11 @@
  *= require foundation-icons
  */
 
-img {
-  border: 0.5rem;
+ body{
+  background-color: #333333;
+ }
+
+.variable-width div{
+  margin: 0 20px;
 }
+

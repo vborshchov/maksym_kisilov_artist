@@ -43,7 +43,7 @@ var ready = function(){
       // Preload the pixel
       var preload = new Image();
       preload.src = pixelSource;
-      $('img').on('mouseenter touchstart', function(e) {
+      $('.protect img').on('mouseenter touchstart', function(e) {
           // Only execute if this is not an overlay or skipped
           var img = $(this);
           if (img.hasClass('protectionOverlay')) return;
@@ -58,14 +58,97 @@ var ready = function(){
   });
 
   //Owl Carousel
-  $(".owl-carousel").owlCarousel({
-    // this options for owl-carousel 2.0 beta
-    items:           1,
-    loop:            true,
-    autoplay:        true,
-    itemsScaleUp:    true,
-    animateOut:      'fadeOut'
+  // $(".owl-carousel").owlCarousel({
+  //   // this options for owl-carousel 2.0 beta
+  //   animateOut:   'fadeOut',
+  //   itemsScaleUp: true,
+  //   autoHeight:   true,
+  //   loop:         true,
+  //   autoplay:     true,
+  //   items:        1
+  // });
+
+  function getWidthHeight(){
+    if(window.innerWidth !== undefined && window.innerHeight !== undefined) {
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+    } else {
+      var w = document.documentElement.clientWidth;
+      var h = document.documentElement.clientHeight;
+    }
+    return [w, h]
+  }
+
+  $(".owl-wrapper-outer").css("height", getWidthHeight()[1]-45);
+
+
+  //Slick
+  $('.fade').slick({
+    adaptiveHeight: true,
+    autoplay:       true,
+    autoplaySpeed:  3000,
+    mobileFirst:    true,
+    infinite:       true,
+    speed:          700,
+    fade:           true,
+    arrows:         false,
+    cssEase:        'linear'
   });
+
+  $('.variable-width').slick({
+    infinite:       true,
+    speed:          300,
+    centerMode:     true,
+    arrows:         true,
+    // variableWidth:  true,
+    slidesToShow:   4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
+
+  function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
+
+  $('.variable-width .slick-prev').hover(
+    function(){
+        $('.variable-width').slick('slickPrev');
+        sleep(1000);
+    },
+    function(){
+      return
+    }
+  );
 
   //Photo Swipe
   // function buildPswdHtml(){

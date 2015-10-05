@@ -1,7 +1,10 @@
 <%= provide :title, Unicode::capitalize(@category.name) %>
 <p><%= @category.name %></p>
+<div class="variable-width">
   <% @artworks.map do |a|%>
-      <p><%= cl_image_tag(a.picture, class: "protectMe")%></p>
-      <p><%= puts a.name %></p>
-      <p><%= about a %></p>
+    <div>
+      <p><%= cl_image_tag(a.picture, class: "protectMe", border: { width: 5, color: '#ffffff' }, height: 200, crop: :fit)%></p>
+      <p><%#= about a %></p>
+    </div>
   <% end %>
+</div>

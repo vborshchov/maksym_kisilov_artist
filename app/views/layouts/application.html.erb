@@ -15,17 +15,13 @@
   </head>
 
   <body>
-  <div class="row">
-    <div class="column small-12 middle-10 middle-offset-1">
 
-      <h1 class="panel">Максим Кісільов</h1>
-
-      <div class="contain-to-grid sticky">
+      <div class="contain-to-grid">
         <nav class="top-bar" data-topbar role="navigation">
           <ul class="title-area">
             <li class="name">
-              <h1>
-                <%= link_to raw("<i class='fi-home'></i> Головна"), root_path %>
+              <h1 class="hide-for-medium">
+                <a>Максим Кісільов</a>
               </h1>
             </li>
              <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
@@ -33,7 +29,8 @@
           </ul>
 
           <section class="top-bar-section">
-            <ul class="middle">
+            <ul class="right">
+              <li><%= link_to raw("<i class='fi-home'></i> Головна"), root_path %></li>
               <li><%= link_to raw("<i class='fi-info'></i> Про мене"), about_path %></li>
               <li class="has-dropdown"><a href="#"><i class='fi-photo'></i> Галерея</a>
                 <ul class="dropdown">
@@ -63,8 +60,11 @@
       </div>
       <% end %>
 
-      <%= yield %>
-    </div>
-  </div>
+      <div class="row">
+        <div class="column large-10 large-offset-1">
+          <%= yield %>
+        </div>
+      </div>
+
   </body>
 </html>
