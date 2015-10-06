@@ -34,11 +34,14 @@ ActiveAdmin.register Artwork do
 
   index do
     selectable_column
-    column :name
-    column :position
-    column :for_main_page
-    column :dimension
-    column :material
+    column "Назва", :name
+    column "Позиція", :position
+    column "Категорія", :category_id, :sortable => :category_id do |artwork|
+      artwork.category.name
+    end
+    column "На говній", :for_main_page
+    column "Розмір", :dimension
+    column "Матеріал", :material
     actions
   end
 
@@ -52,7 +55,7 @@ ActiveAdmin.register Artwork do
     panel "" do
       table_for artwork do |f|
         column "Фото" do |image|
-          cl_image_tag(image.picture_url, height: 524, alt: image.name)
+          cl_image_tag(image.picture_url, height: 300, alt: image.name)
         end
       end
     end
@@ -81,6 +84,7 @@ ActiveAdmin.register Artwork do
       f.input :dimension, label: "Розмір"
       f.input :material, as: :select, :collection => %w(папір холст), label: "Матеріал"
       f.input :picture, :as => :file, :hint => image_tag(f.object.picture.url, width: 150, height: 150, crop: :fit), label: "Фото"
+      f.input :remote_picture_url, label: "або ссилка на фото"
       f.input :picture_cache, :as => :hidden
       f.input :category, as: :select, :collection => Category.leaves, label: "Категорія"
       f.input :for_main_page, as: :radio, label: "Для головної сторінки?"
@@ -88,6 +92,6 @@ ActiveAdmin.register Artwork do
     f.actions
   end
 
-  permit_params :name, :dimension, :material, :picture, :category_id, :for_main_page
+  permit_params :name, :dimension, :material, :picture, :category_id, :for_main_page, :remote_picture_url
 
 end

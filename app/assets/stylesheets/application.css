@@ -14,13 +14,19 @@
  *= require_self
  *= require foundation_and_overrides
  *= require foundation-icons
+ *= require photoswipe
+ *= require slick
+ *= require slick-theme
  */
 
- body{
+body{
   background-color: #333333;
- }
-
-.variable-width div{
-  margin: 0 20px;
 }
 
+.protect {
+  margin: 0 auto;
+}
+
+.my-gallery figcaption {
+  display: none;
+}

@@ -61,4 +61,8 @@ gem 'ckeditor'
 gem 'friendly_id'
 gem 'babosa'
 
+# Photo Galleries
+gem 'slick_rails'
+gem 'photoswipe-rails'
+
 ruby "2.2.1"
