@@ -64,5 +64,6 @@ gem 'babosa'
 # Photo Galleries
 gem 'slick_rails'
 gem 'photoswipe-rails'
+gem 'fastimage'
 
 ruby "2.2.1"

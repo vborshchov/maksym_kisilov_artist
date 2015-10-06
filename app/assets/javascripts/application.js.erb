@@ -217,14 +217,23 @@ var ready = function(){
               // define gallery index (for URL)
               galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 
+              getThumbBoundsFn: function(index) {
+                  // See Options -> getThumbBoundsFn section of documentation for more info
+                  var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                      pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                      rect = thumbnail.getBoundingClientRect(); 
+
+                  return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+              },
+              
               shareButtons: [
                   {id:'facebook', label:'Share on Facebook', url:'https://www.facebook.com/sharer/sharer.php?u={{url}}'},
                   {id:'twitter', label:'Tweet', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'},
                   {id:'pinterest', label:'Pin it', url:'http://www.pinterest.com/pin/create/button/?url={{url}}&media={{image_url}}&description={{text}}'}
-              ],
-              showHideOpacity:true,
-              hideAnimationDuration:0,
-              showAnimationDuration:0
+              ]
+              // showHideOpacity:true,
+              // hideAnimationDuration:0,
+              // showAnimationDuration:0
 
 
           };
