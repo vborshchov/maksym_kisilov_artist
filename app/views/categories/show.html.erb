@@ -1,12 +1,20 @@
 <%= provide :title, Unicode::capitalize(@category.name) %>
-<p><%= @category.name %></p>
+<span><%= @category.name %></span>
+<div class="switch round right">
+  <p>Зміна порядку</p>
+  <input id="on-off" type="checkbox">
+    <label for="on-off">
+      <span class="switch-on">ON</span>
+      <span class="switch-off">OFF</span>
+  </label>
+</div>
 <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4" id="sortable">
   <% @artworks.map do |a|%>
     <li>
       <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <%= content_tag(:a,
-          cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 200, height: 200, crop: :fit, "itemprop": "thumbnail"),
+          cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 250, height: 250, crop: :fit, "itemprop": "thumbnail"),
           href: "#{a.picture.url.gsub(/upload\//, 'upload/bo_15px_solid_rgb:fff/')}",
           data: {size: "#{FastImage.size(a.picture.url).join("x")}"},
           "itemprop": "contentUrl")

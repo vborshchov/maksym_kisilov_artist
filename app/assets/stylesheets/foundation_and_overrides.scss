@@ -118,7 +118,7 @@ $include-html-global-classes: $include-html-classes;
 // We use these as default colors throughout
 // $primary-color: #008CBA;
 // $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
+$alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
@@ -1284,7 +1284,7 @@ $include-html-global-classes: $include-html-classes;
 // $switch-paddle-bg: $white;
 // $switch-paddle-transition-speed: .15s;
 // $switch-paddle-transition-ease: ease-out;
-// $switch-active-color: $primary-color;
+$switch-active-color: $alert-color;
 
 // 30. Tables
 // - - - - - - - - - - - - - - - - - - - - - - - - -

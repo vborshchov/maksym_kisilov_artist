@@ -8,5 +8,17 @@ ready = ->
   $('.pswp').bind 'contextmenu', (e) ->
     false
 
+  if $('#sortable')
+    el = $('#sortable')[0]
+  sortable = Sortable.create(el,
+    disabled: true
+    animation: 500)
+  $(".switch label").on 'click', (e) ->
+    state = sortable.option('disabled') #get
+    sortable.option 'disabled', !state #set
+    return
+
+  return
+
 $(document).ready ready
 $(document).on 'page:load', ready
