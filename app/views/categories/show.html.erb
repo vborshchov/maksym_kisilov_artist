@@ -1,7 +1,7 @@
 <%= provide :title, Unicode::capitalize(@category.name) %>
 <p><%= @category.name %></p>
 <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
+<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
   <% @artworks.map do |a|%>
     <li>
       <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
