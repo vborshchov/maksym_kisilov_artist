@@ -88,10 +88,11 @@ ActiveAdmin.register Artwork do
       f.input :picture_cache, :as => :hidden
       f.input :category, as: :select, :collection => Category.leaves, label: "Категорія"
       f.input :for_main_page, as: :radio, label: "Для головної сторінки?"
+      f.input :position, as: :hidden, input_html: { value: Artwork.pluck(:position).max + 10}
     end
     f.actions
   end
 
-  permit_params :name, :dimension, :material, :picture, :category_id, :for_main_page, :remote_picture_url
+  permit_params :name, :dimension, :material, :picture, :category_id, :for_main_page, :remote_picture_url, :position
 
 end
