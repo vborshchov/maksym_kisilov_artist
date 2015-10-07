@@ -8,16 +8,27 @@ ready = ->
   $('.pswp').bind 'contextmenu', (e) ->
     false
 
-  if $('#sortable')
-    el = $('#sortable')[0]
+  el = $('#sortable')[0]
   sortable = Sortable.create(el,
     disabled: true
-    animation: 500)
+    animation: 500
+    onEnd: (evt) ->
+      evt.oldIndex
+      # element's old index within parent
+      evt.newIndex
+      # element's new index within parent
+      $.ajax
+        url: '/artworks/change_position'
+        type: 'GET'
+        data:
+          old_index: evt.oldIndex
+          new_index: evt.newIndex
+      return
+    )
   $(".switch label").on 'click', (e) ->
     state = sortable.option('disabled') #get
     sortable.option 'disabled', !state #set
     return
-
   return
 
 $(document).ready ready

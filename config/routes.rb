@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'category/:id' => 'categories#show', as: :category
 
   root 'artworks#index'
+  get 'artworks/change_position'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
