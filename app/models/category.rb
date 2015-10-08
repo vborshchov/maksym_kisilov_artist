@@ -15,8 +15,9 @@ class Category < ActiveRecord::Base
   extend FriendlyId
   validates_uniqueness_of :name
   friendly_id :name, use: :slugged
-  has_many :artworks
+  has_many :artworks, -> { order(position: :asc) }
   has_closure_tree order: 'position'
+
 
   def normalize_friendly_id(text)
     text.to_slug.normalize(transliterations: :ukrainian).to_s

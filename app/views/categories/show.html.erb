@@ -13,7 +13,7 @@
 <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
 <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4" id="sortable">
   <% @artworks.map do |a|%>
-    <li data-position="<%= a.position %>">
+    <li data-pos="<%= a.position %>">
       <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <%= content_tag(:a,
           cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 250, height: 250, crop: :fit, "itemprop": "thumbnail"),

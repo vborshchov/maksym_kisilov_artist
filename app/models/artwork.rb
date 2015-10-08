@@ -18,6 +18,8 @@ class Artwork < ActiveRecord::Base
   belongs_to :category
   validates_presence_of :name, :category
 
+  acts_as_list scope: :category
+
   mount_uploader :picture, PictureUploader
 
   scope :for_main_page, -> { where(for_main_page: true).order('position ASC') }

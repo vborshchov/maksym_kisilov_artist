@@ -60,6 +60,7 @@ gem 'closure_tree'
 gem 'ckeditor'
 gem 'friendly_id'
 gem 'babosa'
+gem 'acts_as_list'
 
 # Photo Galleries
 gem 'slick_rails'

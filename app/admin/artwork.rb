@@ -37,9 +37,9 @@ ActiveAdmin.register Artwork do
     # create!
     before_create do |artwork|
       if Artwork.pluck(:position).compact.blank?
-        artwork.position = 10 
+        artwork.position = 0
       else
-        artwork.position = Artwork.pluck(:position).compact.max.to_f + 10 
+        artwork.position = Artwork.pluck(:position).compact.max.to_i + 1
       end
     end
   end

@@ -9,21 +9,21 @@ ready = ->
     false
 
   el = $('#sortable')[0]
+  targetItem = undefined
+
   sortable = Sortable.create(el,
     disabled: true
     animation: 500
+    onMove: (evt) ->
+      targetItem = evt.related
+      return
     onEnd: (evt) ->
-      evt.oldIndex
-      # element's old index within parent
-      evt.newIndex
-      # element's new index within parent
       $.ajax
         url: '/artworks/change_position'
         type: 'GET'
         data:
-          old_index: evt.oldIndex
-          new_index: evt.newIndex
-          category_slug: window.location.pathname
+          old_index: evt.item.getAttribute('data-pos')
+          new_index: targetItem.getAttribute('data-pos')
       return
     )
   $(".switch label").on 'click', (e) ->
