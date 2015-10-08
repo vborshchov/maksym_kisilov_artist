@@ -13,6 +13,7 @@
 
 class Category < ActiveRecord::Base
   extend FriendlyId
+  validates_uniqueness_of :name
   friendly_id :name, use: :slugged
   has_many :artworks
   has_closure_tree order: 'position'

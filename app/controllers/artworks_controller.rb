@@ -6,29 +6,34 @@ class ArtworksController < ApplicationController
 
 
   def change_position
-    positions_array = Artwork.pluck(:position).sort
-    old_position = positions_array[params[:old_index].to_i]
-    new_position = positions_array[params[:new_index].to_i]
-    artwork = Artwork.find_by(position: old_position.to_f)
+    positions = Artwork.pluck(:position).sort
+    art_positions_in_category = Category.find_by(slug: params[:category_slug][/(?<=\/)\w+$/]).artworks.pluck(:position).sort
+    art_old_position = art_positions_in_category[params[:old_index].to_i]
+    art_new_position = art_positions_in_category[params[:new_index].to_i]
+    artwork = Artwork.find_by(position: art_old_position.to_f)
 
-    new_position =  if params[:new_index].to_i == 0
-                      new_position / 2.0
+    new_position =  if positions.index(art_new_position)-1 == 0
+                      art_new_position / 2.0
                     else
-                      (new_position + positions_array[params[:new_index].to_i-1].to_f) / 2.0
+                      (art_new_position + positions[params[:new_index].to_i-1].to_f) / 2.0
                     end
     if artwork.update_attributes(position: new_position)
+      puts "++++++++++++++++++++++++++++"
       puts "Hurray!"
+      puts "++++++++++++++++++++++++++++"
       respond_to do |format|
         format.json { render :json => new_position }
       end
     else
+      puts "--------------------------"
       puts "Sorry :("
+      puts "--------------------------"
     end
   end
 
   private
 
     def artwork_params
-      params.require(:artwork).permit(:position, :old_index, :new_index, :previous_index)
+      params.require(:artwork).permit(:position, :old_index, :new_index, :previous_index, :category_slug)
     end
 end

@@ -23,6 +23,7 @@ ready = ->
         data:
           old_index: evt.oldIndex
           new_index: evt.newIndex
+          category_slug: window.location.pathname
       return
     )
   $(".switch label").on 'click', (e) ->

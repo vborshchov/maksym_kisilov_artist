@@ -32,6 +32,18 @@ ActiveAdmin.register Artwork do
     redirect_to collection_path, notice: "Успішно прибрано з головної сторінки"
   end
 
+  controller do
+    # params[:artwork].merge!({ position: Artwork.pluck(:position).max + 10 })
+    # create!
+    before_create do |artwork|
+      if Artwork.pluck(:position).compact.blank?
+        artwork.position = 10 
+      else
+        artwork.position = Artwork.pluck(:position).compact.max.to_f + 10 
+      end
+    end
+  end
+
   index do
     selectable_column
     column "Назва", :name
@@ -45,7 +57,7 @@ ActiveAdmin.register Artwork do
     actions
   end
 
-  index as: :grid, columns: 4, default: true do |artwork|
+  index as: :grid, columns: 4  do |artwork|
     resource_selection_cell artwork
     render partial: "artwork", locals: {artwork: artwork}
     #link_to cl_image_tag(artwork.picture_url, height: 200, alt: artwork.name), admin_artwork_path(artwork)
@@ -88,11 +100,10 @@ ActiveAdmin.register Artwork do
       f.input :picture_cache, :as => :hidden
       f.input :category, as: :select, :collection => Category.leaves, label: "Категорія"
       f.input :for_main_page, as: :radio, label: "Для головної сторінки?"
-      f.input :position, as: :hidden, input_html: { value: Artwork.pluck(:position).max + 10}
+      # f.input :position, as: :hidden, input_html: { value: Artwork.pluck(:position).max + 10}
     end
     f.actions
   end
 
-  permit_params :name, :dimension, :material, :picture, :category_id, :for_main_page, :remote_picture_url, :position
-
+  permit_params :name, :dimension, :material, :picture, :category_id, :for_main_page, :remote_picture_url
 end
