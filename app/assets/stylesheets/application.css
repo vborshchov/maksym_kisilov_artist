@@ -35,3 +35,7 @@ body h1 {
 .my-gallery figcaption {
   display: none;
 }
+
+fieldset legend{
+  background-color: #333333;
+}

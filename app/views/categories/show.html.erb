@@ -22,7 +22,7 @@
       <li data-pos="<%= a.position %>">
         <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
           <%= content_tag(:a,
-            cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 250, height: 250, crop: :fit, "itemprop": "thumbnail"),
+            cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 2000, height: 250, crop: :fit, "itemprop": "thumbnail"),
             href: "#{a.picture.url.gsub(/upload\//, 'upload/bo_15px_solid_rgb:fff/')}",
             data: {size: "#{FastImage.size(a.picture.url).join("x")}"},
             "itemprop": "contentUrl")
