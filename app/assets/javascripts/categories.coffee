@@ -30,6 +30,31 @@ ready = ->
     state = sortable.option('disabled') #get
     sortable.option 'disabled', !state #set
     return
+
+  $(window).load ->
+    $('#sortable').collagePlus 
+      'targetHeight': 256
+      'allowPartialLastRow': true
+      'fadeSpeed': 2000
+    return
+
+  collage = ->
+    $('#sortable').collagePlus 
+      'targetHeight': 256
+      'allowPartialLastRow': true
+      'fadeSpeed': 2000
+    return
+
+  resizeTimer = null
+  $(window).bind 'resize', ->
+    # hide all the images until we resize them
+    # set the element you are scaling i.e. the first child nodes of ```#sortable``` to opacity 0
+    $('#sortable li').css 'opacity', 0
+    # set a timer to re-apply the plugin
+    if resizeTimer
+      clearTimeout resizeTimer
+    resizeTimer = setTimeout(collage, 200)
+    return
   return
 
 $(document).ready ready

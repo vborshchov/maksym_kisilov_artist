@@ -5,6 +5,18 @@
 li figure {
   margin: 0 auto 0 auto;
 }
+
+#sortable{
+  /* define how much padding you want in between your images */
+  padding:10px;
+  img{
+    /* ensures padding at the bottom of the image is correct */
+    vertical-align:bottom;
+    /* hide the images until the plugin has run. the plugin will reveal the images*/
+  }
+}
+
+
 label {
   cursor: pointer;
 }
