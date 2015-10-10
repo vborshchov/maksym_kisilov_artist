@@ -17,15 +17,15 @@
 </div>
 
 <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-  <ul id="sortable">
+  <ul class="sortable">
     <% @artworks.map do |a|%>
       <li data-pos="<%= a.position %>">
         <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
           <%= content_tag(:a,
-            cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 2000, height: 250, crop: :fit, "itemprop": "thumbnail"),
+            cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 2000, height: 350, crop: :fit, "itemprop": "thumbnail"),
             href: "#{a.picture.url.gsub(/upload\//, 'upload/bo_15px_solid_rgb:fff/')}",
             data: {size: "#{FastImage.size(a.picture.url).join("x")}"},
-            "itemprop": "contentUrl")
+            itemprop: "contentUrl")
           %>
           <figcaption itemprop="caption description"><%= about a %></figcaption>
         </figure>
@@ -71,10 +71,10 @@
             <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
                 <div class="pswp__share-tooltip"></div>
             </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
+            <div class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </div>
+            <div class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </div>
             <div class="pswp__caption">
                 <div class="pswp__caption__center"></div>
             </div>

@@ -5,13 +5,14 @@
 ready = undefined
 
 ready = ->
+
   $('.pswp').bind 'contextmenu', (e) ->
     false
 
-  el = $('#sortable')[0]
+  el = $('.sortable')[0]
   targetItem = undefined
 
-  sortable = Sortable.create(el,
+  sortable = Sortable.create el,
     disabled: true
     animation: 500
     onMove: (evt) ->
@@ -24,37 +25,43 @@ ready = ->
         data:
           old_index: evt.item.getAttribute('data-pos')
           new_index: targetItem.getAttribute('data-pos')
+        success: collage
       return
-    )
+
   $(".switch label").on 'click', (e) ->
     state = sortable.option('disabled') #get
     sortable.option 'disabled', !state #set
     return
 
-  $(window).load ->
-    $('#sortable').collagePlus 
-      'targetHeight': 256
-      'allowPartialLastRow': true
-      'fadeSpeed': 2000
-    return
+  $('.sortable').css('padding', '10')
+  $('.sortable').collagePlus
+    'targetHeight': 250
+    'allowPartialLastRow': false
+    'fadeSpeed': 2000
+  $('.sortable').css('padding', '0')
 
   collage = ->
-    $('#sortable').collagePlus 
-      'targetHeight': 256
-      'allowPartialLastRow': true
+    $('.sortable').css('padding', '10')
+    $('.sortable').collagePlus
+      'targetHeight': 250
+      'allowPartialLastRow': false
       'fadeSpeed': 2000
+    $('.sortable').css('padding', '0')
     return
+
 
   resizeTimer = null
   $(window).bind 'resize', ->
     # hide all the images until we resize them
-    # set the element you are scaling i.e. the first child nodes of ```#sortable``` to opacity 0
-    $('#sortable li').css 'opacity', 0
+    # set the element you are scaling i.e. the first child nodes of ```.sortable``` to opacity 0
+    $('.sortable li').css 'opacity', 0
     # set a timer to re-apply the plugin
     if resizeTimer
       clearTimeout resizeTimer
-    resizeTimer = setTimeout(collage, 200)
+    resizeTimer = setTimeout(collage, 100)
     return
+
+
   return
 
 $(document).ready ready

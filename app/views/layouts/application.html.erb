@@ -8,7 +8,7 @@
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application"%>
     <%= csrf_meta_tags %>
   </head>
 
@@ -64,6 +64,7 @@
         </div>
       </div>
 
-      <ul id="sortable"></ul>
+      <ul class="sortable"></ul>
+      <a href="#0" class="cd-top">Top</a>
   </body>
 </html>

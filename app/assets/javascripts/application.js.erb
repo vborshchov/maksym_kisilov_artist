@@ -77,7 +77,7 @@ var ready = function(){
   //Photo Swipe
   var initPhotoSwipeFromDOM = function(gallerySelector) {
 
-      // parse slide data (url, title, size ...) from DOM elements 
+      // parse slide data (url, title, size ...) from DOM elements
       // (children of gallerySelector)
       var parseThumbnailElements = function(el) {
           var thumbElements = el.childNodes,
@@ -92,7 +92,7 @@ var ready = function(){
 
               figureEl = thumbElements[i]; // <figure> element
 
-              // include only element nodes 
+              // include only element nodes
               if(figureEl.nodeType !== 1) {
                   continue;
               }
@@ -112,13 +112,13 @@ var ready = function(){
 
               if(figureEl.children.length > 1) {
                   // <figcaption> content
-                  item.title = figureEl.children[1].innerHTML; 
+                  item.title = figureEl.children[1].innerHTML;
               }
 
               if(linkEl.children.length > 0) {
                   // <img> thumbnail element, retrieving thumbnail url
                   item.msrc = linkEl.children[0].getAttribute('src');
-              } 
+              }
 
               item.el = figureEl; // save link to element for getThumbBoundsFn
               items.push(item);
@@ -157,8 +157,8 @@ var ready = function(){
               index;
 
           for (var i = 0; i < numChildNodes; i++) {
-              if(childNodes[i].nodeType !== 1) { 
-                  continue; 
+              if(childNodes[i].nodeType !== 1) {
+                  continue;
               }
 
               if(childNodes[i] === clickedListItem) {
@@ -191,10 +191,10 @@ var ready = function(){
               if(!vars[i]) {
                   continue;
               }
-              var pair = vars[i].split('=');  
+              var pair = vars[i].split('=');
               if(pair.length < 2) {
                   continue;
-              }           
+              }
               params[pair[0]] = pair[1];
           }
 
@@ -215,35 +215,27 @@ var ready = function(){
 
           // define options (if needed)
           options = {
-
               // define gallery index (for URL)
               galleryUID: galleryElement.getAttribute('data-pswp-uid'),
-
               getThumbBoundsFn: function(index) {
                   // See Options -> getThumbBoundsFn section of documentation for more info
                   var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
                       pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                      rect = thumbnail.getBoundingClientRect(); 
+                      rect = thumbnail.getBoundingClientRect();
 
                   return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
               },
-              
               shareButtons: [
                   {id:'facebook', label:'Share on Facebook', url:'https://www.facebook.com/sharer/sharer.php?u={{url}}'},
                   {id:'twitter', label:'Tweet', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'},
                   {id:'pinterest', label:'Pin it', url:'http://www.pinterest.com/pin/create/button/?url={{url}}&media={{image_url}}&description={{text}}'}
               ]
-              // showHideOpacity:true,
-              // hideAnimationDuration:0,
-              // showAnimationDuration:0
-
-
           };
 
           // PhotoSwipe opened from URL
           if(fromURL) {
               if(options.galleryPIDs) {
-                  // parse real index when custom PIDs are used 
+                  // parse real index when custom PIDs are used
                   // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
                   for(var j = 0; j < items.length; j++) {
                       if(items[j].pid == index) {
@@ -290,6 +282,32 @@ var ready = function(){
 
   // execute above function
   initPhotoSwipeFromDOM('.my-gallery');
+
+  // Scroll to top button
+  var offset = 300,
+  //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+  offset_opacity = 1200,
+  //duration of the top scrolling animation (in ms)
+  scroll_top_duration = 700,
+  //grab the "back to top" link
+  $back_to_top = $('.cd-top');
+
+  //hide or show the "back to top" link
+  $(window).scroll(function(){
+    ( $(this).scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
+    if( $(this).scrollTop() > offset_opacity ) {
+      $back_to_top.addClass('cd-fade-out');
+    }
+  });
+
+  //smooth scroll to top
+  $back_to_top.on('click', function(event){
+    event.preventDefault();
+    $('body,html').animate({
+      scrollTop: 0 ,
+      }, scroll_top_duration
+    );
+  });
 
 };
 
