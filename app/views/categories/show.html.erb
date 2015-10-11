@@ -16,22 +16,10 @@
     </div>
 </div>
 
-<div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-  <ul class="sortable">
+<div class="my-gallery sortable" itemscope itemtype="http://schema.org/ImageGallery">
     <% @artworks.map do |a|%>
-      <li data-pos="<%= a.position %>">
-        <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-          <%= content_tag(:a,
-            cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 2000, height: 350, crop: :fit, "itemprop": "thumbnail"),
-            href: "#{a.picture.url.gsub(/upload\//, 'upload/bo_15px_solid_rgb:fff/')}",
-            data: {size: "#{FastImage.size(a.picture.url).join("x")}"},
-            itemprop: "contentUrl")
-          %>
-          <figcaption itemprop="caption description"><%= about a %></figcaption>
-        </figure>
-      </li>
+      <figure data-pos="<%= a.position %>" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"><%= content_tag(:a, cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 2000, height: 250, crop: :fit, "itemprop": "thumbnail"), href: "#{a.picture.url.gsub(/upload\//, 'upload/bo_15px_solid_rgb:fff/')}", data: {size: "#{FastImage.size(a.picture.url).join("x")}"}, itemprop: "contentUrl")%><figcaption itemprop="caption description"><%= about a %></figcaption></figure>
     <% end %>
-  </ul>
 </div>
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
