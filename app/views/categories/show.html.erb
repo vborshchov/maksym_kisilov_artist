@@ -1,5 +1,9 @@
 <%= provide :title, Unicode::capitalize(@category.name) %>
 
+<% content_for(:body_attributes) do %>
+  data-no-turbolink="true"
+<% end %>
+
 <div class="row">
   <div class="column">
     <span><%= @category.name %></span>
