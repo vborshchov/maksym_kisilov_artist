@@ -1,0 +1,12 @@
+pl:
+  top_bar:
+    title: Maksym Kisilov
+    main: Dom
+    gallery: Galeria
+    about: O mnie
+    news:
+      title: Aktualności
+      current: Najnowsze wiadomości
+      archive: Archiwum aktualności
+    setings: Ustawienia
+    contacts: Kontakt
