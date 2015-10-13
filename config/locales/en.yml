@@ -31,3 +31,13 @@ en:
       archive: Archive
     setings: Settings
     contacts: Contacts
+    languages:
+      title: Language
+      en: English
+      pl: Polish
+      uk: Ukranian
+  posts:
+    archive:
+      title: Archive news
+    current:
+      title: Current news

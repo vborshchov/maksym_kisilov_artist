@@ -10,3 +10,13 @@ uk:
       archive: Архів
     setings: Управління
     contacts: Контакти
+    languages:
+      title: Мова
+      en: Англійська
+      pl: Польська
+      uk: Українська
+  posts:
+    archive:
+      title: Архів новин
+    current:
+      title: Поточні новини

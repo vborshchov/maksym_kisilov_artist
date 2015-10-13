@@ -41,6 +41,13 @@
                   <li><%= link_to t('top_bar.news.archive'), news_archive_path %></li>
                 </ul>
               </li>
+              <li class="has-dropdown"><a href="#"><i class='fi-map'></i> <%= t('top_bar.languages.title') %></a>
+                <ul class="dropdown">
+                  <li><%= link_to t('top_bar.languages.uk'), news_current_path %></li>
+                  <li><%= link_to t('top_bar.languages.pl'), news_current_path %></li>
+                  <li><%= link_to t('top_bar.languages.en'), news_archive_path %></li>
+                </ul>
+              </li>
               <li><%= link_to raw("<i class='fi-mail'></i> #{t('top_bar.contacts')}"), contacts_path %></li>
               <% if current_admin_user %>
                 <li><%= link_to raw("<i class='fi-wrench'></i> Управління"), admin_root_path %></li>

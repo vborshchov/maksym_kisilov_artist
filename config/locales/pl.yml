@@ -10,3 +10,13 @@ pl:
       archive: Archiwum aktualności
     setings: Ustawienia
     contacts: Kontakt
+    languages:
+      title: Mova
+      en: English
+      pl: Polish
+      uk: Ukranian
+  posts:
+    archive:
+      title: Archiwum aktualności
+    curernt:
+      title: Najnowsze wiadomości
