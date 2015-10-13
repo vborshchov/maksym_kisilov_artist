@@ -35,3 +35,7 @@ body h1 {
 .my-gallery figcaption {
   display: none;
 }
+
+.switch label {
+  background: #939393 none repeat scroll 0% 0%;
+}

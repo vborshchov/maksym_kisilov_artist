@@ -41,7 +41,7 @@ var ready = function(){
 
   // Image protection script
   $(function() {
-      var pixelSource = "<%= asset_path('Transparent.gif') %>";
+      var pixelSource = "<%= asset_path('transparent.gif') %>";
       var useOnAllImages = true;
       // Preload the pixel
       var preload = new Image();
@@ -76,7 +76,7 @@ var ready = function(){
   //Photo Swipe
   var initPhotoSwipeFromDOM = function(gallerySelector) {
 
-      // parse slide data (url, title, size ...) from DOM elements 
+      // parse slide data (url, title, size ...) from DOM elements
       // (children of gallerySelector)
       var parseThumbnailElements = function(el) {
           var thumbElements = el.childNodes,
@@ -91,7 +91,7 @@ var ready = function(){
 
               figureEl = thumbElements[i]; // <figure> element
 
-              // include only element nodes 
+              // include only element nodes
               if(figureEl.nodeType !== 1) {
                   continue;
               }
@@ -111,13 +111,13 @@ var ready = function(){
 
               if(figureEl.children.length > 1) {
                   // <figcaption> content
-                  item.title = figureEl.children[1].innerHTML; 
+                  item.title = figureEl.children[1].innerHTML;
               }
 
               if(linkEl.children.length > 0) {
                   // <img> thumbnail element, retrieving thumbnail url
                   item.msrc = linkEl.children[0].getAttribute('src');
-              } 
+              }
 
               item.el = figureEl; // save link to element for getThumbBoundsFn
               items.push(item);
@@ -156,8 +156,8 @@ var ready = function(){
               index;
 
           for (var i = 0; i < numChildNodes; i++) {
-              if(childNodes[i].nodeType !== 1) { 
-                  continue; 
+              if(childNodes[i].nodeType !== 1) {
+                  continue;
               }
 
               if(childNodes[i] === clickedListItem) {
@@ -190,10 +190,10 @@ var ready = function(){
               if(!vars[i]) {
                   continue;
               }
-              var pair = vars[i].split('=');  
+              var pair = vars[i].split('=');
               if(pair.length < 2) {
                   continue;
-              }           
+              }
               params[pair[0]] = pair[1];
           }
 
@@ -222,11 +222,11 @@ var ready = function(){
                   // See Options -> getThumbBoundsFn section of documentation for more info
                   var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
                       pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                      rect = thumbnail.getBoundingClientRect(); 
+                      rect = thumbnail.getBoundingClientRect();
 
                   return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
               },
-              
+
               shareButtons: [
                   {id:'facebook', label:'Share on Facebook', url:'https://www.facebook.com/sharer/sharer.php?u={{url}}'},
                   {id:'twitter', label:'Tweet', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'},
@@ -242,7 +242,7 @@ var ready = function(){
           // PhotoSwipe opened from URL
           if(fromURL) {
               if(options.galleryPIDs) {
-                  // parse real index when custom PIDs are used 
+                  // parse real index when custom PIDs are used
                   // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
                   for(var j = 0; j < items.length; j++) {
                       if(items[j].pid == index) {

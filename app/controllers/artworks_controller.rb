@@ -7,7 +7,7 @@ class ArtworksController < ApplicationController
 
   def change_position
     artwork = Artwork.find_by(position: params[:old_index].to_i)
-    render text: "Artwork was successfully moved" if artwork.insert_at(params[:new_index].to_i)
+    render text: t('.success') if artwork.insert_at(params[:new_index].to_i)
   end
 
   private

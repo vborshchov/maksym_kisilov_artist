@@ -1,22 +1,49 @@
 pl:
   top_bar:
-    title: Maksym Kisilov
-    main: Dom
-    gallery: Galeria
-    about: O mnie
-    news:
-      title: Aktualności
-      current: Najnowsze wiadomości
-      archive: Archiwum aktualności
-    setings: Ustawienia
-    contacts: Kontakt
+    menu: "Menu"
+    about: "O mnie"
+    contacts: "Kontakt"
+    gallery: "Galeria"
     languages:
-      title: Mova
-      en: English
-      pl: Polish
-      uk: Ukranian
+      en: "Angielski"
+      pl: "Polski"
+      title: "Język"
+      uk: "Ukraiński"
+    main: "Dom"
+    news:
+      archive: "Archiwum wiadomości"
+      current: "Najnowsze wiadomości"
+      title: "Aktualności"
+    settings: "Ustawienia"
+    title: "Maksym Kisilov"
   posts:
     archive:
-      title: Archiwum aktualności
-    curernt:
-      title: Najnowsze wiadomości
+      title: "Archiwum wiadomości"
+    current:
+      title: "Najnowsze wiadomości"
+  categories:
+    show:
+      change_order: "Zmiana kolejności"
+  static_pages:
+    contacts:
+      forms:
+        name:
+          placeholder:
+          error:
+        email:
+          placeholder:
+          error:
+        title:
+          placeholder:
+          error:
+        body:
+          placeholder:
+          error:
+        button:
+          send: "Wysłać"
+    send_email_form:
+      success: "Message successfully sent."
+      alert: "Message could not be sent. Please check your entries."
+  artworks:
+    change_position:
+      success: "Artwork was successfully moved"

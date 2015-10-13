@@ -14,11 +14,11 @@ class StaticPagesController < ApplicationController
       if @message.valid?
         # TODO: Send email
         ContactMailer.contact_email(@message).deliver
-        # redirect_to :back, notice: "Email successfully sent."
-        redirect_to :back, notice: "Повідомлення відправлено успішно"
+        # redirect_to :back, notice: "Message successfully sent."
+        redirect_to :back, notice: t('.success')
       else
-        # flash.alert = "Email could not be sent. Please check your entries."
-        flash.alert = "Пошту не можливо відправити, перевірте свое повідомлення."
+        # flash.alert = "Message could not be sent. Please check your entries."
+        flash.alert = t('.alert')
         redirect_to contacts_path
       end
 

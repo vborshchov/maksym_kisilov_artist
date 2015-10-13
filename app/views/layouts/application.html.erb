@@ -23,7 +23,7 @@
               </h1>
             </li>
              <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-            <li class="toggle-topbar"><a href="#"><span>Меню</span></a></li>
+            <li class="toggle-topbar"><a href="#"><span><%= t 'top_bar.menu' %></span></a></li>
           </ul>
 
           <section class="top-bar-section">
@@ -50,7 +50,7 @@
               </li>
               <li><%= link_to raw("<i class='fi-mail'></i> #{t('top_bar.contacts')}"), contacts_path %></li>
               <% if current_admin_user %>
-                <li><%= link_to raw("<i class='fi-wrench'></i> Управління"), admin_root_path %></li>
+                <li><%= link_to raw("<i class='fi-wrench'></i> #{t('top_bar.settings')}"), admin_root_path %></li>
               <% else %>
                 <li><%= link_to raw("<i class='fi-wrench'></i>"), admin_root_path %></li>
               <% end %>
