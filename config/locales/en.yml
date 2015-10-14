@@ -1,4 +1,34 @@
 en:
+  active_admin:
+    resource:
+      index:
+        category:
+          new: "New category"
+        artwork:
+          new: "New artwork"
+      show:
+        category:
+          delete:
+            button: "Delete"
+            confirm: "Are you sure delete this category with all artworks in this category?"
+        artwork:
+          delete:
+            button: "Delete"
+            confirm: "Are you sure delete this artwork?"
+          edit:
+            button: "Edit"
+          sidebar:
+            title: "Details"
+            name: "Name"
+            dimension: "Dimension"
+            material: "Material"
+            category: "Category"
+  activerecord:
+    attributes:
+      artwork:
+        category_id: "Category"
+      all_category:
+        parent_id: "Parent category"
   top_bar:
     title: "Maksym Kisilov"
     menu: "Menu"
