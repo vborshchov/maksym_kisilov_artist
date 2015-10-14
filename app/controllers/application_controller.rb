@@ -22,6 +22,13 @@ class ApplicationController < ActionController::Base
 
     # if params[:locale] is nil then I18n.default_locale will be used
     def set_locale
-      I18n.locale = params[:locale] || I18n.default_locale
+      # I18n.locale = params[:locale] || I18n.default_locale
+      if cookies[:kisilov_locale] && I18n.available_locales.include?(cookies[:kisilov_locale].to_sym)
+        l = cookies[:kisilov_locale].to_sym
+      else
+        l = I18n.default_locale
+        cookies.permanent[:kisilov_locale] = l
+      end
+      I18n.locale = l
     end
 end

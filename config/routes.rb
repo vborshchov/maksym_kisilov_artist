@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # get 'settings/change_locale'
+  get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
+
   root 'artworks#index'
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
