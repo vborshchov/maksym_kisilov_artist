@@ -33,8 +33,6 @@ ActiveAdmin.register Artwork do
   end
 
   controller do
-    # params[:artwork].merge!({ position: Artwork.pluck(:position).max + 10 })
-    # create!
     before_create do |artwork|
       if Artwork.pluck(:position).compact.blank?
         artwork.position = 0
@@ -60,7 +58,6 @@ ActiveAdmin.register Artwork do
   index as: :grid, columns: 4  do |artwork|
     resource_selection_cell artwork
     render partial: "artwork", locals: {artwork: artwork}
-    #link_to cl_image_tag(artwork.picture_url, height: 200, alt: artwork.name), admin_artwork_path(artwork)
   end
 
   show do

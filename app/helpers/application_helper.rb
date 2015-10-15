@@ -14,25 +14,15 @@ module ApplicationHelper
 
   def about(artwork)
     [
-      artwork.name,
-      artwork.dimension,
-      artwork.material,
-      artwork.category.name
-    ].map(&:to_s).each_with_index.map do |field, index|
-        unless field == ""
-          case index
-          when 0
-            field = "\"#{field}\""
-          # when 1
-          #   field +=" см"
-          else
-            field
-          end
-        end
-      end.reject(&:blank?).join(", ")
+      "\"#{artwork.name.to_s}\"",
+      artwork.dimension.to_s.downcase,
+      artwork.material.to_s.downcase,
+      artwork.category.name.to_s.capitalize
+    ]
+    .reject(&:blank?).join(", ")
   end
 
   def make_title(title=nil)
-    [title, "Максим Кісільов"].reject(&:blank?).join(" | ")
+    [title, t('top_bar.title')].reject(&:blank?).join(" | ")
   end
 end
