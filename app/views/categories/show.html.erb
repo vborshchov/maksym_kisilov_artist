@@ -4,21 +4,17 @@
   data-no-turbolink="true"
 <% end %>
 
-<div class="row">
-  <div class="column">
-    <span><%= @category.name %></span>
-      <% if current_admin_user %>
-        <div class="switch round right">
-          <p>Зміна порядку</p>
-          <input id="on-off" type="checkbox">
-            <label for="on-off">
-              <span class="switch-on">ON</span>
-              <span class="switch-off">OFF</span>
-          </label>
-        </div>
-      <% end %>
-    </div>
-</div>
+<span><%= @category.name %></span>
+<% if current_admin_user %>
+  <div class="switch round right">
+    <p><%= t '.change_order' %></p>
+    <input id="on-off" type="checkbox">
+      <label for="on-off">
+        <span class="switch-on">ON</span>
+        <span class="switch-off">OFF</span>
+    </label>
+  </div>
+<% end %>
 
 <div class="my-gallery sortable" itemscope itemtype="http://schema.org/ImageGallery">
     <% @artworks.map do |a|%>

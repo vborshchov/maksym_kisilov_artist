@@ -61,6 +61,8 @@ gem 'ckeditor'
 gem 'friendly_id'
 gem 'babosa'
 gem 'acts_as_list'
+gem 'rails-i18n', '~> 4.0.0'
+gem 'globalize', '~> 5.0.0'
 
 # Photo Galleries
 gem 'slick_rails'

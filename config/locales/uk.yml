@@ -1,0 +1,104 @@
+uk:
+  active_admin:
+    resource:
+      index:
+        category:
+          new: "Створити категорію"
+          delete:
+            button: "Видалити"
+            confirm: "Ви впевнені що хочете видалити цю категорію(також видаляться всі картини в даній категорії)?"
+        artwork:
+          new: "Створити картину"
+      show:
+        category:
+          delete:
+            button: "Видалити категорію"
+            confirm: "Ви впевнені що хочете видалити цю категорію(також видаляться всі картини в даній категорії)?"
+        artwork:
+          delete:
+            button: "Видалити картину"
+            confirm: "Ви впевнені що хочете видалити цю картину?"
+          edit:
+            button: "Редагувати"
+          sidebar:
+            title: "Деталі"
+            name: "Назва"
+            dimension: "Розмір"
+            material: "Матеріал"
+            category: "Категорія"
+  activerecord:
+    models:
+      artwork:
+        zero: "Картин"
+        one: "Картина"
+        few: "Картини"
+        many: "Картин"
+        other: "Картини"
+      all_category:
+        zero: "Категорій"
+        one: "Категорія"
+        few: "Категорії"
+        many: "Категорій"
+        other: "Категорії"
+    attributes:
+      artwork:
+        name: "Назва"
+        dimension: "Розмір"
+        material: "Матеріал"
+        position: "Позиція"
+        category_id: "Категорія"
+        for_main_page: "Для головної сторінки"
+        picture: "Фото"
+        remote_picture_url: "Посилання на фото"
+      all_category:
+        name: "Назва"
+        parent_id: "Батьківська категорія"
+  top_bar:
+    title: "Максим Кісільов"
+    menu: "Меню"
+    main: "Головна"
+    gallery: "Галерея"
+    about: "Про себе"
+    news:
+      title: "Новини"
+      current: "Поточні"
+      archive: "Архів"
+    settings: "Управління"
+    contacts: "Контакти"
+    languages:
+      title: "Мова"
+      en: "Англійська"
+      pl: "Польська"
+      uk: "Українська"
+  posts:
+    archive:
+      title: "Архів новин"
+    current:
+      title: "Поточні новини"
+  categories:
+    show:
+      change_order: "Зміна порядку"
+  static_pages:
+    contacts:
+      forms:
+        legend: "Напишіть повідомлення"
+        name:
+          placeholder: "Ім'я"
+          error: "Будь-ласка представтесь."
+        email:
+          placeholder: "електронна пошта"
+          error: "Адреса електронної пошти відсутня або введена не вірно."
+        title:
+          placeholder: "Тема"
+          error: "Необхідно ввести тему повідомлення."
+        body:
+          placeholder: "Повідомлення"
+          error: "Повідомлення не повинно бути порожнім та більше 500 символів."
+        button:
+          send: "Відправити"
+    send_email_form:
+      success: "Повідомлення відправлено успішно."
+      alert: "Пошту не можливо відправити, перевірте свое повідомлення."
+  artworks:
+    change_position:
+      success: "Картина була успішно переміщена."

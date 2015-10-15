@@ -1,30 +1,30 @@
-<% provide :title, "Контакти" %>
-<h1 class="text-center">Контакти</h1>
+<% provide :title, t('top_bar.contacts') %>
+<h1 class="text-center"><%= t 'top_bar.contacts' %></h1>
 <%= render 'info'%>
 
 <%= form_for @message, url: email_form_path, html: {data: {abide: ''}} do |f| %>
   <fieldset>
-    <legend>Напишіть повідомлення</legend>
+    <legend><%= t('.forms.legend') %></legend>
     <div class="row">
       <div class="column large-6">
-        <%= f.text_field :name, placeholder: "Ім’я", required: true %>
-        <small class="error">Будь-ласка представтесь.</small>
+        <%= f.text_field :name, placeholder: t('.forms.name.placeholder'), required: true %>
+        <small class="error"> <%= t('.forms.name.error') %></small>
       </div>
       <div class="column large-6">
-        <%= f.email_field :email, placeholder: "email", required: true, pattern: "advanced_email" %>
-        <small class="error">Адреса електронної пошти відсутня або введена не вірно.</small>
+        <%= f.email_field :email, placeholder: t('.forms.email.placeholder'), required: true, pattern: "advanced_email" %>
+        <small class="error"><%= t('.forms.email.error') %></small>
       </div>
       <div class="column">
-        <%= f.text_field :title, placeholder: "Тема", required: true %>
-        <small class="error">Необхідно ввести тему повідомлення.</small>
+        <%= f.text_field :title, placeholder: t('.forms.title.placeholder'), required: true %>
+        <small class="error"><%= t('.forms.title.error') %></small>
       </div>
       <div class="column">
-        <%= f.text_area :body, size: "60x12", placeholder: "Повідомлення", required: true, pattern: "length500" %>
-        <small class="error">Повідомлення не повинно бути порожнім та більше 500 символів.</small>
+        <%= f.text_area :body, size: "60x12", placeholder: t('.forms.body.placeholder'), required: true, pattern: "length500" %>
+        <small class="error"><%= t('.forms.body.error') %></small>
       </div>
       <div class="column">
         <%= button_tag(type: 'submit', class: "button") do %>
-          <i class="fi-upload" style="font-size: 20px;"></i> Відправити
+          <i class="fi-upload" style="font-size: 20px;"></i> <%= t('.forms.button.send') %>
         <% end %>
       </div>
     </div>
@@ -40,7 +40,7 @@
     <%= f.text_field :title, required: true %>
     <%= f.text_field :body, as: :text, required: true %>
     <%= f.button :button do %>
-      <i class="fi-upload" style="font-size: 20px;"></i> Відправити
+      <i class="fi-upload" style="font-size: 20px;"></i> <%= t('.send_message') %>
     <% end %>
   <% end %>
 </div>

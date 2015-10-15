@@ -1,0 +1,49 @@
+pl:
+  top_bar:
+    menu: "Menu"
+    about: "O mnie"
+    contacts: "Kontakt"
+    gallery: "Galeria"
+    languages:
+      en: "Angielski"
+      pl: "Polski"
+      title: "Język"
+      uk: "Ukraiński"
+    main: "Dom"
+    news:
+      archive: "Archiwum wiadomości"
+      current: "Najnowsze wiadomości"
+      title: "Aktualności"
+    settings: "Ustawienia"
+    title: "Maksym Kisilov"
+  posts:
+    archive:
+      title: "Archiwum wiadomości"
+    current:
+      title: "Najnowsze wiadomości"
+  categories:
+    show:
+      change_order: "Zmiana kolejności"
+  static_pages:
+    contacts:
+      forms:
+        name:
+          placeholder:
+          error:
+        email:
+          placeholder:
+          error:
+        title:
+          placeholder:
+          error:
+        body:
+          placeholder:
+          error:
+        button:
+          send: "Wysłać"
+    send_email_form:
+      success: "Message successfully sent."
+      alert: "Message could not be sent. Please check your entries."
+  artworks:
+    change_position:
+      success: "Artwork was successfully moved"

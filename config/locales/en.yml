@@ -1,23 +1,77 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  active_admin:
+    resource:
+      index:
+        category:
+          new: "New category"
+        artwork:
+          new: "New artwork"
+      show:
+        category:
+          delete:
+            button: "Delete"
+            confirm: "Are you sure delete this category with all artworks in this category?"
+        artwork:
+          delete:
+            button: "Delete"
+            confirm: "Are you sure delete this artwork?"
+          edit:
+            button: "Edit"
+          sidebar:
+            title: "Details"
+            name: "Name"
+            dimension: "Dimension"
+            material: "Material"
+            category: "Category"
+  activerecord:
+    attributes:
+      artwork:
+        category_id: "Category"
+      all_category:
+        parent_id: "Parent category"
+  top_bar:
+    title: "Maksym Kisilov"
+    menu: "Menu"
+    main: "Home"
+    gallery: "Gallery"
+    about: "About"
+    news:
+      title: "News"
+      current: "Current"
+      archive: "Archive"
+    settings: "Settings"
+    contacts: "Contacts"
+    languages:
+      title: "Language"
+      en: "English"
+      pl: "Polish"
+      uk: "Ukranian"
+  posts:
+    archive:
+      title: "Archive news"
+    current:
+      title: "Current news"
+  static_pages:
+    contacts:
+      forms:
+        legend: "Write a message"
+        name:
+          placeholder: "Name"
+          error: "Please, put your name"
+        email:
+          placeholder: "email"
+          error: "Email is undefined or with mistakes"
+        title:
+          placeholder: "Topic"
+          error: "Please, write a topic"
+        body:
+          placeholder: "Message"
+          error: "Message must be less than 500 symbols"
+        button:
+          send: "Send"
+    send_email_form:
+      success: "Message successfully sent."
+      alert: "Message could not be sent. Please check your entries."
+  artworks:
+    change_position:
+      success: "Artwork was successfully moved"

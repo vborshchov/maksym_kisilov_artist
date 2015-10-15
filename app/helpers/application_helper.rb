@@ -23,8 +23,8 @@ module ApplicationHelper
           case index
           when 0
             field = "\"#{field}\""
-          when 1
-            field +=" см"
+          # when 1
+          #   field +=" см"
           else
             field
           end

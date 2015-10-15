@@ -80,23 +80,24 @@
 #
 
 Rails.application.routes.draw do
-  get 'news/current' => 'posts#current'
-  get 'news/archive' => 'posts#archive'
+  get '/change_locale', to: 'settings#change_locale', as: :change_locale
 
   mount Ckeditor::Engine => '/ckeditor'
-
-  # resources :categories
-  get 'category/:id' => 'categories#show', as: :category
-
-  root 'artworks#index'
-  get 'artworks/change_position'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  get 'about' => 'static_pages#about'
-  get 'contacts' => 'static_pages#contacts'
-  post 'email' => 'static_pages#send_email_form', as: :email_form
+  scope "(:locale)", locale: /en|pl|uk/ do
+    root 'artworks#index'
+    get 'artworks/change_position'
+    get 'news/current' => 'posts#current'
+    get 'news/archive' => 'posts#archive'
+    resources :categories, only: [:show]
+    get 'about' => 'static_pages#about'
+    get 'contacts' => 'static_pages#contacts'
+    post 'email' => 'static_pages#send_email_form', as: :email_form
+  end
+
+  get '/:locale' => 'artworks#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

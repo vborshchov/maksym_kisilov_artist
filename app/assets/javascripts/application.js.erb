@@ -106,7 +106,7 @@ var ready = function(){
 
   // Image protection script
   $(function() {
-      var pixelSource = "<%= asset_path('Transparent.gif') %>";
+      var pixelSource = "<%= asset_path('transparent.gif') %>";
       var useOnAllImages = true;
       // Preload the pixel
       var preload = new Image();
@@ -289,6 +289,10 @@ var ready = function(){
 
                   return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
               },
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/i18n
               shareButtons: [
                   {id:'facebook', label:'Share on Facebook', url:'https://www.facebook.com/sharer/sharer.php?u={{url}}'},
                   {id:'twitter', label:'Tweet', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'},
