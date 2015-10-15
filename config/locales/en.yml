@@ -1,11 +1,17 @@
 en:
   active_admin:
+    batch_actions:
+      labels:
+        for_main_page:  "Add to main page"
+        from_main_page: "Remove from main page"
     resource:
       index:
         category:
           new: "New category"
         artwork:
           new: "New artwork"
+          add_notice: "Succesfully added to main page"
+          remove_notice: "Succesfully removed from main page"
       show:
         category:
           delete:
@@ -23,6 +29,7 @@ en:
             dimension: "Dimension"
             material: "Material"
             category: "Category"
+          photo: "Photo"
   activerecord:
     attributes:
       artwork:

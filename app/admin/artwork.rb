@@ -1,9 +1,9 @@
 ActiveAdmin.register Artwork do
   menu priority: 1
 
-  filter :category, label: "Категорії", as: :select, collection: proc { Category.leaves }
-  filter :name, label: "Назва"
-  filter :material, label: "Матеріал"
+  filter :category_id, as: :select, collection: proc { Category.leaves }
+  filter :name
+  filter :material
 
   config.clear_action_items!
   action_item "Edit", only:[:show] do
@@ -18,18 +18,18 @@ ActiveAdmin.register Artwork do
     link_to t('.artwork.new'), new_admin_artwork_path
   end
 
-  batch_action "На головну" do |ids|
+  batch_action :for_main_page do |ids|
     Artwork.find(ids).each do |artwork|
       artwork.update_attributes(for_main_page: true)
     end
-    redirect_to collection_path, notice: "Успішно додано на головну сторінку"
+    redirect_to collection_path, add_notice: t('.artwork.add_notice')
   end
 
-  batch_action "Прибрати з головної" do |ids|
+  batch_action :from_main_page do |ids|
     Artwork.find(ids).each do |artwork|
       artwork.update_attributes(for_main_page: false)
     end
-    redirect_to collection_path, notice: "Успішно прибрано з головної сторінки"
+    redirect_to collection_path, revome_notice: t('.artwork.remove_notice')
   end
 
   controller do
@@ -70,7 +70,7 @@ ActiveAdmin.register Artwork do
     end
   end
 
-  sidebar " ", only: :show do
+  sidebar I18n.t('active_admin.resource.show.artwork.sidebar.title'), only: :show do
     attributes_table_for artwork do
       row t('.artwork.sidebar.name') do |art|
         art.name

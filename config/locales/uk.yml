@@ -1,5 +1,9 @@
 uk:
   active_admin:
+    batch_actions:
+      labels:
+        for_main_page:  "Перемістити на головну"
+        from_main_page: "Прибрати з головної"
     resource:
       index:
         category:
@@ -9,6 +13,8 @@ uk:
             confirm: "Ви впевнені що хочете видалити цю категорію(також видаляться всі картини в даній категорії)?"
         artwork:
           new: "Створити картину"
+          add_notice: "Успішно додано на головну сторінку"
+          remove_notice: "Успішно прибрано з головної сторінки"
       show:
         category:
           delete:
@@ -26,6 +32,7 @@ uk:
             dimension: "Розмір"
             material: "Матеріал"
             category: "Категорія"
+          photo: "Фото"
   activerecord:
     models:
       artwork:

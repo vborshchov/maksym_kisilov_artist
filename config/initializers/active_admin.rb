@@ -194,6 +194,15 @@ ActiveAdmin.setup do |config|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
   #     end
   #   end
+    config.namespace :admin do |admin|
+      admin.build_menu do |menu|
+        menu.add label: I18n.t(".top_bar.languages.title") do |sites|
+          sites.add label: I18n.t('.top_bar.languages.uk'), url: "/change_locale?locale=uk"
+          sites.add label: I18n.t('.top_bar.languages.pl'), url: "/change_locale?locale=pl"
+          sites.add label: I18n.t('.top_bar.languages.en'), url: "/change_locale?locale=en"
+        end
+      end
+    end
 
   # == Download Links
   #
