@@ -18,6 +18,8 @@ class Category < ActiveRecord::Base
   has_many :artworks, -> { order(position: :asc) }
   has_closure_tree order: 'position'
 
+  translates :name
+
 
   def normalize_friendly_id(text)
     text.to_slug.normalize(transliterations: :ukrainian).to_s

@@ -79,7 +79,7 @@ ActiveAdmin.register Artwork do
         art.name
       end
       row t('.artwork.sidebar.dimension') do |art|
-        [art.dimension, "см"].reject(&:blank?).join(" ")
+        art.dimension
       end
       row t('.artwork.sidebar.material') do |art|
         art.material
@@ -94,7 +94,7 @@ ActiveAdmin.register Artwork do
     f.inputs "Робота", :multipart => true do
       f.input :name
       f.input :dimension
-      f.input :material, as: :select, :collection => %w(папір холст)
+      f.input :material
       f.input :picture, :as => :file, :hint => image_tag(f.object.picture.url, width: 150, height: 150, crop: :fit)
       f.input :remote_picture_url
       f.input :picture_cache, :as => :hidden

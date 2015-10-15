@@ -118,6 +118,9 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    globalize (5.0.1)
+      activemodel (>= 4.2.0, < 4.3)
+      activerecord (>= 4.2.0, < 4.3)
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -268,6 +271,7 @@ DEPENDENCIES
   foundation-icons-sass-rails
   foundation-rails
   friendly_id
+  globalize (~> 5.0.0)
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
