@@ -4,6 +4,8 @@ en:
       labels:
         for_main_page:  "Add to main page"
         from_main_page: "Remove from main page"
+        to_archive: "Move to archive"
+        from_archive: "Move from archive"
     resource:
       index:
         category:
@@ -30,7 +32,23 @@ en:
             material: "Material"
             category: "Category"
           photo: "Photo"
+        post:
+          edit:
+            button: "Edit"
   activerecord:
+    models:
+      info:
+        one: "My info"
+        many: "My info"
+        other: "My info"
+      news:
+        one: "News"
+        many: "News"
+        other: "News"
+      all_category:
+        one: "Category"
+        many: "Categories"
+        other: "Categories"
     attributes:
       artwork:
         category_id: "Category"

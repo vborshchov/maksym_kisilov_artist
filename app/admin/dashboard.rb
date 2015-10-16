@@ -1,8 +1,8 @@
 ActiveAdmin.register_page "Dashboard" do
 
-  menu priority: 4, label: "Останні події" #proc{ I18n.t("active_admin.dashboard") }
+  menu priority: 4, label: proc{ I18n.t("active_admin.dashboard") }
 
-  content title: "Останні події" do #proc{ I18n.t("active_admin.dashboard") } do
+  content title: proc{ I18n.t("active_admin.dashboard") } do
     # div class: "blank_slate_container", id: "dashboard_default_message" do
     #   span class: "blank_slate" do
     #     span I18n.t("active_admin.dashboard_welcome.welcome")
@@ -14,17 +14,17 @@ ActiveAdmin.register_page "Dashboard" do
   #
     columns do
       column do
-        panel "Останні новини" do
+        panel t(".last_news") do
           ul do
-            Post.last(5).map do |post|
-              li link_to(post.title, admin_post_path(post))
+            Post.last(5).map do |news|
+              li link_to(news.title, admin_news_path(news))
             end
           end
         end
       end
 
       column do
-        panel "Інформація" do
+        panel t(".information") do
           para "Welcome to ActiveAdmin."
         end
       end

@@ -1,5 +1,5 @@
-ActiveAdmin.register Post do
-  menu priority: 3, label: "Новини"
+ActiveAdmin.register Post, as: "News" do
+  menu priority: 3
   index do
     selectable_column
     column :title
@@ -9,28 +9,17 @@ ActiveAdmin.register Post do
     actions
   end
 
-  filter :title, label: "Категорії"
-  filter :archive, label: "Архівні новини"
+  filter :title
+  filter :archive
 
-  config.clear_action_items!
-  action_item "Edit", only:[:show] do
-    link_to "Редагувати", edit_admin_post_path
-  end
-  action_item "Delete", only:[:show] do
-    link_to "Видалити", admin_post_path, method: "delete", data: {confirm: "Ви впевнені що хочете видалити цю роботу?"}
-  end
-  action_item "New", only:[:index] do
-    link_to "Додати новину", new_admin_post_path
-  end
-
-  batch_action "В архів" do |ids|
+  batch_action :to_archive do |ids|
     Post.find(ids).each do |post|
       post.update_attributes(archive: true)
     end
     redirect_to collection_path, alert: "Новина переміщена в архів"
   end
 
-  batch_action "З архіву" do |ids|
+  batch_action :from_archive do |ids|
     Post.find(ids).each do |post|
       post.update_attributes(archive: false)
     end

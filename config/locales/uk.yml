@@ -4,6 +4,8 @@ uk:
       labels:
         for_main_page:  "Перемістити на головну"
         from_main_page: "Прибрати з головної"
+        to_archive: "Перемістити в архів"
+        from_archive: "Прибрати з архіву"
     resource:
       index:
         category:
@@ -15,6 +17,10 @@ uk:
           new: "Створити картину"
           add_notice: "Успішно додано на головну сторінку"
           remove_notice: "Успішно прибрано з головної сторінки"
+        post:
+          title: "Новини"
+        info:
+          title: "Інформація про мене"
       show:
         category:
           delete:
@@ -33,8 +39,24 @@ uk:
             material: "Матеріал"
             category: "Категорія"
           photo: "Фото"
+        post:
+          title: "Новини"
+        info:
+          title: "Інформація про мене"
   activerecord:
     models:
+      info:
+        zero: "Мої данні"
+        one: "Мої данні"
+        few: "Мої данні"
+        many: "Мої данні"
+        other: "Мої данні"
+      news:
+        zero: "Новин"
+        one: "Новина"
+        few: "Новини"
+        many: "Новин"
+        other: "Новини"
       artwork:
         zero: "Картин"
         one: "Картина"

@@ -17,3 +17,11 @@
 //   .status_tag { background: #6090DB; }
 
 form fieldset ol > li label { float: none; }
+
+#uk-icon, #pl-icon, #gb-icon {
+  img {
+    height: 15px;
+    width: 25px;
+    vertical-align: sub;
+  }
+}

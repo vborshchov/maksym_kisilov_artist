@@ -16,24 +16,15 @@ ActiveAdmin.register Category, :as => "All Category" do
       end
     end
 
-  remove_filter :ancestor_hierarchies
-  remove_filter :descendant_hierarchies
-
-  config.clear_action_items!
-  action_item "Edit", only:[:show] do
-    link_to "Редагувати", edit_admin_all_category_path
-  end
-  action_item "Delete", only:[:show] do
-    link_to t('.category.delete.button'), admin_all_category_path, method: "delete", data: {confirm: t('.category.delete.confirm')}
-  end
-  action_item "New", only:[:index] do
-    link_to t('.category.new'), new_admin_all_category_path
-  end
+  # remove_filter :ancestor_hierarchies
+  # remove_filter :descendant_hierarchies
+  filter :artworks
+  filter :name
 
   index do
     selectable_column
-    column "Назва", :name
-    column "Батьківська категорія", :parent_id, :sortable => :parent_id do |category|
+    column :name
+    column :parent_id, :sortable => :parent_id do |category|
       category.parent.name if category.parent
     end
     actions

@@ -1,5 +1,5 @@
 ActiveAdmin.register Info do
-  menu priority: 5, label: "Моя інформація"
+  menu priority: 5
 
   filter :page, as: :select, label: "Строінка"
 
