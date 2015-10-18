@@ -347,16 +347,7 @@ var ready = function(){
     sortable.option('disabled', !state);
   });
 
-  $('.sortable').css('padding', '8');
 
-  $('.sortable').collagePlus({
-    'targetHeight': 250,
-    'allowPartialLastRow': true,
-    'fadeSpeed': 2000
-  });
-
-  $('.sortable').css('padding', '0');
-  // $('.sortable').css('padding', '8');
   collage = function() {
     $('.sortable').css('padding', '8');
     $('.sortable').collagePlus({
@@ -366,7 +357,10 @@ var ready = function(){
     });
     $('.sortable').css('padding', '0');
   };
-  $(window).on('page:load', collage());
+
+  $(window).load(function () {
+    collage();
+  });
 
   resizeTimer = null;
 
@@ -375,7 +369,7 @@ var ready = function(){
     if (resizeTimer) {
       clearTimeout(resizeTimer);
     }
-    resizeTimer = setTimeout(collage, 100);
+    resizeTimer = setTimeout(collage, 200);
   });
 
 };
