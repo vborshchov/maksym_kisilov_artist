@@ -16,21 +16,30 @@
     <% if content_for?(:body_attributes) %>
       <%= yield(:body_attributes) %>
     <% end %>>
+      <div class="row">
+        <div class="column small-8 middle-8 large-8">
+          <h1 class="title">
+            <!-- <a>Максим Кісільов</a> -->
+            <%= link_to t('top_bar.title'), root_path %>
+          </h1>
+        </div>
+        <div class="column small-4 middle-4 large-4 lang-icon">
+          <%= link_to image_tag("ua.svg"), change_locale_path(locale: "uk") %>
+          <%= link_to image_tag("pl.svg"), change_locale_path(locale: "pl") %>
+          <%= link_to image_tag("gb.svg"), change_locale_path(locale: "en") %>
+        </div>
+      </div>
       <div class="contain-to-grid">
         <nav class="top-bar" data-topbar role="navigation">
           <ul class="title-area">
             <li class="name">
-              <h1 class="hide-for-medium">
-                <!-- <a>Максим Кісільов</a> -->
-                <%= link_to t('top_bar.title'), root_path %>
-              </h1>
             </li>
              <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-            <li class="toggle-topbar"><a href="#"><span><%= t 'top_bar.menu' %></span></a></li>
+            <li class="menu-icon toggle-topbar"><a href="#"><span></span></a></li>
           </ul>
 
           <section class="top-bar-section">
-            <ul class="right">
+            <ul class="left">
               <li><%= link_to raw("<i class='fi-home'></i> #{t('top_bar.main')}"), root_path %></li>
               <li><%= link_to raw("<i class='fi-info'></i> #{t('top_bar.about')}"), about_path %></li>
               <li class="has-dropdown"><a href="#"><i class='fi-photo'></i> <%= t('top_bar.gallery') %></a>
@@ -44,13 +53,13 @@
                   <li><%= link_to t('top_bar.news.archive'), news_archive_path %></li>
                 </ul>
               </li>
-              <li class="has-dropdown"><a href="#"><i class='fi-map'></i> <%= t('top_bar.languages.title') %></a>
+              <!-- <li class="has-dropdown"><a href="#"><i class='fi-map'></i> <#%= t('top_bar.languages.title') %></a>
                 <ul class="dropdown">
-                  <li><%= link_to t('top_bar.languages.uk'), change_locale_path(locale: "uk") %></li>
-                  <li><%= link_to t('top_bar.languages.pl'), change_locale_path(locale: "pl") %></li>
-                  <li><%= link_to t('top_bar.languages.en'), change_locale_path(locale: "en") %></li>
+                  <li><#%= link_to t('top_bar.languages.uk'), change_locale_path(locale: "uk") %></li>
+                  <li><#%= link_to t('top_bar.languages.pl'), change_locale_path(locale: "pl") %></li>
+                  <li><#%= link_to t('top_bar.languages.en'), change_locale_path(locale: "en") %></li>
                 </ul>
-              </li>
+              </li> -->
               <li><%= link_to raw("<i class='fi-mail'></i> #{t('top_bar.contacts')}"), contacts_path %></li>
               <% if current_admin_user %>
                 <li><%= link_to raw("<i class='fi-wrench'></i> #{t('top_bar.settings')}"), admin_root_path %></li>
@@ -69,9 +78,16 @@
       <% end %>
 
       <div class="row">
-        <div class="column">
-          <%= yield %>
+        <!-- <div class="column"> -->
+        <div class="column small-12 middle-12 large-12">
+          <span class="breadcrumb">
+            <% if content_for?(:breadcrumb) %>
+              <%= yield(:breadcrumb) %>
+            <% end %>
+          <span>
         </div>
+        <%= yield %>
+        <!-- </div> -->
       </div>
 
       <ul class="sortable"></ul>

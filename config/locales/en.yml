@@ -56,7 +56,6 @@ en:
         parent_id: "Parent category"
   top_bar:
     title: "Maksym Kisilov"
-    menu: "Menu"
     main: "Home"
     gallery: "Gallery"
     about: "About"

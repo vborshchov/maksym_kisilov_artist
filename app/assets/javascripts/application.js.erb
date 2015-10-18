@@ -22,72 +22,6 @@
 //= require_tree .
 
 var ready = function(){
-
-  var collage, el, resizeTimer, sortable, targetItem;
-
-  $('.pswp').bind('contextmenu', function(e) {
-    return false;
-  });
-
-  el = $('.sortable')[0];
-
-  targetItem = void 0;
-
-  sortable = Sortable.create(el, {
-    disabled: true,
-    animation: 500,
-    onMove: function(evt) {
-      targetItem = evt.related;
-    },
-    onEnd: function(evt) {
-      $.ajax({
-        url: '/artworks/change_position',
-        type: 'GET',
-        data: {
-          old_index: evt.item.getAttribute('data-pos'),
-          new_index: targetItem.getAttribute('data-pos')
-        },
-        success: collage
-      });
-    }
-  });
-
-  $(".switch label").on('click', function(e) {
-    var state;
-    state = sortable.option('disabled');
-    sortable.option('disabled', !state);
-  });
-
-  $('.sortable').css('padding', '8');
-
-  $('.sortable').collagePlus({
-    'targetHeight': 250,
-    'allowPartialLastRow': true,
-    'fadeSpeed': 2000
-  });
-
-  $('.sortable').css('padding', '0');
-
-  collage = function() {
-    $('.sortable').css('padding', '8');
-    $('.sortable').collagePlus({
-      'targetHeight': 250,
-      'allowPartialLastRow': true,
-      'fadeSpeed': 2000
-    });
-    $('.sortable').css('padding', '0');
-  };
-
-  resizeTimer = null;
-
-  $(window).bind('resize', function() {
-    $('.sortable figure').css('opacity', 0);
-    if (resizeTimer) {
-      clearTimeout(resizeTimer);
-    }
-    resizeTimer = setTimeout(collage, 200);
-  });
-
   // Foundation options
   $(document).foundation({
     topbar: {
@@ -376,6 +310,72 @@ var ready = function(){
       scrollTop: 0 ,
       }, scroll_top_duration
     );
+  });
+
+  var collage, el, resizeTimer, sortable, targetItem;
+
+  $('.pswp').bind('contextmenu', function(e) {
+    return false;
+  });
+
+  el = $('.sortable')[0];
+
+  targetItem = void 0;
+
+  sortable = Sortable.create(el, {
+    disabled: true,
+    animation: 500,
+    onMove: function(evt) {
+      targetItem = evt.related;
+    },
+    onEnd: function(evt) {
+      $.ajax({
+        url: '/artworks/change_position',
+        type: 'GET',
+        data: {
+          old_index: evt.item.getAttribute('data-pos'),
+          new_index: targetItem.getAttribute('data-pos')
+        },
+        success: collage
+      });
+    }
+  });
+
+  $(".switch label").on('click', function(e) {
+    var state;
+    state = sortable.option('disabled');
+    sortable.option('disabled', !state);
+  });
+
+  $('.sortable').css('padding', '8');
+
+  $('.sortable').collagePlus({
+    'targetHeight': 250,
+    'allowPartialLastRow': true,
+    'fadeSpeed': 2000
+  });
+
+  $('.sortable').css('padding', '0');
+  // $('.sortable').css('padding', '8');
+  collage = function() {
+    $('.sortable').css('padding', '8');
+    $('.sortable').collagePlus({
+      'targetHeight': 250,
+      'allowPartialLastRow': true,
+      'fadeSpeed': 2000
+    });
+    $('.sortable').css('padding', '0');
+  };
+  $(window).on('page:load', collage());
+
+  resizeTimer = null;
+
+  $(window).bind('resize', function() {
+    $('.sortable figure').css('opacity', 0);
+    if (resizeTimer) {
+      clearTimeout(resizeTimer);
+    }
+    resizeTimer = setTimeout(collage, 100);
   });
 
 };

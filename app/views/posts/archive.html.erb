@@ -1,3 +1,5 @@
 <%= provide :title, t('.title')%>
-<h1 class="text-center"><%= t('.title') %></h1>
+<% content_for :breadcrumb do%>
+  <%= t('.title') %>
+<% end %>
 <%= render @posts %>

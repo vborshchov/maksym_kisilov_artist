@@ -1,3 +1,5 @@
 <% provide :title, t('top_bar.about') %>
-<h1 class="text-center"><%= t 'top_bar.about' %></h1>
+<% content_for :breadcrumb do%>
+  <%= t 'top_bar.about' %>
+<% end %>
 <%= render 'info' %>

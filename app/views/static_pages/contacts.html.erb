@@ -1,5 +1,7 @@
 <% provide :title, t('top_bar.contacts') %>
-<h1 class="text-center"><%= t 'top_bar.contacts' %></h1>
+<% content_for :breadcrumb do%>
+  <%= t 'top_bar.contacts' %>
+<% end %>
 <%= render 'info'%>
 
 <%= form_for @message, url: email_form_path, html: {data: {abide: ''}} do |f| %>

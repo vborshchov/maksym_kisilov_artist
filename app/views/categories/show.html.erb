@@ -1,29 +1,27 @@
 <%= provide :title, Unicode::capitalize(@category.name) %>
 
 <% content_for(:body_attributes) do %>
-  data-no-turbolink="true"
+  data-no-turbolinks="true"
 <% end %>
 
-<div class="row">
-  <div class="column">
-    <span><%= @category.name %></span>
-      <% if current_admin_user %>
-        <div class="switch round right">
-          <p><%= t ('.change_order') %></p>
-          <input id="on-off" type="checkbox">
-            <label for="on-off">
-              <span class="switch-on">ON</span>
-              <span class="switch-off">OFF</span>
-          </label>
-        </div>
-      <% end %>
+<div class="column">
+  <span class="breadcrumb"><%= @category.name %></span>
+  <% if current_admin_user %>
+    <div class="switch round right">
+      <p><%= t ('.change_order') %></p>
+      <input id="on-off" type="checkbox">
+        <label for="on-off">
+          <span class="switch-on">ON</span>
+          <span class="switch-off">OFF</span>
+      </label>
     </div>
-</div>
+  <% end %>
 
-<div class="my-gallery sortable" itemscope itemtype="http://schema.org/ImageGallery">
-    <% @artworks.map do |a|%>
-      <figure data-pos="<%= a.position %>" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"><%= content_tag(:a, cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 2000, height: 200, crop: :fit, "itemprop": "thumbnail"), href: "#{a.picture.url.gsub(/upload\//, 'upload/bo_15px_solid_rgb:fff/')}", data: {size: "#{FastImage.size(a.picture.url).join("x")}"}, itemprop: "contentUrl")%><figcaption itemprop="caption description"><%= about a %></figcaption></figure>
-    <% end %>
+  <div class="my-gallery sortable" itemscope itemtype="http://schema.org/ImageGallery">
+      <% @artworks.map do |a|%>
+        <figure data-pos="<%= a.position %>" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"><%= content_tag(:a, cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 2000, height: 200, crop: :fit, "itemprop": "thumbnail"), href: "#{a.picture.url.gsub(/upload\//, 'upload/bo_15px_solid_rgb:fff/')}", data: {size: "#{FastImage.size(a.picture.url).join("x")}"}, itemprop: "contentUrl")%><figcaption itemprop="caption description"><%= about a %></figcaption></figure>
+      <% end %>
+  </div>
 </div>
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
