@@ -20,8 +20,13 @@
  */
 
 @font-face {
-    font-family: "Azoft Cyrillic";
-    src: url(<%= asset_url('azoft-sans.ttf') %>) format("truetype");
+    font-family: "EsqaderoRegular";
+    src: url(<%= asset_url('EsqaderoRegular.eot') %>);
+    src: url(<%= asset_url('EsqaderoRegular.eot?#iefix') %>) format("embedded-opentype"),
+    url(<%= asset_url('EsqaderoRegular.woff') %>) format("woff"),
+    url(<%= asset_url('EsqaderoRegular.ttf') %>) format("truetype");
+    font-style: normal;
+    font-weight: normal;
 }
 
 body{
@@ -32,27 +37,39 @@ body{
   margin: 2.5rem 0 0 0;
 }
 
-/*body h1>a, h1 {
-  color: white;
-}*/
+.sortable {
+   /* define how much padding you want in between your images */
+  padding:10px;
+}
 
+.sortable img {
+  /* ensures padding at the bottom of the image is correct */
+  vertical-align:bottom;
+}
+
+h1 a {
+  color: white;
+}
 body h1 a:hover {
  color: white;
 }
 
+.slick-slider {
+  margin-top: 2rem;
+}
+
 .breadcrumb {
-  line-height: 5rem;
+  line-height: 4rem;
 }
 
 .lang-icon {
-  padding-top: 4rem;
-  float: right;
+  padding-top: 3.8rem;
 }
 
 .lang-icon img {
   height: 18px;
   width: 30px;
-  margin-right: 0.5rem;
+  margin: 0 0.1rem 0.1rem 0;
 }
 .protect {
   margin: 0 auto;
@@ -66,10 +83,18 @@ fieldset legend{
   background-color: #3C4045;
 }
 
+.switch {
+  margin: 0.9rem 0 0 0;
+}
+
 .switch label {
+  /*margin: 0.2rem 0 0 0;*/
   background: #939393 none repeat scroll 0% 0%;
 }
 
+.has-tip {
+  border-bottom: none;
+}
 .cd-top {
   display: inline-block;
   height: 40px;

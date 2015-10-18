@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
+
 //= require ckeditor/init
 //= require photoswipe
 //= require slick
@@ -349,13 +349,15 @@ var ready = function(){
 
 
   collage = function() {
-    $('.sortable').css('padding', '8');
+    // $('.sortable').css('padding', '8');
     $('.sortable').collagePlus({
       'targetHeight': 250,
       'allowPartialLastRow': true,
       'fadeSpeed': 2000
     });
-    $('.sortable').css('padding', '0');
+    // $('.sortable').css('padding', '0');
+    // $('.sortable figure').css('margin-bottom', '8');
+
   };
 
   $(window).load(function () {

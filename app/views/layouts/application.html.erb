@@ -8,22 +8,19 @@
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body
-    <% if content_for?(:body_attributes) %>
-      <%= yield(:body_attributes) %>
-    <% end %>>
+  <body>
       <div class="row">
-        <div class="column small-8 middle-8 large-8">
+        <div class="column small-7 medium-9 large-10">
           <h1 class="title">
             <!-- <a>Максим Кісільов</a> -->
             <%= link_to t('top_bar.title'), root_path %>
           </h1>
         </div>
-        <div class="column small-4 middle-4 large-4 lang-icon">
+        <div class="column small-5 medium-3 large-2 lang-icon">
           <%= link_to image_tag("ua.svg"), change_locale_path(locale: "uk") %>
           <%= link_to image_tag("pl.svg"), change_locale_path(locale: "pl") %>
           <%= link_to image_tag("gb.svg"), change_locale_path(locale: "en") %>
@@ -40,32 +37,32 @@
 
           <section class="top-bar-section">
             <ul class="left">
+              <li class="divider"></li>
               <li><%= link_to raw("<i class='fi-home'></i> #{t('top_bar.main')}"), root_path %></li>
+              <li class="divider"></li>
               <li><%= link_to raw("<i class='fi-info'></i> #{t('top_bar.about')}"), about_path %></li>
+              <li class="divider"></li>
               <li class="has-dropdown"><a href="#"><i class='fi-photo'></i> <%= t('top_bar.gallery') %></a>
                 <ul class="dropdown">
                   <%= menu_tree_for @categories %>
                 </ul>
               </li>
+              <li class="divider"></li>
               <li class="has-dropdown"><a href="#"><i class='fi-rss'></i> <%= t('top_bar.news.title') %></a>
                 <ul class="dropdown">
                   <li><%= link_to t('top_bar.news.current'), news_current_path %></li>
                   <li><%= link_to t('top_bar.news.archive'), news_archive_path %></li>
                 </ul>
               </li>
-              <!-- <li class="has-dropdown"><a href="#"><i class='fi-map'></i> <#%= t('top_bar.languages.title') %></a>
-                <ul class="dropdown">
-                  <li><#%= link_to t('top_bar.languages.uk'), change_locale_path(locale: "uk") %></li>
-                  <li><#%= link_to t('top_bar.languages.pl'), change_locale_path(locale: "pl") %></li>
-                  <li><#%= link_to t('top_bar.languages.en'), change_locale_path(locale: "en") %></li>
-                </ul>
-              </li> -->
+              <li class="divider"></li>
               <li><%= link_to raw("<i class='fi-mail'></i> #{t('top_bar.contacts')}"), contacts_path %></li>
+              <li class="divider"></li>
               <% if current_admin_user %>
                 <li><%= link_to raw("<i class='fi-wrench'></i> #{t('top_bar.settings')}"), admin_root_path %></li>
               <% else %>
                 <li><%= link_to raw("<i class='fi-wrench'></i>"), admin_root_path %></li>
               <% end %>
+              <li class="divider"></li>
             </ul>
           </section>
         </nav>

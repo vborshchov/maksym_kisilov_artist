@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-li figure {
-  margin: 0 auto 0 auto;
-}
+// li figure {
+//   margin: 0 auto 0 auto;
+// }
 
 label {
   cursor: pointer;
@@ -13,6 +13,10 @@ label {
 figure{
   padding:0px;
   margin: 0px;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
 }
 
 .switch-on {
