@@ -4,45 +4,33 @@
 <% end %>
 <%= render 'info'%>
 
-<%= form_for @message, url: email_form_path, html: {data: {abide: ''}} do |f| %>
-  <fieldset>
-    <legend><%= t('.forms.legend') %></legend>
-    <div class="row">
-      <div class="column large-6">
-        <%= f.text_field :name, placeholder: t('.forms.name.placeholder'), required: true %>
-        <small class="error"> <%= t('.forms.name.error') %></small>
+<div class="column large-10 left large-offset-1">
+  <%= form_for @message, url: email_form_path, html: {data: {abide: ''}} do |f| %>
+    <fieldset>
+      <legend><%= t('.forms.legend') %></legend>
+      <div class="row">
+        <div class="column large-6">
+          <%= f.text_field :name, placeholder: t('.forms.name.placeholder'), required: true %>
+          <small class="error"> <%= t('.forms.name.error') %></small>
+        </div>
+        <div class="column large-6">
+          <%= f.email_field :email, placeholder: t('.forms.email.placeholder'), required: true, pattern: "advanced_email" %>
+          <small class="error"><%= t('.forms.email.error') %></small>
+        </div>
+        <div class="column">
+          <%= f.text_field :title, placeholder: t('.forms.title.placeholder'), required: true %>
+          <small class="error"><%= t('.forms.title.error') %></small>
+        </div>
+        <div class="column">
+          <%= f.text_area :body, size: "60x12", placeholder: t('.forms.body.placeholder'), required: true, pattern: "length500" %>
+          <small class="error"><%= t('.forms.body.error') %></small>
+        </div>
+        <div class="column">
+          <%= button_tag(type: 'submit', class: "button") do %>
+            <i class="fi-upload" style="font-size: 20px;"></i> <%= t('.forms.button.send') %>
+          <% end %>
+        </div>
       </div>
-      <div class="column large-6">
-        <%= f.email_field :email, placeholder: t('.forms.email.placeholder'), required: true, pattern: "advanced_email" %>
-        <small class="error"><%= t('.forms.email.error') %></small>
-      </div>
-      <div class="column">
-        <%= f.text_field :title, placeholder: t('.forms.title.placeholder'), required: true %>
-        <small class="error"><%= t('.forms.title.error') %></small>
-      </div>
-      <div class="column">
-        <%= f.text_area :body, size: "60x12", placeholder: t('.forms.body.placeholder'), required: true, pattern: "length500" %>
-        <small class="error"><%= t('.forms.body.error') %></small>
-      </div>
-      <div class="column">
-        <%= button_tag(type: 'submit', class: "button") do %>
-          <i class="fi-upload" style="font-size: 20px;"></i> <%= t('.forms.button.send') %>
-        <% end %>
-      </div>
-    </div>
-  </fieldset>
-<% end %>
-
-<!-- <a href="#" data-reveal-id="myModal"><i class="fi-mail"></i> izhachok89@gmail.com</a> -->
-
-<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <%= form_for @message, url: email_form_path, html: {novalidate: "novalidate", data: {abide: ''}} do |f| %>
-    <%= f.text_field :name, required: true %>
-    <%= f.text_field :email, required: true, as: :email %>
-    <%= f.text_field :title, required: true %>
-    <%= f.text_field :body, as: :text, required: true %>
-    <%= f.button :button do %>
-      <i class="fi-upload" style="font-size: 20px;"></i> <%= t('.send_message') %>
-    <% end %>
+    </fieldset>
   <% end %>
 </div>

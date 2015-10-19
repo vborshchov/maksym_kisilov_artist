@@ -75,6 +75,9 @@ en:
       title: "Archive news"
     current:
       title: "Current news"
+  categories:
+    show:
+      change_order: "Change order"
   static_pages:
     contacts:
       forms:
