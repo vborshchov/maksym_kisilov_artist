@@ -32,19 +32,23 @@
 body{
   color: white;
 }
-
+blockquote {
+  margin-left: 2rem;
+}
 .title {
   margin: 2.5rem 0 0 0;
 }
 
 .sortable {
    /* define how much padding you want in between your images */
-  padding:10px;
+  padding:1rem;
 }
 
 .sortable img {
   /* ensures padding at the bottom of the image is correct */
   vertical-align:bottom;
+
+  /*opacity: 0;*/
 }
 
 h1 a {
@@ -145,4 +149,44 @@ fieldset legend{
     right: 30px;
     bottom: 30px;
   }
+}
+
+
+/* Footer */
+.full-width {
+  max-width: 1400px;
+}
+.footer {
+  background-color: #333333;
+  padding: .5rem 1rem;
+  text-align: center;
+  color: #fff;
+}
+.footer i {
+  font-size: 20px;
+}
+.footer h4 {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 400;
+  text-transform: uppercase;
+  /*margin-top: 2.5rem;*/
+  /*margin-bottom: 10px;*/
+}
+.footer p, .footer a {
+  /*font-weight: 300;*/
+  font-size: .8em;
+  color: #fff;
+}
+@media only screen and (min-width: 40.063em) {
+  .footer .columns:nth-child(n+2) {
+    border-left: 1px solid #b3b3b3;
+    min-height: 80px;
+  }
+}
+.footer-links {
+  list-style-type: none;
+}
+.footer-links li {
+  margin-top: .5em;
 }

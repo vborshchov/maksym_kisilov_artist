@@ -4,7 +4,7 @@
 <% end %>
 <%= render 'info'%>
 
-<div class="column large-10 left large-offset-1">
+<div class="column large-10 left">
   <%= form_for @message, url: email_form_path, html: {data: {abide: ''}} do |f| %>
     <fieldset>
       <legend><%= t('.forms.legend') %></legend>
