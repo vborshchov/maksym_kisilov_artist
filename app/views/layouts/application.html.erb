@@ -67,7 +67,7 @@
       </div>
       <% end %>
 
-      <div class="row">
+      <div class="row main">
         <div class="column small-12 middle-12 large-12">
           <span class="breadcrumb" >
             <% if content_for?(:breadcrumb) %>
@@ -76,35 +76,35 @@
           <span>
         </div>
         <%= yield %>
-
       </div>
-      <ul class="sortable"></ul>
-      <!-- Footer -->
 
-      <footer class="footer">
-        <div class="row">
-          <div class="small-12 columns">
-            <p class="slogan"><%= t('top_bar.title') %></p>
-            <p class="links">
-                    <%= link_to raw("<i class='fi-home'></i> #{t('top_bar.main')}"), root_path %>
-                    <%= link_to raw("<i class='fi-info'></i> #{t('top_bar.about')}"), about_path %>
-                    <%= link_to raw("<i class='fi-mail'></i> #{t('top_bar.contacts')}"), contacts_path %>
-                  </p>
+      <!-- Footer -->
+        <footer>
+          <div class="row">
+            <div class="small-12 medium-12 large-12 columns">
+              <!-- <p class="slogan"><#%= t('top_bar.title') %></p> -->
+              <p class="links">
+                <%= link_to raw("<i class='fi-home'></i> #{t('top_bar.main')}"), root_path %>
+                <%= link_to raw("<i class='fi-info'></i> #{t('top_bar.about')}"), about_path %>
+                <%= link_to raw("<i class='fi-mail'></i> #{t('top_bar.contacts')}"), contacts_path %>
+              </p>
+            </div>
+            <div class="small-12 medium-12 large-12 colunms">
+              <p>
+                <ul class="social-links">
+                  <li class="facebook"><a href="https://www.facebook.com/profile.php?id=100006608170519" target="blank"><i class="fi-social-facebook medium"></i></a></li>
+                  <li class="pinterest"><a href="http://www.pinterest.com/izhachok/my-art/" target="blank"><i class="fi-social-pinterest medium"></i></a></li>
+                  <li class="saatchiart"><a href="http://www.saatchiart.com/maksymkisilov" target="blank"><%= image_tag('saatchi-art-logo.png')%></a></li>
+                </ul>
+              </p>
+            </div>
+            <div class="small-12 medium-12 large-12 columns">
+              <p class="copywrite">© 2015 Maksym Kisilov. All rights reserved.</p>
+            </div>
           </div>
-          <div class="small-12 colunms">
-            <p>
-              <ul class="social-links">
-                <li class="facebook"><a href="https://www.facebook.com/profile.php?id=100006608170519" target="blank"><i class="fi-social-facebook medium"></i></a></li>
-                <li class="pinterest"><a href="http://www.pinterest.com/izhachok/my-art/" target="blank"><i class="fi-social-pinterest medium"></i></a></li>
-                <li class="saatchiart"><a href="http://www.saatchiart.com/maksymkisilov" target="blank"><%= image_tag('saatchi-art-logo.png')%></a></li>
-              </ul>
-            </p>
-          </div>
-          <div class="small-12 columns">
-            <p class="copywrite">© 2015 Maksym Kisilov. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+        </footer>
+        <!-- end Footer -->
+      <ul class="sortable empty"></ul>
       <a href="#0" class="cd-top">Top</a>
   </body>
 </html>
