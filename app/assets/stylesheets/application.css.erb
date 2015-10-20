@@ -18,7 +18,6 @@
  *= require slick
  *= require slick-theme
  */
-
 @font-face {
     font-family: "EsqaderoRegular";
     src: url(<%= asset_url('EsqaderoRegular.eot') %>);
@@ -28,7 +27,6 @@
     font-style: normal;
     font-weight: normal;
 }
-
 body{
   color: white;
 }
@@ -38,19 +36,15 @@ blockquote {
 .title {
   margin: 2.5rem 0 0 0;
 }
-
 .sortable {
    /* define how much padding you want in between your images */
   padding:1rem;
 }
-
 .sortable img {
   /* ensures padding at the bottom of the image is correct */
   vertical-align:bottom;
-
   /*opacity: 0;*/
 }
-
 h1 a {
   color: white;
 }
@@ -61,15 +55,12 @@ body h1 a:hover {
 .slick-slider {
   margin-top: 2rem;
 }
-
 .breadcrumb {
   line-height: 4rem;
 }
-
 .lang-icon {
   padding-top: 3.8rem;
 }
-
 .lang-icon img {
   height: 18px;
   width: 30px;
@@ -78,24 +69,19 @@ body h1 a:hover {
 .protect {
   margin: 0 auto;
 }
-
 .my-gallery figcaption {
   display: none;
 }
-
 fieldset legend{
   background-color: #3C4045;
 }
-
 .switch {
   margin: 0.9rem 0 0 0;
 }
-
 .switch label {
   /*margin: 0.2rem 0 0 0;*/
   background: #939393 none repeat scroll 0% 0%;
 }
-
 .has-tip {
   border-bottom: none;
 }
@@ -150,43 +136,66 @@ fieldset legend{
     bottom: 30px;
   }
 }
-
-
 /* Footer */
-.full-width {
-  max-width: 1400px;
-}
 .footer {
   background-color: #333333;
-  padding: .5rem 1rem;
   text-align: center;
-  color: #fff;
+  font-size: 1.2rem;
+  padding: 1rem;
 }
-.footer i {
-  font-size: 20px;
+.footer p.slogan {
+  color: #8d9093;
+  font-size: 1.8rem;
+  /*margin: 0 0 1rem;*/
 }
-.footer h4 {
-  color: #fff;
-  font-size: 1em;
-  font-weight: 400;
-  text-transform: uppercase;
-  /*margin-top: 2.5rem;*/
-  /*margin-bottom: 10px;*/
+.footer p.copywrite {
+  color: #8f9296;
+  font-size: 0.875rem;
+  margin: 0;
 }
-.footer p, .footer a {
-  /*font-weight: 300;*/
-  font-size: .8em;
-  color: #fff;
+.footer .links a {
+  white-space: nowrap;
+  list-style: none;
+  font-weight: bold;
+  color: #ffffff;
+  /*padding: 3rem 0 2rem;*/
+  margin: 0;
 }
-@media only screen and (min-width: 40.063em) {
-  .footer .columns:nth-child(n+2) {
-    border-left: 1px solid #b3b3b3;
-    min-height: 80px;
-  }
+.footer .links a::after {
+  content: "•";
+  padding: 0 0.4rem 0 0.8rem;
 }
-.footer-links {
-  list-style-type: none;
+.footer .links a:last-child::after {
+  content: "";
+  padding: 0 0.4rem 0 0.8rem;
 }
-.footer-links li {
-  margin-top: .5em;
+
+.footer .social-links li{
+  background: #8C8F93;
+  padding: 0 .845rem;
+  border: 3px solid #333333;
+  border-radius: 100px;
+  list-style: none;
+  margin-right: 1rem;
+  font-size: 2rem;
+  display: inline-block;
+}
+
+.footer .social-links li[class="facebook"]:hover{
+  background: #5270C3;
+}
+
+.footer .social-links li[class="pinterest"]:hover{
+  background: #A90000;
+}
+
+.footer .social-links li[class="saatchiart"]:hover{
+  background: #bbbbbb;
+}
+.footer .social-links li[class="saatchiart"] img{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.social-links a {
+  color: #333333;
 }

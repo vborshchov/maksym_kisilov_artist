@@ -37,32 +37,25 @@
 
           <section class="top-bar-section">
             <ul class="left">
-              <li class="divider"></li>
               <li><%= link_to raw("<i class='fi-home'></i> #{t('top_bar.main')}"), root_path %></li>
-              <li class="divider"></li>
               <li><%= link_to raw("<i class='fi-info'></i> #{t('top_bar.about')}"), about_path %></li>
-              <li class="divider"></li>
               <li class="has-dropdown"><a href="#"><i class='fi-photo'></i> <%= t('top_bar.gallery') %></a>
                 <ul class="dropdown">
                   <%= menu_tree_for @categories %>
                 </ul>
               </li>
-              <li class="divider"></li>
               <li class="has-dropdown"><a href="#"><i class='fi-rss'></i> <%= t('top_bar.news.title') %></a>
                 <ul class="dropdown">
                   <li><%= link_to t('top_bar.news.current'), news_current_path %></li>
                   <li><%= link_to t('top_bar.news.archive'), news_archive_path %></li>
                 </ul>
               </li>
-              <li class="divider"></li>
               <li><%= link_to raw("<i class='fi-mail'></i> #{t('top_bar.contacts')}"), contacts_path %></li>
-              <li class="divider"></li>
               <% if current_admin_user %>
                 <li><%= link_to raw("<i class='fi-wrench'></i> #{t('top_bar.settings')}"), admin_root_path %></li>
               <% else %>
                 <li><%= link_to raw("<i class='fi-wrench'></i>"), admin_root_path %></li>
               <% end %>
-              <li class="divider"></li>
             </ul>
           </section>
         </nav>
@@ -87,45 +80,31 @@
       </div>
       <ul class="sortable"></ul>
       <!-- Footer -->
+
       <footer class="footer">
-        <div class="row full-width">
-          <div class="large-4 medium-4 medium-push-8 grid-content">
-            <p>Social icons</p>
+        <div class="row">
+          <div class="small-12 columns">
+            <p class="slogan"><%= t('top_bar.title') %></p>
+            <p class="links">
+                    <%= link_to raw("<i class='fi-home'></i> #{t('top_bar.main')}"), root_path %>
+                    <%= link_to raw("<i class='fi-info'></i> #{t('top_bar.about')}"), about_path %>
+                    <%= link_to raw("<i class='fi-mail'></i> #{t('top_bar.contacts')}"), contacts_path %>
+                  </p>
           </div>
-          <div class="large-8  medium-8 grid-content">
-            <p>© 2015 Maksym Kisilov. All rights reserved.</p>
+          <div class="small-12 colunms">
+            <p>
+              <ul class="social-links">
+                <li class="facebook"><a href="https://www.facebook.com/profile.php?id=100006608170519" target="blank"><i class="fi-social-facebook medium"></i></a></li>
+                <li class="pinterest"><a href="http://www.pinterest.com/izhachok/my-art/" target="blank"><i class="fi-social-pinterest medium"></i></a></li>
+                <li class="saatchiart"><a href="http://www.saatchiart.com/maksymkisilov" target="blank"><%= image_tag('saatchi-art-logo.png')%></a></li>
+              </ul>
+            </p>
           </div>
-          <!-- <div class="small-12 medium-3 large-4 columns">
-            <i class="fi-laptop"></i>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum maiores alias ea sunt facilis impedit fuga dignissimos illo quaerat iure in nobis id quos, eaque nostrum! Unde, voluptates suscipit repudiandae!</p>
+          <div class="small-12 columns">
+            <p class="copywrite">© 2015 Maksym Kisilov. All rights reserved.</p>
           </div>
-          <div class="small-12 medium-3 large-4 columns">
-            <i class="fi-html5"></i>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit impedit consequuntur at! Amet sed itaque nostrum, distinctio eveniet odio, id ipsam fuga quam minima cumque nobis veniam voluptates deserunt!</p>
-          </div>
-          <div class="small-6 medium-3 large-2 columns">
-            <h4>Work With Me</h4>
-            <ul class="footer-links">
-              <li><a href="#">What I Do</a></li>
-              <li><a href="#">Pricing</a></li>
-              <li><a href="#">Events</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">FAQ's</a></li>
-            <ul>
-          </div>
-          <div class="small-6 medium-3 large-2 columns">
-            <h4>Follow Me</h4>
-            <ul class="footer-links">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">Dribbble</a></li>
-            <ul>
-          </div> -->
         </div>
       </footer>
-
       <a href="#0" class="cd-top">Top</a>
   </body>
 </html>
