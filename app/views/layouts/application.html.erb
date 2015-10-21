@@ -14,16 +14,16 @@
 
   <body>
       <div class="row">
-        <div class="column small-7 medium-9 large-10">
+        <div class="column small-8 medium-9 large-10">
           <h1 class="title">
             <!-- <a>Максим Кісільов</a> -->
             <%= link_to t('top_bar.title'), root_path %>
           </h1>
         </div>
-        <div class="column small-5 medium-3 large-2 lang-icon">
-          <%= link_to image_tag("ua.svg"), change_locale_path(locale: "uk") %>
-          <%= link_to image_tag("pl.svg"), change_locale_path(locale: "pl") %>
+        <div class="column small-4 medium-3 large-2 lang-icon">
           <%= link_to image_tag("gb.svg"), change_locale_path(locale: "en") %>
+          <%= link_to image_tag("pl.svg"), change_locale_path(locale: "pl") %>
+          <%= link_to image_tag("ua.svg"), change_locale_path(locale: "uk") %>
         </div>
       </div>
       <div class="contain-to-grid">
