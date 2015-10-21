@@ -52,7 +52,7 @@ var ready = function(){
           if (!useOnAllImages && !img.hasClass('protectMe')) return;
           // Get the real image's position, add an overlay
           var pos = img.offset();
-          var overlay = $('<img class="protectionOverlay" src="' + pixelSource + '" width="' + img.width() + '" height="' + img.height() + '" />').css({position: 'absolute', zIndex: 9999999, left: pos.left, top: pos.top}).appendTo('body').bind('mouseleave', function() {
+          var overlay = $('<img class="protectionOverlay" src="' + pixelSource + '" />').css({width: img.width() + 'px', height: img.height() + 'px'}).css({position: 'absolute', zIndex: 9999999, left: pos.left, top: pos.top}).appendTo('body').bind('mouseleave', function() {
               setTimeout(function(){ overlay.remove(); }, 0, $(this));
           });
           if ('ontouchstart' in window) $(document).one('touchend', function(){ setTimeout(function(){ overlay.remove(); }, 0, overlay); });
@@ -61,7 +61,6 @@ var ready = function(){
 
   //Slick
   $('.fade').slick({
-    adaptiveHeight: true,
     autoplay:       true,
     autoplaySpeed:  3000,
     mobileFirst:    true,
@@ -227,7 +226,8 @@ var ready = function(){
                   {id:'facebook', label:'Share on Facebook', url:'https://www.facebook.com/sharer/sharer.php?u={{url}}'},
                   {id:'twitter', label:'Tweet', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'},
                   {id:'pinterest', label:'Pin it', url:'http://www.pinterest.com/pin/create/button/?url={{url}}&media={{image_url}}&description={{text}}'}
-              ]
+              ],
+              bgOpacity: 0.75
           };
 
           // PhotoSwipe opened from URL
@@ -371,38 +371,13 @@ var ready = function(){
   });
 
   // Sticky footer
-  //  $(window).bind("load", function () {
-  //     var footer = $("#footer");
-  //     var pos = footer.position();
-  //     var height = $(window).height();
-  //     height = height - pos.top;
-  //     height = height - footer.height() + 16;
-  //     if (height > 0) {
-  //         footer.css({
-  //             'margin-top': height + 'px'
-  //         });
-  //     }
-  // });
-  /*!
-   * jQuery Sticky Footer 1.1
-   * Corey Snyder
-   * http://tangerineindustries.com
-   *
-   * Released under the MIT license
-   *
-   * Copyright 2013 Corey Snyder.
-   *
-   * Date: Thu Jan 22 2013 13:34:00 GMT-0630 (Eastern Daylight Time)
-   * Modification for jquery 1.9+ Tue May 7 2013
-   * Modification for non-jquery, removed all, now classic JS Wed Jun 12 2013
-   */
 
   window.onload = function() {
     stickyFooter();
 
     //you can either uncomment and allow the setInterval to auto correct the footer
     //or call stickyFooter() if you have major DOM changes
-    //setInterval(checkForDOMChange, 1000);
+    setInterval(checkForDOMChange, 1000);
   };
 
   //check for changes to the DOM
