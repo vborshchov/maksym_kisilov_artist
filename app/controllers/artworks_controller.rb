@@ -1,5 +1,6 @@
 class ArtworksController < ApplicationController
   before_filter :authenticate_admin_user!, only: [:change_position]
+
   def index
     @artworks = Artwork.for_main_page
   end

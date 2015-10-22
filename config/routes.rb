@@ -93,7 +93,7 @@ Rails.application.routes.draw do
     get 'artworks/change_position'
     get 'news/current' => 'posts#current'
     get 'news/archive' => 'posts#archive'
-    resources :categories, only: [:show]
+    resources :categories, only: [:show, :index]
     get 'about' => 'static_pages#about'
     get 'contacts' => 'static_pages#contacts'
     post 'email' => 'static_pages#send_email_form', as: :email_form
