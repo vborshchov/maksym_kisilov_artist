@@ -1,18 +1,22 @@
 class CategoriesController < ApplicationController
   require 'unicode'
 
-  # def index
-  #   @categories = Category.all.order("name ASC")
+  # def show_with_descendants
+  #   categories = Category.friendly.find(params[:id]).self_and_descendant_ids
   #   @category = Category.all.last
   # end
 
   def show
     @category = Category.friendly.find(params[:id])
-    @artworks = @category.artworks.order("position ASC").page(params[:page]).per(1)
+    if @category.leaf?
+      @artworks = @category.artworks.order("position ASC").page(params[:page]).per(params[:per])
+    else
+      @artworks = Artwork.where(category_id: @category.self_and_descendant_ids).order("position ASC").page(params[:page]).per(params[:per])
+    end
   end
 
   private
   def categories_params
-    params.require(:category).permit(:page)
+    params.require(:category).permit(:page, :per)
   end
 end
