@@ -14,13 +14,15 @@
 
   <body>
       <div class="row">
-        <div class="column small-8 medium-9 large-10">
+        <div class="column medium-9 large-10 hide-for-small-only">
           <h1 class="title">
             <!-- <a>Максим Кісільов</a> -->
+            <%= image_tag('MK_red_small_logo.svg', width: '35', height: '40', class: 'logo-img', style: 'vertical-align: sub;')%>
+
             <%= link_to t('top_bar.title'), root_path %>
           </h1>
         </div>
-        <div class="column small-4 medium-3 large-2 lang-icon">
+        <div class="column medium-3 large-2 lang-icon hide-for-small-only">
           <%= link_to image_tag("gb.svg"), change_locale_path(locale: "en") %>
           <%= link_to image_tag("pl.svg"), change_locale_path(locale: "pl") %>
           <%= link_to image_tag("ua.svg"), change_locale_path(locale: "uk") %>
@@ -29,7 +31,14 @@
       <div class="contain-to-grid">
         <nav class="top-bar" data-topbar role="navigation">
           <ul class="title-area">
-            <li class="name">
+            <li class="name show-for-small-only">
+              <%= image_tag('MK_red_small_logo.svg', width: '23', height: '60', class: 'logo-img')%>
+              <%= t('top_bar.title') %>
+              <b class="lang-icon small">
+                <%= link_to image_tag("ua.svg"), change_locale_path(locale: "uk") %>
+                <%= link_to image_tag("pl.svg"), change_locale_path(locale: "pl") %>
+                <%= link_to image_tag("gb.svg"), change_locale_path(locale: "en") %>
+              </b>
             </li>
              <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
             <li class="menu-icon toggle-topbar"><a href="#"><span></span></a></li>

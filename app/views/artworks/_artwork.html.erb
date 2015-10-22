@@ -1,6 +1,3 @@
 <div class="protect">
   <%= cl_image_tag(artwork.picture, sign_url: true, alt: artwork.name, border: { width: 10, color: '#ffffff' }, width: 5000, height: 500, crop: :limit) unless artwork.picture.blank?%><br>
-  <p>
-    <%#= about artwork %>
-  </p>
 </div>
