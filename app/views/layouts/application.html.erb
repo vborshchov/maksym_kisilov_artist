@@ -16,8 +16,8 @@
       <div class="row">
         <div class="column medium-9 large-10 hide-for-small-only">
           <h1 class="title">
-            <!-- <a>Максим Кісільов</a> -->
-            <%= image_tag('MK_red_small_logo.svg', width: '35', height: '40', class: 'logo-img', style: 'vertical-align: sub;')%>
+            <%= link_to image_tag('MK_red_small_logo.svg', width: '45', height: '60', class: 'logo-img'), root_path %>
+            <!-- <%#= image_tag('MK_red_small_logo.svg', width: '45', height: '60', class: 'logo-img')%> -->
 
             <%= link_to t('top_bar.title'), root_path %>
           </h1>
@@ -32,7 +32,7 @@
         <nav class="top-bar" data-topbar role="navigation">
           <ul class="title-area">
             <li class="name show-for-small-only">
-              <%= image_tag('MK_red_small_logo.svg', width: '23', height: '60', class: 'logo-img')%>
+              <%= link_to image_tag('MK_red_small_logo.svg', width: '23', height: '60', class: 'logo-img'), root_path%>
               <%= t('top_bar.title') %>
               <b class="lang-icon small">
                 <%= link_to image_tag("ua.svg"), change_locale_path(locale: "uk") %>
