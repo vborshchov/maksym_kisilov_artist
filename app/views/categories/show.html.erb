@@ -1,11 +1,22 @@
-<%= provide :title, Unicode::capitalize(@category.name) %>
+<%= provide :title, Unicode::capitalize(@category.name) if @category %>
 
 <div class="column">
   <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="pager">
-    <span class="label secondary radius"><%= @category.name %></span>
+    <span class="breadcrumb"><%= @category ? @category.name.capitalize : t('top-bar.gallery') %></span>
   </a>
   <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-    <%= menu_tree_for @categories%>
+    <ul>
+      <% if params[:id] != "all" %>
+      <li>
+        <%= link_to t('top_bar.gallery'), category_path(id: "all") %>
+      </li>
+      <% end %>
+      <li>
+        <ul>
+          <%= menu_tree_for @categories%>
+        </ul>
+      </li>
+    </ul>
   </ul>
   <% if current_admin_user %>
       <div class='switch round right has-tip' data-tooltip aria-haspopup='true' data-options='disable_for_touch:true' title="<%= t('.change_order') %>">
@@ -26,7 +37,7 @@
   </ul>
 
   <div class="my-gallery sortable" itemscope itemtype="http://schema.org/ImageGallery">
-      <% @artworks.map do |a|%><figure data-pos="<%= a.position %>" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"><%= content_tag(:a, cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 2000, height: 200, crop: :fit, "itemprop": "thumbnail"), href: "#{a.picture.url.gsub(/upload\//, 'upload/bo_15px_solid_rgb:fff/')}", data: {size: "#{FastImage.size(a.picture.url).join("x")}"}, itemprop: "contentUrl")%><figcaption itemprop="caption description"><%= about a %></figcaption></figure><% end %>
+      <% @artworks.map do |a|%><figure data-pos="<%= a.position %>" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"><%= content_tag(:a, cl_image_tag(a.picture, border: { width: 3, color: '#ffffff' }, width: 2000, height: 200, crop: :fit, "itemprop": "thumbnail"), href: "#{a.picture.url.gsub(/upload\//, 'upload/bo_15px_solid_rgb:fff/')}", data: {size: "#{FastImage.size(a.picture.url) ? FastImage.size(a.picture.url).join("x") : FastImage.size(a.picture.url).join("x")}"}, itemprop: "contentUrl")%><figcaption itemprop="caption description"><%= about a %></figcaption></figure><% end %>
   </div>
 </div>
 
