@@ -1,5 +1,1 @@
-<% if @category.leaf?%>
-  <%= link_to @category.name.capitalize, category_path(@category)%>
-<% else %>
-  <%= link_to @category.name.capitalize %>
-<% end %>
+<%= link_to @category.name.capitalize, category_path(@category)%>
