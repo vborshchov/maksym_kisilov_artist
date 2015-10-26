@@ -28,12 +28,12 @@
       </div>
   <% end %>
   <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" class="pager right">
-    <span class="label secondary radius"><li class="fi-thumbnails large"></li></span>
+    <span class="button radius tiny"><%= t('.show') %></span>
   </a>
   <ul id="drop2" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-    <li><%= link_to raw("11 на сторінку"), "?page=1&per=11"%></li>
-    <li><%= link_to raw("29 на сторінку"), "?page=1&per=29"%></li>
-    <li><%= link_to raw("показати всі"), "?page=1&per=10000"%></li>
+    <li><%= link_to raw("11 #{t('.per_page')}"), "?page=1&per=11"%></li>
+    <li><%= link_to raw("29 #{t('.per_page')}"), "?page=1&per=29"%></li>
+    <li><%= link_to t('.show_all'), "?page=1&per=10000"%></li>
   </ul>
 
   <div class="my-gallery sortable" itemscope itemtype="http://schema.org/ImageGallery">

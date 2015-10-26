@@ -24,21 +24,23 @@ pl:
   categories:
     show:
       change_order: "Zmiana kolejności"
+      per_page: ""
+      show_all: ""
   static_pages:
     contacts:
       forms:
         name:
-          placeholder:
-          error:
+          placeholder: ""
+          error: ""
         email:
-          placeholder:
-          error:
+          placeholder: ""
+          error: ""
         title:
-          placeholder:
-          error:
+          placeholder: ""
+          error: ""
         body:
-          placeholder:
-          error:
+          placeholder: ""
+          error: ""
         button:
           send: "Wysłać"
     send_email_form:

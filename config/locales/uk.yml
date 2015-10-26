@@ -106,6 +106,9 @@ uk:
   categories:
     show:
       change_order: "Зміна порядку"
+      show: "Показати"
+      per_page: "на сторінку" # тут повинна бути фраза '50 картин на сторінку'
+      show_all: "всі"
   static_pages:
     contacts:
       forms:

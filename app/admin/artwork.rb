@@ -95,7 +95,7 @@ ActiveAdmin.register Artwork do
       f.input :picture, :as => :file, :hint => image_tag(f.object.picture.url, width: 150, height: 150, crop: :fit)
       f.input :remote_picture_url
       f.input :picture_cache, :as => :hidden
-      f.input :category_id, as: :select, :collection => Category.leaves
+      f.input :category_id, as: :select, :collection => Category.all
       f.input :for_main_page, as: :radio
     end
     f.actions
