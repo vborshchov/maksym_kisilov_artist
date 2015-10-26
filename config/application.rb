@@ -22,6 +22,7 @@ module MaksymkisilovArtist
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.i18n.fallbacks = true
     config.autoload_paths += %W(#{config.root}/app/validators/)
     I18n.available_locales = [:en, :uk, :pl]
     config.i18n.default_locale = :uk
