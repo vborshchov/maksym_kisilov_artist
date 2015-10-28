@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Settings specified here will take precedence over those in config/application.rb.
-  config.assets.precompile += ['active_admin.css','active_admin.js']
+  config.assets.precompile += ['active_admin.css','active_admin.js', 'Sortable.min.js', 'jquery.collagePlus.min.js']
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -45,7 +45,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -80,7 +80,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'maksym_kisilov.herokuapp.com'}
+  config.action_mailer.default_url_options = { host: 'maksym-kisilov.herokuapp.com'}
 
   config.action_mailer.smtp_settings = {
     address:              'smtp.mandrillapp.com',
@@ -90,4 +90,5 @@ Rails.application.configure do
     password:             ENV["MANDRILL_APIKEY"],
     authentication:       'login',
     domain:               'maksym_kisilov.herokuapp.com'
+  }
 end
