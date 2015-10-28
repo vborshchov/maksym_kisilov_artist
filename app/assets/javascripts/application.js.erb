@@ -363,7 +363,6 @@ var ready = function(){
   resizeTimer = null;
 
   $(window).bind('resize', function() {
-    $('.sortable figure').css('opacity', 0);
     if (resizeTimer) {
       clearTimeout(resizeTimer);
     }
