@@ -2,7 +2,7 @@
 
 <div class="column">
   <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="pager">
-    <span class="breadcrumb"><%= @category ? @category.name.capitalize : t('top_bar.gallery') %></span>
+    <span class="breadcrumb category"><%= @category ? @category.name.capitalize : t('top_bar.gallery') %></span>
   </a>
   <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
     <ul>
@@ -26,15 +26,15 @@
             <span class='switch-off'>OFF</span>
           </label>
       </div>
+    <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" class="pager right">
+      <span class="button secondary radius tiny"><%= t('.show') %></span>
+    </a>
+    <ul id="drop2" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+      <li><%= link_to raw("11 #{t('.per_page')}"), "?page=1&per=11"%></li>
+      <li><%= link_to raw("29 #{t('.per_page')}"), "?page=1&per=29"%></li>
+      <li><%= link_to t('.show_all'), "?page=1&per=10000"%></li>
+    </ul>
   <% end %>
-  <a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" class="pager right">
-    <span class="button radius tiny"><%= t('.show') %></span>
-  </a>
-  <ul id="drop2" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-    <li><%= link_to raw("11 #{t('.per_page')}"), "?page=1&per=11"%></li>
-    <li><%= link_to raw("29 #{t('.per_page')}"), "?page=1&per=29"%></li>
-    <li><%= link_to t('.show_all'), "?page=1&per=10000"%></li>
-  </ul>
 
   <div class="my-gallery sortable" itemscope itemtype="http://schema.org/ImageGallery">
     <%= gallery_for @artworks %>

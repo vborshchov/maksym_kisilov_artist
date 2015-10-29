@@ -33,12 +33,22 @@ body {
   color: white;
 }
 
+.hide-for-small-only {
+  nav.top-bar {
+    text-align:center;
+  }
+  section.top-bar-section {
+    display: inline-block;
+  }
+}
+
 blockquote {
   margin-left: 2rem;
 }
 
-.title {
+h1.title {
   margin: 1rem 0;
+  text-align: center;
 }
 
 .title a, .name a {
@@ -47,6 +57,11 @@ blockquote {
 
 .title a:hover, .name a:hover {
   color:white;
+}
+
+.name>a {
+  float: left;
+  padding: 1rem;
 }
 
 .empty {
@@ -84,8 +99,12 @@ h1 a {
   }
 }
 
+.breadcrumb.category {
+  margin-left: 1rem;
+}
+
 .lang-icon {
-  padding-top: 3.8rem;
+  margin-right: 0.8rem;
   img {
     width: 1.6rem;
     height: 1.2rem;
@@ -106,7 +125,7 @@ fieldset legend {
 }
 
 .switch {
-  margin: 0.9rem 0 0 0;
+  margin: 0.9rem 1.25rem 0 0;
   label {
     /*margin: 0.2rem 0 0 0;*/
     background: #939393 none repeat scroll 0% 0%;
