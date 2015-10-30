@@ -2,18 +2,19 @@
 <% content_for :breadcrumb do%>
   <%= t 'top_bar.contacts' %>
 <% end %>
+
 <%= render 'info'%>
 
-<div class="column large-10 left">
+<div class="column large-6 medium-6 left">
   <%= form_for @message, url: email_form_path, html: {data: {abide: ''}} do |f| %>
     <fieldset>
       <legend><%= t('.forms.legend') %></legend>
       <div class="row">
-        <div class="column large-6">
+        <div class="column large-6 medium-6">
           <%= f.text_field :name, placeholder: t('.forms.name.placeholder'), required: true %>
           <small class="error"> <%= t('.forms.name.error') %></small>
         </div>
-        <div class="column large-6">
+        <div class="column large-6 medium-6">
           <%= f.email_field :email, placeholder: t('.forms.email.placeholder'), required: true, pattern: "advanced_email" %>
           <small class="error"><%= t('.forms.email.error') %></small>
         </div>

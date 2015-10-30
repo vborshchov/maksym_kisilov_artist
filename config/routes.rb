@@ -88,7 +88,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  scope "(:locale)", locale: /en|pl|uk/ do
+  scope "(:locale)", locale: /en|de|uk/ do
     root 'artworks#index'
     get 'artworks/change_position'
     get 'news/current' => 'posts#current'

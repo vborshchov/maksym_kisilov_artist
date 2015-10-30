@@ -24,7 +24,7 @@ module MaksymkisilovArtist
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.fallbacks = true
     config.autoload_paths += %W(#{config.root}/app/validators/)
-    I18n.available_locales = [:en, :uk, :pl]
+    I18n.available_locales = [:en, :uk, :de]
     config.i18n.default_locale = :uk
   end
 end
