@@ -1,3 +1,5 @@
-<div class="fade">
-  <%= render @artworks %>
+<div class="fade my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+  <%= gallery_for(@artworks, 2000, 500)%>
 </div>
+
+<%= render 'categories/photoswipe' %>

@@ -39,25 +39,25 @@ var ready = function(){
   });
 
   // Image protection script
-  $(function() {
-      var pixelSource = "<%= asset_path('transparent.gif') %>";
-      var useOnAllImages = true;
-      // Preload the pixel
-      var preload = new Image();
-      preload.src = pixelSource;
-      $('.protect img').on('mouseenter touchstart', function(e) {
-          // Only execute if this is not an overlay or skipped
-          var img = $(this);
-          if (img.hasClass('protectionOverlay')) return;
-          if (!useOnAllImages && !img.hasClass('protectMe')) return;
-          // Get the real image's position, add an overlay
-          var pos = img.offset();
-          var overlay = $('<img class="protectionOverlay" src="' + pixelSource + '" />').css({width: img.width() + 'px', height: img.height() + 'px'}).css({position: 'absolute', zIndex: 9999999, left: pos.left, top: pos.top}).appendTo('body').bind('mouseleave', function() {
-              setTimeout(function(){ overlay.remove(); }, 0, $(this));
-          });
-          if ('ontouchstart' in window) $(document).one('touchend', function(){ setTimeout(function(){ overlay.remove(); }, 0, overlay); });
-      });
-  });
+  // $(function() {
+  //     var pixelSource = "<%= asset_path('transparent.gif') %>";
+  //     var useOnAllImages = true;
+  //     // Preload the pixel
+  //     var preload = new Image();
+  //     preload.src = pixelSource;
+  //     $('.protect img').on('mouseenter touchstart', function(e) {
+  //         // Only execute if this is not an overlay or skipped
+  //         var img = $(this);
+  //         if (img.hasClass('protectionOverlay')) return;
+  //         if (!useOnAllImages && !img.hasClass('protectMe')) return;
+  //         // Get the real image's position, add an overlay
+  //         var pos = img.offset();
+  //         var overlay = $('<img class="protectionOverlay" src="' + pixelSource + '" />').css({width: img.width() + 'px', height: img.height() + 'px'}).css({position: 'absolute', zIndex: 9999999, left: pos.left, top: pos.top}).appendTo('body').bind('mouseleave', function() {
+  //             setTimeout(function(){ overlay.remove(); }, 0, $(this));
+  //         });
+  //         if ('ontouchstart' in window) $(document).one('touchend', function(){ setTimeout(function(){ overlay.remove(); }, 0, overlay); });
+  //     });
+  // });
 
   //Slick
   $('.fade').slick({
