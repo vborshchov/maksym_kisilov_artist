@@ -266,6 +266,11 @@ var ready = function(){
           gallery.listen('destroy', function() {
             collage
           });
+
+          gallery.listen('close', function() {
+            var index = gallery.getCurrentIndex();
+            $('.fade').slick('slickGoTo', index)
+          });
       };
 
       // loop through all gallery elements and bind events
