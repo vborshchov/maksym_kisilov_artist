@@ -1,0 +1,38 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name show-for-small-only">
+      <%= link_to t('top_bar.title'), root_path %>
+      <b class="lang-icon small">
+        <%= link_to image_tag("ua.svg"), change_locale_path(locale: "uk") %>
+        <%= link_to image_tag("de.svg"), change_locale_path(locale: "de") %>
+        <%= link_to image_tag("gb.svg"), change_locale_path(locale: "en") %>
+      </b>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="menu-icon toggle-topbar"><a href="#"><span></span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="left">
+      <li><%= link_to raw("<i class='fi-home'></i> #{t('top_bar.main')}"), root_path %></li>
+      <li><%= link_to raw("<i class='fi-info'></i> #{t('top_bar.about')}"), about_path %></li>
+      <li class="has-dropdown"><%= link_to raw("<i class='fi-photo'></i> #{t('top_bar.gallery')}"), category_path(id: "all") %></a>
+        <ul class="dropdown">
+          <%= menu_tree_for @categories %>
+        </ul>
+      </li>
+      <li class="has-dropdown"><a href="#"><i class='fi-rss'></i> <%= t('top_bar.news.title') %></a>
+        <ul class="dropdown">
+          <li><%= link_to t('top_bar.news.current'), news_current_path %></li>
+          <li><%= link_to t('top_bar.news.archive'), news_archive_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to raw("<i class='fi-mail'></i> #{t('top_bar.contacts')}"), contacts_path %></li>
+      <% if current_admin_user %>
+        <li><%= link_to raw("<i class='fi-wrench'></i> #{t('top_bar.settings')}"), admin_root_path %></li>
+      <% else %>
+        <li><%= link_to raw("<i class='fi-wrench'></i>"), admin_root_path %></li>
+      <% end %>
+    </ul>
+  </section>
+</nav>

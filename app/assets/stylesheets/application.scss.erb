@@ -19,8 +19,6 @@
  *= require slick-theme
  */
 
-@import url(https://fonts.googleapis.com/css?family=Marck+Script&subset=latin,cyrillic);
-
 @font-face {
   font-family: "EsqaderoRegular";
   src: url(<%= asset_url('EsqaderoRegular.eot') %>);
@@ -29,6 +27,21 @@
     url(<%= asset_url('EsqaderoRegular.ttf') %>) format("truetype");
   font-style: normal;
   font-weight: normal;
+}
+
+@font-face {
+  font-family: "IsadoraCyrRegular";
+  src: url(<%= asset_url('IsadoraCyrRegular.ttf') %>);
+}
+
+@font-face {
+  font-family: "AvalonMedium";
+  src: url(<%= asset_url('AvalonMedium.ttf') %>);
+}
+
+@font-face {
+  font-family: "UkrainianBrushScript";
+  src: url(<%= asset_url('UkrainianBrushScript.ttf') %>);
 }
 
 body {
@@ -55,9 +68,11 @@ blockquote {
 }
 
 h1.title {
-  margin: 1rem 0;
+  font-size: 5rem;
+  margin: 1rem 0 0.5rem 0;
   text-align: center;
-  font-family: "Marck Script"
+  font-family: "AvalonMedium";
+  letter-spacing: 0.3rem;
 }
 
 .title a, .name a {
@@ -332,4 +347,20 @@ nav i, .links i {
   &:focus {
     outline-width: 0px;
   }
+}
+
+::-webkit-input-placeholder {
+   color: #333333;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #333333;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #333333;
+}
+
+:-ms-input-placeholder {
+   color: #333333;
 }
