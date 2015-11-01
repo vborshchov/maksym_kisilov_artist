@@ -4,37 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="mobile-web-app-capable" content="yes">
-    <!-- <link rel="shortcut icon" type="image/svg" href="<%#= asset_url('MK_red_small_logo.svg') %>" /> -->
-
     <link rel="icon" type="image/png" href="<%= asset_path('favicon-32x32.png') %>" sizes="32x32" />
     <link rel="icon" type="image/png" href="<%= asset_path('favicon-16x16.png') %>" sizes="16x16" />
-
-    <!-- <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<%#= asset_path('apple-touch-icon-57x57.png') %>" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%#= asset_path('apple-touch-icon-114x114.png') %>" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%#= asset_path('apple-touch-icon-72x72.png') %>" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%#= asset_path('apple-touch-icon-144x144.png') %>" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="<%#= asset_path('apple-touch-icon-60x60.png') %>" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<%#= asset_path('apple-touch-icon-120x120.png') %>" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<%#= asset_path('apple-touch-icon-76x76.png') %>" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<%#= asset_path('apple-touch-icon-152x152.png') %>" />
-    <link rel="icon" type="image/png" href="<%#= asset_path('favicon-196x196.png') %>" sizes="196x196" />
-    <link rel="icon" type="image/png" href="<%#= asset_path('favicon-96x96.png') %>" sizes="96x96" />
-    <link rel="icon" type="image/png" href="<%#= asset_path('favicon-32x32.png') %>" sizes="32x32" />
-    <link rel="icon" type="image/png" href="<%#= asset_path('favicon-16x16.png') %>" sizes="16x16" />
-    <link rel="icon" type="image/png" href="<%#= asset_path('favicon-128.png') %>" sizes="128x128" />
-    <meta name="application-name" content="&nbsp;"/>
-    <meta name="msapplication-TileColor" content="#FFFFFF" />
-    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
-    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
-    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
-    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
-    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" /> -->
 
     <title> <%= make_title yield(:title) %> </title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => false %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -44,9 +21,9 @@
           <h1 class="title">
             <%= link_to t('top_bar.title'), root_path %>
             <div class="right lang-icon">
-              <%= link_to image_tag("gb.svg"), change_locale_path(locale: "en") %>
-              <%= link_to image_tag("de.svg"), change_locale_path(locale: "de") %>
-              <%= link_to image_tag("ua.svg"), change_locale_path(locale: "uk") %>
+              <%= link_to image_tag("gb.png"), change_locale_path(locale: "en") %>
+              <%= link_to image_tag("de.png"), change_locale_path(locale: "de") %>
+              <%= link_to image_tag("ua.png"), change_locale_path(locale: "uk") %>
             </div>
           </h1>
         </div>
@@ -62,7 +39,7 @@
       <% flash.each do |key, text| %>
       <div data-alert class="alert-box <%= key %> radius">
         <%= text %>
-        <a href="#" class="close">&times;</a>
+        <a class="close">&times;</a>
       </div>
       <% end %>
 
@@ -81,8 +58,7 @@
         <footer>
           <div class="row">
             <div class="small-12 medium-12 large-12 columns">
-              <!-- <p class="slogan"><#%= t('top_bar.title') %></p> -->
-              <p class="links">
+               <p class="links">
                 <%= link_to raw("<i class='fi-home'></i> #{t('top_bar.main')}"), root_path %>
                 <%= link_to raw("<i class='fi-info'></i> #{t('top_bar.about')}"), about_path %>
                 <%= link_to raw("<i class='fi-photo'></i> #{t('top_bar.gallery')}"), category_path(id: "all") %>
@@ -104,6 +80,7 @@
           </div>
         </footer>
         <!-- end Footer -->
+
       <ul class="sortable empty"></ul>
       <a href="#0" class="cd-top">Top</a>
   </body>

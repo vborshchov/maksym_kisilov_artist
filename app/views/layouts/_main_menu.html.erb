@@ -3,9 +3,9 @@
     <li class="name show-for-small-only">
       <%= link_to t('top_bar.title'), root_path %>
       <b class="lang-icon small">
-        <%= link_to image_tag("ua.svg"), change_locale_path(locale: "uk") %>
-        <%= link_to image_tag("de.svg"), change_locale_path(locale: "de") %>
-        <%= link_to image_tag("gb.svg"), change_locale_path(locale: "en") %>
+        <%= link_to image_tag("ua.png"), change_locale_path(locale: "uk") %>
+        <%= link_to image_tag("de.png"), change_locale_path(locale: "de") %>
+        <%= link_to image_tag("gb.png"), change_locale_path(locale: "en") %>
       </b>
     </li>
      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
@@ -21,7 +21,7 @@
           <%= menu_tree_for @categories %>
         </ul>
       </li>
-      <li class="has-dropdown"><a href="#"><i class='fi-rss'></i> <%= t('top_bar.news.title') %></a>
+      <li class="has-dropdown"><a><i class='fi-rss'></i> <%= t('top_bar.news.title') %></a>
         <ul class="dropdown">
           <li><%= link_to t('top_bar.news.current'), news_current_path %></li>
           <li><%= link_to t('top_bar.news.archive'), news_archive_path %></li>
