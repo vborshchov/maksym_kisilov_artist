@@ -16,7 +16,7 @@
     <ul class="left">
       <li><%= link_to raw("<i class='fi-home'></i> #{t('top_bar.main')}"), root_path %></li>
       <li><%= link_to raw("<i class='fi-info'></i> #{t('top_bar.about')}"), about_path %></li>
-      <li class="has-dropdown"><%= link_to raw("<i class='fi-photo'></i> #{t('top_bar.gallery')}"), category_path(id: "all") %></a>
+      <li class="has-dropdown"><%= link_to raw("<i class='fi-photo'></i> #{t('top_bar.gallery')}"), category_path(id: "all") %>
         <ul class="dropdown">
           <%= menu_tree_for @categories %>
         </ul>
