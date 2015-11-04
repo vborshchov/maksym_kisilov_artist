@@ -24,7 +24,7 @@ ActiveAdmin.register Info do
   end
 
   form do |f|
-    f.inputs "Новина" do
+    f.inputs " " do
       f.input :page, label: "Сторінка", as: :radio, :collection => %w(about contacts)
       f.input :content, :as => :ckeditor
     end

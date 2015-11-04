@@ -30,14 +30,14 @@ ActiveAdmin.register Category, :as => "All Category" do
     actions
   end
 
-  sidebar "Графік", only: :index do
-    # graph of caterogies hierarchy goes here
+  sidebar " ", only: :index do
+    # menu_tree_for Category.all # Graph of caterogies hierarchy goes here
   end
 
   form do |f|
-    f.inputs "Категорія" do
-      f.input :name, label: "Назва"
-      f.input :parent_id, as: :select, collection: Category.all, label: "Батьківська категорія"
+    f.inputs I18n.t('activerecord.models.all_category.one') do
+      f.input :name
+      f.input :parent_id, as: :select, collection: Category.all
     end
     f.actions
   end

@@ -18,9 +18,9 @@ en:
           add_notice: "Succesfully added to main page"
           remove_notice: "Succesfully removed from main page"
         post:
-          title: "Новини"
+          title: "News"
         info:
-          title: "Інформація про мене"
+          title: "Info about me"
       show:
         category:
           delete:
@@ -40,15 +40,19 @@ en:
             category: "Category"
           photo: "Photo"
         post:
-          title: "Новини"
+          title: "News"
         info:
-          title: "Інформація про мене"
+          title: "Info about me"
   activerecord:
     models:
       info:
         one: "My info"
         many: "My info"
         other: "My info"
+      artwork:
+        one: "Artwork"
+        many: "Artworks"
+        other: "Artworks"
       news:
         one: "News"
         many: "News"
@@ -59,8 +63,16 @@ en:
         other: "Categories"
     attributes:
       artwork:
+        name: "Name"
+        dimension: "Dimension"
+        material: "Material"
+        position: "Position"
         category_id: "Category"
-      all_category:
+        for_main_page: "For main page"
+        picture: "Picture"
+        remote_picture_url: "Remote picture url"
+      category:
+        name: "Name"
         parent_id: "Parent category"
   top_bar:
     title: "Maksym Kisilov"
@@ -76,7 +88,7 @@ en:
     languages:
       title: "Language"
       en: "English"
-      pl: "Polish"
+      de: "German"
       uk: "Ukranian"
   posts:
     archive:
@@ -113,3 +125,4 @@ en:
   artworks:
     change_position:
       success: "Artwork was successfully moved"
+  graph: "Graph"

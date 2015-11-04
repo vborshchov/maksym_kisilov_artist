@@ -88,7 +88,7 @@ ActiveAdmin.register Artwork do
   end
 
   form do |f|
-    f.inputs "Робота", :multipart => true do
+    f.inputs I18n.t('.artwork'), :multipart => true do
       f.input :name
       f.input :dimension
       f.input :material

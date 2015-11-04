@@ -79,7 +79,7 @@ uk:
         for_main_page: "Для головної сторінки"
         picture: "Фото"
         remote_picture_url: "Посилання на фото"
-      all_category:
+      category:
         name: "Назва"
         parent_id: "Батьківська категорія"
   top_bar:
@@ -133,3 +133,4 @@ uk:
   artworks:
     change_position:
       success: "Картина була успішно переміщена."
+  graph: "Графік"
