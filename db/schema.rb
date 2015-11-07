@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015184636) do
+ActiveRecord::Schema.define(version: 20151107134213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 20151015184636) do
     t.integer  "category_id"
     t.integer  "position"
     t.boolean  "for_main_page", default: false
+    t.integer  "height"
+    t.integer  "width"
   end
 
   add_index "artworks", ["category_id"], name: "index_artworks_on_category_id", using: :btree
@@ -122,6 +124,17 @@ ActiveRecord::Schema.define(version: 20151015184636) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "info_translations", force: :cascade do |t|
+    t.integer  "info_id",    null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "content"
+  end
+
+  add_index "info_translations", ["info_id"], name: "index_info_translations_on_info_id", using: :btree
+  add_index "info_translations", ["locale"], name: "index_info_translations_on_locale", using: :btree
 
   create_table "infos", force: :cascade do |t|
     t.string   "page"
