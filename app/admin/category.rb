@@ -2,19 +2,19 @@ ActiveAdmin.register Category, :as => "All Category" do
   menu priority: 2
 
   around_filter do |controller, action|
-      Category.class_eval do
-        alias :__active_admin_to_param :to_param
-        def to_param() id.to_s end
-      end
+    Category.class_eval do
+      alias :__active_admin_to_param :to_param
+      def to_param() id.to_s end
+    end
 
-      begin
-        action.call
-      ensure
-        Category.class_eval do
-          alias :to_param :__active_admin_to_param
-        end
+    begin
+      action.call
+    ensure
+      Category.class_eval do
+        alias :to_param :__active_admin_to_param
       end
     end
+  end
 
   # remove_filter :ancestor_hierarchies
   # remove_filter :descendant_hierarchies
@@ -31,7 +31,7 @@ ActiveAdmin.register Category, :as => "All Category" do
   end
 
   sidebar " ", only: :index do
-    # menu_tree_for Category.all # Graph of caterogies hierarchy goes here
+    render partial: "caterogies_tree" # Graph of caterogies hierarchy goes here
   end
 
   form do |f|

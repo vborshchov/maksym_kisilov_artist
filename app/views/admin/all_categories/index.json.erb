@@ -1,0 +1,5 @@
+<%
+  ht = Category.hash_tree
+  root = I18n.t('top_bar.gallery')
+%>
+<%= hash_tree_to_hash(ht, root).to_json.html_safe %>

@@ -12,6 +12,23 @@ module ApplicationHelper
     end
   end
 
+  def hash_tree_to_hash(ht, root=false)
+    result = []
+    ht.each_pair do |k,v|
+      result << if v.is_a?(Hash) && v != {}
+        {
+          "name": k.name,
+          "children": hash_tree_to_hash(v)
+        }
+      else
+        # MODIFY HERE! Look for what you want to find in the hash here
+        { "name": "#{k.name}" }
+      end
+    end
+    result = {name: root}.merge(children: result)  if root.is_a?(String)
+    result
+  end
+
   def about(artwork)
     [
       "\"#{artwork.name.to_s}\"",
