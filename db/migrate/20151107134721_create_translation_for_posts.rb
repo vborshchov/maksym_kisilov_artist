@@ -2,7 +2,8 @@ class CreateTranslationForPosts < ActiveRecord::Migration
   def up
     Post.create_translation_table!(
       {
-        body:      :text,
+        title:     :string,
+        body:      :text
       },
       {
         migrate_data: true

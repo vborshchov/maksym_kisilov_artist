@@ -13,7 +13,7 @@
 class Post < ActiveRecord::Base
   validates_presence_of :title
 
-  translates :body
+  translates :body, :title
 
   scope :archive, -> { where(archive: true).order('updated_at DESC') }
   scope :current, -> { where(archive: false).order('updated_at DESC') }

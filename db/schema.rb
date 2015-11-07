@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 20151107134721) do
     t.string   "locale",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "title"
     t.text     "body"
   end
 
