@@ -37,6 +37,7 @@ en:
             name: "Name"
             dimension: "Dimension"
             material: "Material"
+            year: "Creation year"
             category: "Category"
           photo: "Photo"
         post:
@@ -66,6 +67,7 @@ en:
         name: "Name"
         dimension: "Dimension"
         material: "Material"
+        year: "Year"
         position: "Position"
         category_id: "Category"
         for_main_page: "For main page"

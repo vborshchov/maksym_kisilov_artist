@@ -18,7 +18,7 @@ class Artwork < ActiveRecord::Base
   belongs_to :category
   validates_presence_of :name, :category
 
-  translates :name, :material, :dimension
+  translates :name, :material, :dimension, :year
 
   acts_as_list# scope: :category
   paginates_per 11

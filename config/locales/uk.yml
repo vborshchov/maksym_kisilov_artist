@@ -37,6 +37,7 @@ uk:
             name: "Назва"
             dimension: "Розмір"
             material: "Матеріал"
+            year: "Рік створення"
             category: "Категорія"
           photo: "Фото"
         post:
@@ -74,6 +75,7 @@ uk:
         name: "Назва"
         dimension: "Розмір"
         material: "Матеріал"
+        year: "Рік створення"
         position: "Позиція"
         category_id: "Категорія"
         for_main_page: "Для головної сторінки"

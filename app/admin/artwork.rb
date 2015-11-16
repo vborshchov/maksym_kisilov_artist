@@ -81,6 +81,9 @@ ActiveAdmin.register Artwork do
       row t('.artwork.sidebar.material') do |art|
         art.material
       end
+      row t('.artwork.sidebar.year') do |art|
+        art.year
+      end
       row t('.artwork.sidebar.category') do |art|
         art.category.name if art.category
       end
@@ -88,10 +91,11 @@ ActiveAdmin.register Artwork do
   end
 
   form do |f|
-    f.inputs I18n.t('.artwork'), :multipart => true do
+    f.inputs " ", :multipart => true do
       f.input :name
       f.input :dimension
       f.input :material
+      f.input :year
       f.input :picture, :as => :file, :hint => image_tag(f.object.picture.url, width: 150, height: 150, crop: :fit)
       f.input :remote_picture_url
       f.input :picture_cache, :as => :hidden
@@ -101,5 +105,5 @@ ActiveAdmin.register Artwork do
     f.actions
   end
 
-  permit_params :name, :dimension, :material, :picture, :category_id, :for_main_page, :remote_picture_url
+  permit_params :name, :dimension, :material, :year, :picture, :category_id, :for_main_page, :remote_picture_url
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107135811) do
+ActiveRecord::Schema.define(version: 20151116203512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20151107135811) do
     t.string   "name"
     t.string   "material"
     t.string   "dimension"
+    t.string   "year"
   end
 
   add_index "artwork_translations", ["artwork_id"], name: "index_artwork_translations_on_artwork_id", using: :btree
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 20151107135811) do
     t.boolean  "for_main_page", default: false
     t.integer  "height"
     t.integer  "width"
+    t.string   "year"
   end
 
   add_index "artworks", ["category_id"], name: "index_artworks_on_category_id", using: :btree
