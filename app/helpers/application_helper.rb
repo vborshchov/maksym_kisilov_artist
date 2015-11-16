@@ -33,8 +33,7 @@ module ApplicationHelper
     [
       "\"#{artwork.name.to_s}\"",
       artwork.dimension.to_s.downcase,
-      artwork.material.to_s.downcase,
-      artwork.category.name.to_s.capitalize
+      artwork.material.to_s.downcase
     ]
     .reject(&:blank?).join(", ")
   end
