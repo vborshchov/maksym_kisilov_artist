@@ -1,2 +1,2 @@
-<%= link_to cl_image_tag(artwork.picture_url, height: 150, alt: artwork.name), admin_artwork_path(artwork) %> <br>
+<%= link_to cl_image_tag(artwork.picture, height: 150, alt: artwork.name, crop: "fit", quality: 50), admin_artwork_path(artwork) %> <br>
 <%= about artwork %>
