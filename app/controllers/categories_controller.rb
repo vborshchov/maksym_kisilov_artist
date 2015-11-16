@@ -3,15 +3,15 @@ class CategoriesController < ApplicationController
 
   def show
     if params[:id] == "all"
-      @artworks = Artwork.all.order("position ASC").page(params[:page]).per(params[:per])
+      @artworks = Artwork.all.order("position ASC").page(params[:page]).per(params[:show])
     else
       @category = Category.friendly.find(params[:id])
-      @artworks = Artwork.where(category_id: @category.self_and_descendant_ids).order("position ASC").page(params[:page]).per(params[:per])
+      @artworks = Artwork.where(category_id: @category.self_and_descendant_ids).order("position ASC").page(params[:page]).per(params[:show])
     end
   end
 
   private
   def categories_params
-    params.require(:category).permit(:page, :per)
+    params.require(:category).permit(:page, :show)
   end
 end

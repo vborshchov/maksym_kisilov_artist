@@ -30,9 +30,9 @@
       <span class="button secondary radius tiny"><%= t('.show') %></span>
     </a>
     <ul id="drop2" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-      <li><%= link_to raw("11 #{t('.per_page')}"), "?page=1&per=11"%></li>
-      <li><%= link_to raw("29 #{t('.per_page')}"), "?page=1&per=29"%></li>
-      <li><%= link_to t('.show_all'), "?page=1&per=10000"%></li>
+      <li><%= link_to raw("11 #{t('.per_page')}"), "?page=1&show=11"%></li>
+      <li><%= link_to raw("29 #{t('.per_page')}"), "?page=1&show=29"%></li>
+      <li><%= link_to t('.show_all'), "?page=1&show=10000"%></li>
     </ul>
   <% end %>
 
