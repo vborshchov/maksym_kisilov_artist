@@ -119,6 +119,16 @@ h1 a {
 
 .breadcrumb.category {
   margin-left: 1rem;
+
+  &:after{
+    border: inset 5px;
+    content: "";
+    display: inline-block;
+    border-color: rgba(255, 255, 255, 0.4) transparent transparent transparent;
+    border-top-style: solid;
+    margin: -2.5px 0 -2.5px 5px;
+    box-sizing: inherit;
+  }
 }
 
 .lang-icon {
