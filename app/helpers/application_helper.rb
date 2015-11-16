@@ -30,12 +30,9 @@ module ApplicationHelper
   end
 
   def about(artwork)
-    [
-      "\"#{artwork.name.to_s}\"",
-      artwork.dimension.to_s.downcase,
-      artwork.material.to_s.downcase
-    ]
-    .reject(&:blank?).join(", ")
+    %w(name dimension material year).map do |field|
+      artwork.send(field)
+    end.reject(&:blank?).join(", ")
   end
 
   def make_title(title=nil)
