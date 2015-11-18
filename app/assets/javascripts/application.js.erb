@@ -306,12 +306,16 @@ var ready = function(){
     );
   });
 
+
   var justified, el, resizeTimer, sortable, targetItem;
 
   $('.pswp').bind('contextmenu', function(e) {
     return false;
   });
 
+  //////////////////////////////////////////////////////
+  //                      Sortable                    //
+  //////////////////////////////////////////////////////
   el = $('.sortable')[0];
 
   targetItem = void 0;
@@ -341,15 +345,19 @@ var ready = function(){
     sortable.option('disabled', !state);
   });
 
-
+  //////////////////////////////////////////////////////
+  //                 Justififed Gallery               //
+  //////////////////////////////////////////////////////
   justified = function() {
     $('.sortable').justifiedGallery({
       selector: '> figure, > div:not(.spinner)',
-      lastRow: 'justify',
+      lastRow: 'nojustify',
       cssAnimation: true,
       rowHeight: 150,
+      mazRowHeight: 450,
       captions: false,
-      margins: 10,
+      justifyThreshold: 0.33,
+      margins: 16,
       border: -1
     });
   };
@@ -357,16 +365,6 @@ var ready = function(){
   $(window).load(function () {
     justified();
   });
-
-  // resizeTimer = null;
-
-  // $(window).bind('resize', function() {
-  //   if (resizeTimer) {
-  //     clearTimeout(resizeTimer);
-  //   }
-  //   resizeTimer = setTimeout(justified, 200);
-  // });
-
 
   //////////////////////////////////////////////////////
   //                 Sticky footer                    //

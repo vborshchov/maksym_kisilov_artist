@@ -1,6 +1,6 @@
 module CategoriesHelper
 
-  def gallery_for(artworks, width=2000, height=400)
+  def gallery_for(artworks, width=2000, height=450)
     artworks.map do |a|
       catch (:done) do
         if FastImage.size(a.picture.url)
