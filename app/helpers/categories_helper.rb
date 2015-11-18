@@ -3,7 +3,7 @@ module CategoriesHelper
   def gallery_for(artworks, width=2000, height=450)
     artworks.map do |a|
       catch (:done) do
-        p_url = a.picture.url.gsub(/upload\//, 'upload/c_limit,h_1000,w_1000/')
+        p_url = a.picture.url.gsub(/upload\//, 'upload/c_limit,h_1200,w_1200/')
         p_size = FastImage.size(p_url)
         if p_size
           "<figure data-pos='" + a.position.to_s + "' itemprop='associatedMedia' itemscope itemtype='http://schema.org/ImageObject'>" +
