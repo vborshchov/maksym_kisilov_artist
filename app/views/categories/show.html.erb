@@ -19,7 +19,7 @@
     </ul>
   </ul>
   <% if current_admin_user %>
-      <div class='switch round right has-tip' data-tooltip aria-haspopup='true' data-options='disable_for_touch:true' title="<%= t('.change_order') %>">
+      <div class='switch round right' data-options='disable_for_touch:true'>
           <input id='on-off' type='checkbox'>
           <label for='on-off'>
             <span class='switch-on'>ON</span>
@@ -36,7 +36,7 @@
     </ul>
   <% end %>
 
-  <div class="my-gallery sortable" itemscope itemtype="http://schema.org/ImageGallery">
+  <div class="my-gallery justified-gallery sortable" itemscope itemtype="http://schema.org/ImageGallery">
     <%= gallery_for @artworks %>
   </div>
 </div>

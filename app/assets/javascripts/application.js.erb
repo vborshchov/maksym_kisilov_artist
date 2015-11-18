@@ -18,6 +18,7 @@
 //= require slick
 //= require Sortable.min
 //= require jquery.collagePlus.min
+//= require jquery.justifiedGallery.min
 //= require_tree .
 
 var ready = function(){
@@ -38,28 +39,9 @@ var ready = function(){
     }
   });
 
-  // Image protection script
-  // $(function() {
-  //     var pixelSource = "<%= asset_path('transparent.gif') %>";
-  //     var useOnAllImages = true;
-  //     // Preload the pixel
-  //     var preload = new Image();
-  //     preload.src = pixelSource;
-  //     $('.protect img').on('mouseenter touchstart', function(e) {
-  //         // Only execute if this is not an overlay or skipped
-  //         var img = $(this);
-  //         if (img.hasClass('protectionOverlay')) return;
-  //         if (!useOnAllImages && !img.hasClass('protectMe')) return;
-  //         // Get the real image's position, add an overlay
-  //         var pos = img.offset();
-  //         var overlay = $('<img class="protectionOverlay" src="' + pixelSource + '" />').css({width: img.width() + 'px', height: img.height() + 'px'}).css({position: 'absolute', zIndex: 9999999, left: pos.left, top: pos.top}).appendTo('body').bind('mouseleave', function() {
-  //             setTimeout(function(){ overlay.remove(); }, 0, $(this));
-  //         });
-  //         if ('ontouchstart' in window) $(document).one('touchend', function(){ setTimeout(function(){ overlay.remove(); }, 0, overlay); });
-  //     });
-  // });
-
-  //Slick
+  //////////////////////////////////////////////////////
+  //                     Slick                        //
+  //////////////////////////////////////////////////////
   $('.fade').slick({
     autoplay:       true,
     autoplaySpeed:  3000,
@@ -72,7 +54,10 @@ var ready = function(){
     pauseOnHover:   false
   });
 
-  //Photo Swipe
+
+  //////////////////////////////////////////////////////
+  //                  Photo Swipe                     //
+  //////////////////////////////////////////////////////
   var initPhotoSwipeFromDOM = function(gallerySelector) {
 
       // parse slide data (url, title, size ...) from DOM elements
@@ -265,7 +250,7 @@ var ready = function(){
           gallery.init();
 
           gallery.listen('destroy', function() {
-            collage
+            justified
           });
 
           gallery.listen('close', function() {
@@ -292,7 +277,10 @@ var ready = function(){
   // execute above function
   initPhotoSwipeFromDOM('.my-gallery');
 
-  // Scroll to top button
+
+  //////////////////////////////////////////////////////
+  //               Scroll to top button               //
+  //////////////////////////////////////////////////////
   var offset = 300,
   //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
   offset_opacity = 1200,
@@ -318,12 +306,16 @@ var ready = function(){
     );
   });
 
-  var collage, el, resizeTimer, sortable, targetItem;
+
+  var justified, el, resizeTimer, sortable, targetItem;
 
   $('.pswp').bind('contextmenu', function(e) {
     return false;
   });
 
+  //////////////////////////////////////////////////////
+  //                      Sortable                    //
+  //////////////////////////////////////////////////////
   el = $('.sortable')[0];
 
   targetItem = void 0;
@@ -342,7 +334,7 @@ var ready = function(){
           old_index: evt.item.getAttribute('data-pos'),
           new_index: targetItem.getAttribute('data-pos')
         },
-        success: collage
+        success: justified
       });
     }
   });
@@ -353,31 +345,30 @@ var ready = function(){
     sortable.option('disabled', !state);
   });
 
-
-  collage = function() {
-    $('.sortable').collagePlus({
-      'targetHeight': 206,
-      'allowPartialLastRow': true,
-      'fadeSpeed': 1000
-      // 'effect': 'effect-1'
+  //////////////////////////////////////////////////////
+  //                 Justififed Gallery               //
+  //////////////////////////////////////////////////////
+  justified = function() {
+    $('.sortable').justifiedGallery({
+      selector: '> figure, > div:not(.spinner)',
+      lastRow: 'nojustify',
+      cssAnimation: true,
+      rowHeight: 150,
+      maxRowHeight: 450,
+      captions: false,
+      justifyThreshold: 0.33,
+      margins: 16,
+      border: -1
     });
   };
 
   $(window).load(function () {
-    collage();
+    justified();
   });
 
-  resizeTimer = null;
-
-  $(window).bind('resize', function() {
-    if (resizeTimer) {
-      clearTimeout(resizeTimer);
-    }
-    resizeTimer = setTimeout(collage, 200);
-  });
-
-  // Sticky footer
-
+  //////////////////////////////////////////////////////
+  //                 Sticky footer                    //
+  //////////////////////////////////////////////////////
   window.onload = function() {
     stickyFooter();
 
@@ -415,7 +406,6 @@ var ready = function(){
   }
 
   function stickyFooter() {
-
     if (document.getElementsByTagName("footer")[0].getAttribute("style") != null) {
       document.getElementsByTagName("footer")[0].removeAttribute("style");
     }
@@ -436,10 +426,6 @@ var ready = function(){
       }
     }
   }
-
-  /*
-  ! end sticky footer
-  */
 };
 
 $(document).ready(ready)
