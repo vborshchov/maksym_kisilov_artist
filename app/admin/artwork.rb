@@ -45,13 +45,14 @@ ActiveAdmin.register Artwork do
   index do
     selectable_column
     column :name
-    column :position
     column :category_id, :sortable => :category_id do |artwork|
       artwork.category.name
     end
     column :for_main_page
     column :dimension
     column :material
+    column :year
+    column :position
     actions
   end
 

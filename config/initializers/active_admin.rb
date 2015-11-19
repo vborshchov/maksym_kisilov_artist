@@ -197,7 +197,8 @@ ActiveAdmin.setup do |config|
     config.namespace :admin do |admin|
       admin.build_menu do |menu|
         menu.add id: 'uk-icon', label: proc {image_tag("ua.png")} , url: "/change_locale?locale=uk", priority: 7
-        menu.add id: 'de-icon', label: proc {image_tag("de.png")} , url: "/change_locale?locale=pl", priority: 8
+        menu.add id: 'de-icon', label: proc {image_tag("de.png")} , url: "#", priority: 8
+        # menu.add id: 'de-icon', label: proc {image_tag("de.png")} , url: "/change_locale?locale=de", priority: 8
         menu.add id: 'gb-icon', label: proc {image_tag("gb.png")} , url: "/change_locale?locale=en", priority: 9
       end
     end
