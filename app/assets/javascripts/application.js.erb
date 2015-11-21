@@ -328,45 +328,37 @@ var ready = function(){
       targetItem = evt.related;
     },
     onEnd: function(evt) {
-      $.ajax({
-        url: '/artworks/change_position',
-        type: 'GET',
-        data: {
-          old_index: evt.item.getAttribute('data-pos'),
-          new_index: targetItem.getAttribute('data-pos')
-        },
-        success: function(){
-          function pad(num, size) {
+      if (targetItem && evt.item) {
+        $.ajax({
+          url: '/artworks/change_position',
+          type: 'GET',
+          data: {
+            old_index: evt.item.getAttribute('data-pos'),
+            new_index: targetItem.getAttribute('data-pos')
+          },
+          success: function(){
+            function pad(num, size) {
               var s = "000000000" + num;
               return s.substr(s.length-size);
-          }
-          var old_index = evt.item.getAttribute('data-pos');
-          if (targetItem) {
-            var new_index = targetItem.getAttribute('data-pos');
-          }
-          $.makeArray($(el).find('figure')).forEach(function(obj){
-            var objPosition = obj.getAttribute('data-pos');
-            if (old_index > new_index) {
-              if ( objPosition <= old_index && objPosition >= new_index ) {
-                if (objPosition == old_index) {
-                  obj.setAttribute('data-pos', pad(new_index , 5));
-                } else {
-                  obj.setAttribute('data-pos', pad(parseInt(objPosition)+1 , 5));
-                }
-              }
-            } else if (old_index < new_index){
-              if ( objPosition >= old_index && objPosition <= new_index ) {
-                if (objPosition == old_index) {
-                  obj.setAttribute('data-pos', pad(new_index , 5));
-                } else {
-                  obj.setAttribute('data-pos', pad(parseInt(objPosition)-1 , 5));
-                }
-              }
             }
-          });
-          justified();
-        }
-      });
+            var old_index = parseInt(evt.item.getAttribute('data-pos'));
+            var new_index = parseInt(targetItem.getAttribute('data-pos'));
+            $.makeArray($(el).find('figure')).forEach(function(obj){
+              var objPosition = parseInt(obj.getAttribute('data-pos'));
+              if (old_index != new_index) {
+                if (objPosition >= Math.min(old_index, new_index) && objPosition <= Math.max(old_index, new_index)) {
+                  if (objPosition == old_index) {
+                    obj.setAttribute('data-pos', pad(new_index , 5));
+                  } else {
+                    obj.setAttribute('data-pos', pad(objPosition + Math.sign(old_index - new_index), 5));
+                  }
+                }
+              };
+            });
+            justified();
+          }
+        });
+      }
     }
   });
 
