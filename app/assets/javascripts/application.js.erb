@@ -308,7 +308,7 @@ var ready = function(){
   });
 
 
-  var justified, el, resizeTimer, sortable, targetItem;
+  var justified, el, sortable, targetItem;
 
   $('.pswp').bind('contextmenu', function(e) {
     return false;
@@ -323,7 +323,7 @@ var ready = function(){
 
   sortable = Sortable.create(el, {
     disabled: true,
-    animation: 500,
+    animation: 1500,
     onMove: function(evt) {
       targetItem = evt.related;
     },
@@ -335,7 +335,37 @@ var ready = function(){
           old_index: evt.item.getAttribute('data-pos'),
           new_index: targetItem.getAttribute('data-pos')
         },
-        success: justified
+        success: function(){
+          function pad(num, size) {
+              var s = "000000000" + num;
+              return s.substr(s.length-size);
+          }
+          var old_index = evt.item.getAttribute('data-pos');
+          if (targetItem) {
+            var new_index = targetItem.getAttribute('data-pos');
+          }
+          $.makeArray($(el).find('figure')).forEach(function(obj){
+            var objPosition = obj.getAttribute('data-pos');
+            if (old_index > new_index) {
+              if ( objPosition <= old_index && objPosition >= new_index ) {
+                if (objPosition == old_index) {
+                  obj.setAttribute('data-pos', pad(new_index , 5));
+                } else {
+                  obj.setAttribute('data-pos', pad(parseInt(objPosition)+1 , 5));
+                }
+              }
+            } else if (old_index < new_index){
+              if ( objPosition >= old_index && objPosition <= new_index ) {
+                if (objPosition == old_index) {
+                  obj.setAttribute('data-pos', pad(new_index , 5));
+                } else {
+                  obj.setAttribute('data-pos', pad(parseInt(objPosition)-1 , 5));
+                }
+              }
+            }
+          });
+          justified();
+        }
       });
     }
   });
@@ -352,20 +382,27 @@ var ready = function(){
   justified = function() {
     $('.sortable').justifiedGallery({
       selector: '> figure, > div:not(.spinner)',
-      lastRow: 'nojustify',
+      lastRow: 'center',
       cssAnimation: true,
       rowHeight: 150,
       maxRowHeight: 450,
       captions: false,
       justifyThreshold: 0.33,
+      sort: function(a, b) {
+        if (a.dataset.pos > b.dataset.pos) {
+          return -1
+        } else if (a.dataset.pos < b.dataset.pos) {
+          return 1
+        } else {
+          return 0
+        }
+      },
       margins: 16,
       border: -1
     });
   };
 
-  $(window).load(function () {
-    justified();
-  });
+  $(window).load(justified());
 
   //////////////////////////////////////////////////////
   //                 Sticky footer                    //
