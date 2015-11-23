@@ -128,3 +128,5 @@ en:
     change_position:
       success: "Artwork was successfully moved"
   graph: "Graph"
+  nopin:
+    description: "Pinnig allowed only when you in single view mode of Maksym's pictures. You can use a button in the upper right corner (the button looks like an arrow)."
