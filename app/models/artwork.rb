@@ -21,10 +21,11 @@ class Artwork < ActiveRecord::Base
   translates :name, :material, :dimension, :year
 
   acts_as_list# scope: :category
-  paginates_per 20
+  paginates_per 15
 
   mount_uploader :picture, PictureUploader
 
+  default_scope {order("position DESC")}
   scope :for_main_page, -> { where(for_main_page: true).order('position ASC') }
 
 end
