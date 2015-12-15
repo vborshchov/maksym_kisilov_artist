@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
 
   paginates_per 5
 
-  scope :archive, -> { where(archive: true).order('updated_at DESC') }
-  scope :current, -> { where(archive: false).order('updated_at DESC') }
+  scope :archive, -> { where(archive: true).order('created_at DESC') }
+  scope :current, -> { where(archive: false).order('created_at DESC') }
 
 end
