@@ -1,2 +1,9 @@
-<h2><%= post.title%></h2>
-<%= render inline: post.body%>
+<div class="row">
+  <div class="column">
+    <h5 class="text-center"><%= post.title%></h5>
+  </div>
+  <div class="column">
+    <%= render inline: post.body%>
+  </div>
+  <hr class="column">
+</div>

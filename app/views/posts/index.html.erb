@@ -1,0 +1,6 @@
+<%= provide :title, t(@title_yml_path)%>
+<% content_for :breadcrumb do%>
+  <%= t(@title_yml_path) %>
+<% end %>
+<%= render @posts %>
+<%= paginate @posts, :left => 1, :right => 1, :window => 1 %>

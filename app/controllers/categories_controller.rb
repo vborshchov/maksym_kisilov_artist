@@ -16,7 +16,8 @@ class CategoriesController < ApplicationController
   end
 
   private
-  def categories_params
-    params.require(:category).permit(:page, :show)
-  end
+
+    def categories_params
+      params.require(:category).permit(:page, :show)
+    end
 end

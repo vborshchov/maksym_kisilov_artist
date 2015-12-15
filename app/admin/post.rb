@@ -2,6 +2,7 @@ ActiveAdmin.register Post, as: "News" do
   menu priority: 3
   index do
     selectable_column
+    column :id
     column :title
     column :archive
     column :created_at

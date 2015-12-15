@@ -11,9 +11,9 @@
 #
 
 class Post < ActiveRecord::Base
-  validates_presence_of :title
-
   translates :body, :title
+
+  paginates_per 5
 
   scope :archive, -> { where(archive: true).order('updated_at DESC') }
   scope :current, -> { where(archive: false).order('updated_at DESC') }

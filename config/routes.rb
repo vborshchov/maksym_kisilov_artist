@@ -91,8 +91,8 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|de|uk/ do
     root 'artworks#index'
     get 'artworks/change_position'
-    get 'news/current' => 'posts#current'
-    get 'news/archive' => 'posts#archive'
+    get 'news/current' => 'posts#index', defaults: { show: "current" }
+    get 'news/archive' => 'posts#index', defaults: { show: "archive" }
     resources :categories, only: [:show, :index]
     get 'about' => 'static_pages#about'
     get 'contacts' => 'static_pages#contacts'
