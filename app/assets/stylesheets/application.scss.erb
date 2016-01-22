@@ -274,7 +274,9 @@ footer {
   .social-links li {
     background: #ACAFB3;
     padding: 0 .845rem;
-    border: 3px solid #333333;
+    border: none;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
     border-radius: 100px;
     list-style: none;
     margin-right: 1rem;
@@ -293,9 +295,15 @@ footer {
       background: #dddddd;
     }
 
-    &[class="saatchiart"] img {
-      width: 1.5rem;
-      height: 1.5rem;
+    &[class="saatchiart"] {
+      i:before {
+        padding: 6px 8px;
+        background-image: url(<%= image_url('saatchi-art-logo_51_24.png') %>);
+        background-repeat: no-repeat;
+        content: ".";
+        -webkit-text-fill-color: transparent;
+        color: #ACAFB3
+      }
     }
   }
 }
