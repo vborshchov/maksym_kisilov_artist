@@ -21,7 +21,7 @@ class Artwork < ActiveRecord::Base
   translates :name, :material, :dimension, :year
 
   acts_as_list# scope: :category
-  paginates_per 15
+  paginates_per 12
 
   mount_uploader :picture, PictureUploader
 
