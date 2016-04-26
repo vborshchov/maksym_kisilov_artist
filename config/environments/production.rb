@@ -81,14 +81,13 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'maksym-kisilov.herokuapp.com'}
-
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.mandrillapp.com',
-    port:                 587,
-    enable_starttls_auto: true,
-    user_name:            ENV["MANDRILL_USERNAME"],
-    password:             ENV["MANDRILL_APIKEY"],
-    authentication:       'login',
-    domain:               'maksym_kisilov.herokuapp.com'
+    port:           ENV['MAILGUN_SMTP_PORT'],
+    address:        ENV['MAILGUN_SMTP_SERVER'],
+    user_name:      ENV['MAILGUN_SMTP_LOGIN'],
+    password:       ENV['MAILGUN_SMTP_PASSWORD'],
+    domain:         "sandboxc9948cb222f842f698ab75f50323bc92.mailgun.org",
+    authentication: :plain
   }
 end
